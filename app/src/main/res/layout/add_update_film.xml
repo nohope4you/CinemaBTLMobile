@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#E8FFF4"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="6dp"
+        android:text="Mô tả :"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimmota"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="6dp"
+        android:text="Thể loại :"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimtheloai"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="6dp"
+        android:text="Thời lượng :"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimthoiluong"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="6dp"
+        android:text="Ngày phát hành :"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimngayphathanh"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="6dp"
+        android:text="Đạo diễn :"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimdaodien"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="6dp"
+        android:gravity="center"
+        android:text="Hình ảnh :"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimnuthinhanh"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="6dp"
+        android:text="Link trailer :"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimlinktrailer"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <ImageView
+        android:id="@+id/turn_back_managefilm"
+        android:layout_width="55dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_left" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="THÔNG TIN PHIM"
+        android:textColor="#5a25cf"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="155dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Tên phim :"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimtenphim"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/turn_back_managefilm" />
+
+    <EditText
+        android:id="@+id/Thongtinphimtenphim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Tên phim ..."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/Thongtinphimmota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Mô tả ..."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimtenphim" />
+
+    <EditText
+        android:id="@+id/Thongtinphimtheloai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Thể loại ..."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimmota" />
+
+    <EditText
+        android:id="@+id/Thongtinphimlinktrailer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Link ..."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimnuthinhanh" />
+
+    <EditText
+        android:id="@+id/Thongtinphimdaodien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Đạo diễn ..."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimngayphathanh" />
+
+    <Button
+        android:id="@+id/Thongtinphimnuthinhanh"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:text="Chọn hình ảnh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimdaodien" />
+
+    <Button
+        android:id="@+id/btn_themphim"
+        android:layout_width="161dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="20dp"
+        android:text="Thêm"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_suaphim"
+        android:layout_width="161dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:text="Sửa"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/Thongtinphimthoiluong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Thời lượng phim ..."
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimtheloai" />
+
+    <EditText
+        android:id="@+id/Thongtinphimngayphathanh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Ngày phát hành ..."
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimthoiluong" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group_main">
+        <item android:id="@+id/nav_manager_username"
+            android:title="User"
+            android:icon="@drawable/user" />
+        <item android:id="@+id/nav_manager_Film"
+            android:title="Quản lí phim"
+            android:icon="@drawable/movie" />
+        <item android:id="@+id/nav_manager_theater"
+            android:title="Quản lí rạp"
+            android:icon="@drawable/movie_theater" />
+        <item android:id="@+id/nav_manager_setfilm"
+            android:title="Quản lí suất phim"
+            android:icon="@drawable/calendar" />
+        <item android:id="@+id/nav_manager_room"
+            android:title="Quản lí phòng"
+            android:icon="@drawable/emergency" />
+        <item android:id="@+id/nav_manager_seat"
+            android:title="Quản lí ghế"
+            android:icon="@drawable/seats" />
+        <item android:id="@+id/nav_manager_ticket"
+            android:title="Quản lí vé"
+            android:icon="@drawable/ticket" />
+        <item android:id="@+id/nav_manager_user"
+            android:title="Quản lí tài khoản"
+            android:icon="@drawable/user" />
+        <item android:id="@+id/nav_manager_role"
+            android:title="Quản lí vai trò"
+            android:icon="@drawable/role" />
+        <item android:id="@+id/nav_manager_discount"
+            android:title="Quản lí mã giảm giá"
+            android:icon="@drawable/coupon" />
+        <item android:id="@+id/nav_manager_logout"
+            android:title="Đăng xuất"
+            android:icon="@drawable/exit" />
+
+    </group>
+
+</menu>
