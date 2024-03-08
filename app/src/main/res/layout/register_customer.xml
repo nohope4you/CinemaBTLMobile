@@ -3,60 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#b3bbef"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#b3bbef">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="227dp"
-        android:layout_height="232dp"
+        android:layout_width="191dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ou_cinema__2_" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@drawable/iconou" />
 
     <View
         android:id="@+id/view2"
-        android:layout_width="408dp"
-        android:layout_height="494dp"
-        android:background="#D1DEF4"
+        android:layout_width="417dp"
+        android:layout_height="454dp"
+        android:background="#C2C8FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="59dp"
         android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toStartOf="@+id/textHoTenKhachHangDangKy"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/business_card" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="ĐĂNG KÝ TÀI KHOẢN"
-        android:textColor="#5a25cf"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/textHoTenKhachHangDangKy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
         android:ems="10"
         android:hint="Nhập họ và tên ..."
         android:inputType="textPersonName"
@@ -80,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:hint="Nhập tài khoản ..."
         android:inputType="textPersonName"
@@ -127,11 +115,13 @@
         android:id="@+id/btnXacNhanDangKy"
         android:layout_width="173dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/cssbuttonpagelogin"
         android:text="Xác nhận"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -184,14 +174,33 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView10"
         app:srcCompat="@drawable/reset_password" />
 
-    <ImageView
-        android:id="@+id/btnquaylaidangnhap"
-        android:layout_width="50dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="436dp"
+        android:layout_height="62dp"
+        android:background="#6775F1"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_left" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnquaylaidangnhap"
+            android:layout_width="82dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="298dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="ĐĂNG KÝ TÀI KHOẢN"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
