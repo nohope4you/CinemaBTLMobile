@@ -5,47 +5,72 @@
     android:layout_width="match_parent"
     android:background="#D5D9E8"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/menu_list"
-        android:layout_width="55dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menulist" />
-
     <ListView
-        android:layout_width="409dp"
-        android:layout_height="644dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="359dp"
+        android:layout_height="334dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manage_search_seat">
 
     </ListView>
-
-    <ImageView
-        android:id="@+id/manage_add_seat"
-        android:layout_width="64dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="#700BAD"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/add" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="92dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:text="GHẾ"
-        android:textColor="#5a25cf"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/menu_list"
+            android:layout_width="56dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="80dp"
+            app:srcCompat="@drawable/menulist" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="94dp"
+            android:layout_height="44dp"
+            android:text="GHẾ"
+            android:textColor="#FFFFFF"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/manage_add_seat"
+            android:layout_width="56dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="80dp"
+            app:srcCompat="@drawable/add" />
+    </LinearLayout>
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/manage_search_seat"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/csssearchviewmanage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="427dp"
+        android:layout_height="75dp"
+        android:background="#413F42"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menunavbottombar_employer" />
+
+
+
 </android.support.constraint.ConstraintLayout>

@@ -48,6 +48,14 @@ public class NavBarManager extends AppCompatActivity {
                         Intent intent_user = new Intent(NavBarManager.this, ManageUser.class);
                         startActivity(intent_user);
                         break;
+                    case R.id.nav_manager_room:
+                        Intent intent_room = new Intent(NavBarManager.this, ManageRoom.class);
+                        startActivity(intent_room);
+                        break;
+                    case R.id.nav_manager_discount:
+                        Intent intent_coupon = new Intent(NavBarManager.this, ManageCoupon.class);
+                        startActivity(intent_coupon);
+                        break;
                 }
                 return false;
             }

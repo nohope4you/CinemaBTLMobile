@@ -17,10 +17,10 @@ public class ManageCoupon extends AppCompatActivity {
 
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);
-        ImageView btnAddFilm= findViewById(R.id.manage_add_film);
+        ImageView btnAddFilm= findViewById(R.id.manage_add_coupon);
         // Tạo Intent
         Intent intent = new Intent(this, NavBarManager.class);
-        Intent intentAddFilm = new Intent(this, ManageAddFilm.class);
+        Intent intentAddCoupon = new Intent(this, ManageAddCoupon.class);
 
         // Quay về trang navbar
         btnMenuList.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +33,7 @@ public class ManageCoupon extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(intentAddFilm);
+                startActivity(intentAddCoupon);
             }
         });
 
