@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@drawable/backgroundnavigationmanage"
+    android:gravity="bottom"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/navigation_manage_hinh"
+        android:layout_width="130dp"
+        android:layout_height="110dp"
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/navigation_manage_ten"
+        android:layout_width="152dp"
+        android:layout_height="98dp"
+        android:gravity="center"
+        android:text="Tên USER"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

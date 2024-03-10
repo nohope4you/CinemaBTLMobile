@@ -15,7 +15,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menunavbar_employer">
+        app:menu="@menu/menunavbar_employer"
+        app:headerLayout="@layout/nav_header"
+        app:itemIconTint="#6E0C70"
+        >
+
 
 
     </android.support.design.widget.NavigationView>
@@ -24,7 +28,7 @@
         android:id="@+id/view"
         android:layout_width="133dp"
         android:layout_height="62dp"
-        android:background="#8A92D6"
+        android:background="#4F3560"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/navigation_view"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view3"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/view3"
-        app:srcCompat="@drawable/tag" />
+        app:srcCompat="@drawable/statistic"
+        />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group><item android:visible="false"></item></group>
+    <item android:id="@+id/nav_manager_Film"
+                android:title="phim"
+                android:icon="@drawable/filmbt" />
+    <item android:id="@+id/nav_manager_t"
+                android:title="vé"
+                android:icon="@drawable/ticketbt"/>
+            <item android:id="@+id/nav_manager_user"
+                android:title="user"
+                android:icon="@drawable/userbottom" />
+
+            <item android:id="@+id/nav_manager_static"
+                android:title="static"
+                android:icon="@drawable/stats" />
+</menu>
