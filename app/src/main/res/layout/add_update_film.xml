@@ -3,257 +3,194 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#E8FFF4"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#E8FFF4">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="23dp"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="#700BAD"
         android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="6dp"
-        android:text="Mô tả :"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimmota"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="6dp"
-        android:text="Thể loại :"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimtheloai"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="6dp"
-        android:text="Thời lượng :"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimthoiluong"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="6dp"
-        android:text="Ngày phát hành :"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimngayphathanh"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="6dp"
-        android:text="Đạo diễn :"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimdaodien"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="6dp"
-        android:gravity="center"
-        android:text="Hình ảnh :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimnuthinhanh"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="23dp"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginEnd="6dp"
-        android:text="Link trailer :"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimlinktrailer"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <ImageView
-        android:id="@+id/turn_back_managefilm"
-        android:layout_width="55dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_left" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="THÔNG TIN PHIM"
-        android:textColor="#5a25cf"
-        android:textSize="35dp"
-        android:textStyle="bold"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Tên phim :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/Thongtinphimtenphim"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/turn_back_managefilm" />
+        <ImageView
+            android:id="@+id/turn_back_managefilm"
+            android:layout_width="55dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="30dp"
+            app:srcCompat="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THÔNG TIN PHIM"
+            android:textColor="#C0E62A"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/Thongtinphimtenphim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="116dp"
         android:ems="10"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:hint="Tên phim ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/Thongtinphimmota"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:hint="Mô tả ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimtenphim" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Thongtinphimtenphim"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/Thongtinphimtheloai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:hint="Thể loại ..."
         android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimmota" />
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimtenphim" />
 
     <EditText
         android:id="@+id/Thongtinphimlinktrailer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="Link ..."
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimnuthinhanh" />
-
-    <EditText
-        android:id="@+id/Thongtinphimdaodien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
-        android:ems="10"
-        android:hint="Đạo diễn ..."
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimngayphathanh" />
-
-    <Button
-        android:id="@+id/Thongtinphimnuthinhanh"
-        android:layout_width="210dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
-        android:text="Chọn hình ảnh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Thongtinphimdaodien" />
 
+    <EditText
+        android:id="@+id/Thongtinphimdaodien"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="Đạo diễn ..."
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/cssthongtinaddupdatemanage"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Thongtinphimngayphathanh"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimthoiluong" />
+
+    <Button
+        android:id="@+id/Thongtinphimnuthinhanh"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:text="Chọn hình ảnh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimngayphathanh" />
+
     <Button
         android:id="@+id/btn_themphim"
-        android:layout_width="161dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="383dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:background="@drawable/cssbuttonpagethemsuaquanli"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suaphim"
-        android:layout_width="161dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="383dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/Thongtinphimthoiluong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:hint="Thời lượng phim ..."
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimtheloai" />
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimmota" />
 
     <EditText
         android:id="@+id/Thongtinphimngayphathanh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="170dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:hint="Ngày phát hành ..."
         android:inputType="date"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimthoiluong" />
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinphimtheloai" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="209dp"
+        android:layout_height="109dp"
+        app:srcCompat="@drawable/imagefilm"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="80dp" />
+
 </android.support.constraint.ConstraintLayout>

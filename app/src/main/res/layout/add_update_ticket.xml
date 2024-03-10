@@ -3,133 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#E8FFF4"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#E8FFF4">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="#700BAD"
         android:gravity="center"
-        android:text="Khách hàng :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:text="Số ghế :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:text="Thời gian đặt :"
-        android:textSize="23dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="Mã giảm giá :"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="Giá tiền :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="Hình thức :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <ImageView
-        android:id="@+id/turn_back_managefilm"
-        android:layout_width="55dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_left" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="THÔNG TIN VÉ"
-        android:textColor="#5a25cf"
-        android:textSize="35dp"
-        android:textStyle="bold"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="155dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:gravity="center"
-        android:text="Suất chiếu :"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/turn_back_managefilm" />
+        <ImageView
+            android:id="@+id/turn_back_managefilm"
+            android:layout_width="55dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="30dp"
+            app:srcCompat="@drawable/arrow_left"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="152dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THÔNG TIN VÉ"
+            android:textColor="#C0E62A"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="74dp"
+            tools:layout_editor_absoluteY="240dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_themve"
         android:layout_width="161dp"
         android:layout_height="47dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
@@ -143,6 +61,7 @@
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
         android:textSize="20dp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,76 +70,114 @@
 
     <EditText
         android:id="@+id/Thongtinvekhachang"
-        android:layout_width="209dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="23dp"
+        android:layout_width="187dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:hint="Tên khách hàng..."
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinvesuatchieu" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/Thongtinveghe"
-        android:layout_width="209dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="187dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:hint="Số ghế..."
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Thongtinvekhachang" />
 
     <Spinner
         android:id="@+id/Thongtinvesuatchieu"
-        android:layout_width="209dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="46dp"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:layout_width="187dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/Thongtinvethoigiandat"
-        android:layout_width="209dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="187dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinveghe" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinvesuatchieu" />
 
     <Spinner
         android:id="@+id/Thongtinvemagiamgia"
-        android:layout_width="205dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
+        android:layout_width="187dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Thongtinvethoigiandat" />
 
     <EditText
         android:id="@+id/Thongtinvegiatien"
-        android:layout_width="205dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="385dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="88dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:hint="Giá tiền..."
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinvemagiamgia" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/Thongtinvehinhthuc"
-        android:layout_width="209dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinvegiatien" />
+        android:layout_width="187dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinveghe" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="299dp"
+        android:layout_height="151dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:srcCompat="@drawable/imageticket" />
 
 </android.support.constraint.ConstraintLayout>

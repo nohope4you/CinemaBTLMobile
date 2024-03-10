@@ -1,57 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#E8FFF4"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/turn_back_managecoupon"
-        android:layout_width="55dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow_left" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="THÔNG TIN MÃ GIẢM"
-        android:textColor="#5a25cf"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.705"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8FFF4">
 
     <EditText
         android:id="@+id/Thongtinmagiamten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="306dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="164dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
+        android:gravity="center"
         android:hint="Tên mã giảm giá ..."
         android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/Thongtinmagiamphantram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="306dp"
+        android:layout_height="60dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Phần trăm mã giảm giá ..."
         android:inputType="number"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Thongtinmagiamten" />
 
     <Button
@@ -59,10 +43,11 @@
         android:layout_width="161dp"
         android:layout_height="47dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:background="@drawable/cssbuttonpagethemsuaquanli"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
@@ -75,11 +60,68 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/thongtinmagiamhieuluc"
+        android:layout_width="306dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:hint="Thời gian hiệu lực ..."
+        android:inputType="number"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/cssthongtinaddupdatemanage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinmagiamphantram" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="#700BAD"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/turn_back_managecoupon"
+            android:layout_width="55dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="30dp"
+            app:srcCompat="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="THÔNG TIN MÃ GIẢM"
+            android:textColor="#C0E62A"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="180dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:srcCompat="@drawable/imagecoupon" />
 
 </android.support.constraint.ConstraintLayout>
