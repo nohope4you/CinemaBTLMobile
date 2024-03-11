@@ -93,8 +93,9 @@
         android:hint="Nhập địa chỉ rạp..."
         android:inputType="textPersonName"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinraptenrap"
-        tools:layout_editor_absoluteX="65dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Thongtinraptenrap" />
 
     <EditText
         android:id="@+id/thongtinrapsdt"
@@ -107,8 +108,9 @@
         android:hint="Nhập số diện thoại..."
         android:inputType="textPhonetic"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/thongtinrapdiachi"
-        tools:layout_editor_absoluteX="65dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thongtinrapdiachi" />
 
     <ImageView
         android:id="@+id/imageView17"
