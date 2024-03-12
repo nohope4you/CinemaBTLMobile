@@ -38,7 +38,7 @@
         android:id="@+id/Thongtinphongtenphong"
         android:layout_width="262dp"
         android:layout_height="61dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="220dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -46,39 +46,24 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <EditText
+    <Spinner
         android:id="@+id/Thongtinphongmarap"
         android:layout_width="262dp"
         android:layout_height="61dp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
+        android:layout_marginTop="44dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
-        android:hint="Phần trăm mã giảm giá ..."
         android:inputType="number"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Thongtinphongtenphong" />
-
-    <EditText
-        android:id="@+id/Thongtinphongsoluongghe"
-        android:layout_width="262dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/cssthongtinaddupdatemanage"
-        android:ems="10"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:hint="Số lượng ghế ..."
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinphongmarap" />
 
     <Button
         android:id="@+id/btnthongtinphongthem"

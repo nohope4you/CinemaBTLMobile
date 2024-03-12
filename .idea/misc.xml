@@ -80,6 +80,7 @@
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/drawable/cssupdate.xml" value="0.2555" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/drawable/logout.xml" value="0.2545" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/drawable/solidforimage.xml" value="0.2545" />
+        <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/add_update_room.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/add_update_seat.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/add_update_setfilm.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/add_update_theater.xml" value="0.25" />
@@ -89,13 +90,17 @@
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/manage_seat.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/manage_setfilm.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/manage_theater.xml" value="0.1" />
+        <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/manage_ticket.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/menu_bar.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/menubar_user.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/nav_header.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_filmdetail.xml" value="0.176" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_history.xml" value="0.25" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_history_detail.xml" value="0.152" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_home.xml" value="0.2" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_info.xml" value="0.2" />
+        <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_payment.xml" value="0.152" />
+        <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/layout/user_processorder.xml" value="0.152" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/menu/menunavbar_employer.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/menu/menunavbar_user.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Downloads/btlMobile/9h39ngay11thang3/CinemaBTLMobile/app/src/main/res/menu/menunavbottom_user.xml" value="0.1" />
