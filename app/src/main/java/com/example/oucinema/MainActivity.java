@@ -8,31 +8,38 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
+//    Button btnTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_home);
+        setContentView(R.layout.activity_main);
 
 
-//        // Nơi gọi biến
-//        Button btnRegister_Customer= findViewById(R.id.btndangky);
-//        Button btnLogin = findViewById(R.id.btndangnhap);
-//
-//        // Hàm chuyển trang đăng ký
-//        btnRegister_Customer.setOnClickListener(new View.OnClickListener() {
+        // Nơi gọi biến
+        Button btnRegister_Customer= findViewById(R.id.btndangky);
+        Button btnLogin = findViewById(R.id.btndangnhap);
+//        btnTest = findViewById(R.id.btnTest);
+
+        // Hàm chuyển trang đăng ký
+        btnRegister_Customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,RegisterCustomer.class);
+                startActivity(intent);
+            }
+        });
+        // Hàm chuyển trang đăng nhập
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ManageFilm.class);
+                startActivity(intent);
+            }
+        });
+//        btnTest.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,RegisterCustomer.class);
-//                startActivity(intent);
-//            }
-//        });
-//        // Hàm chuyển trang đăng nhập
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,ManageFilm.class);
-//                startActivity(intent);
+//                DBHelper dbHelper = new DBHelper(MainActivity.this);
 //            }
 //        });
     }
