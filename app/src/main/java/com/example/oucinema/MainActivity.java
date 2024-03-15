@@ -1,23 +1,34 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.oucinema.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
-//    Button btnTest;
+
+    DBHelper dbHelper;
+    EditText etusername,etpwd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        dbHelper = new DBHelper(MainActivity.this);
 
         // Nơi gọi biến
         Button btnRegister_Customer= findViewById(R.id.btndangky);
         Button btnLogin = findViewById(R.id.btndangnhap);
+        etusername= findViewById(R.id.textusername);
+        etpwd= findViewById(R.id.textpassword);
 //        btnTest = findViewById(R.id.btnTest);
 
         // Hàm chuyển trang đăng ký
@@ -32,16 +43,29 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ManageFilm.class);
-                startActivity(intent);
+                String username,pwd;
+                username = etusername.getText().toString();
+                pwd = etpwd.getText().toString();
+                if(username.equals("")||pwd.equals("")){
+                    Toast.makeText(MainActivity.this,"Vui lòng nhập đầy đủ thông tin",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    if(dbHelper.userLogin(username,pwd)){
+                        if(dbHelper.checkRoleUser(username,pwd)){
+//                            int id = dbHelper.getUserIDLogin(username,pwd);
+                            Intent intent = new Intent(MainActivity.this,ManageFilm.class);
+//                            intent.putExtra("user", id);
+                            startActivity(intent);
+                        }
+                        else{
+                            Intent intent = new Intent(MainActivity.this,UserHome.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
             }
         });
-//        btnTest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DBHelper dbHelper = new DBHelper(MainActivity.this);
-//            }
-//        });
+
     }
 
 

@@ -1,7 +1,9 @@
 package com.example.oucinema;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
@@ -11,6 +13,7 @@ import com.example.oucinema.model.User;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBName = "cinema.db";
+
 
     public DBHelper(@Nullable Context context) {
         super(context, DBName, null, 1);
@@ -135,6 +138,7 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("insert into Role(nameRole) values('User') ");
         sqLiteDatabase.execSQL("insert into Role(nameRole) values('Admin') ");
 
+        sqLiteDatabase.execSQL("insert into User(hoTen,phoneNumber,email,gioiTinh,username,password,roleID)values ('Admin','123456789','Admin@gmail.com','admin','admin123',2)");
     }
 
 
@@ -163,26 +167,49 @@ public class DBHelper extends SQLiteOpenHelper {
             return  true;
         }
     }
-
-    public boolean addUser2(String hoTen,String phoneNumber,String email,
-                           String gioiTinh, String username, String password,
-                           Role roleID){
-
+    public  boolean checkUserExist(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("hoTen",hoTen);
-        cv.put("phoneNumber",phoneNumber);
-        cv.put("email",email);
-        cv.put("gioiTinh",gioiTinh);
-        cv.put("username",username);
-        cv.put("password",password);
-        cv.put("roleID",roleID.getId());
-        long user1 = db.insert("user", null, cv);
-        if(user1 ==-1){
+        Cursor cursor = db.rawQuery("select * from User where username = ? ",new String[]{username});
+        if(cursor.getCount()>0){
+            return true;
+        }
+        else
+        {
             return false;
         }
-        else{
+    }
+
+    // Hàm login
+    public boolean userLogin (String username, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from User where username =? and password = ? ",new String[]{username,password});
+        if(cursor.getCount()>0){
             return  true;
         }
+        else{
+            return  false;
+        }
     }
+    public boolean checkRoleUser (String username, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from User where username =? and password =? and roleID ==2 ",new String[]{username,password});
+        if(cursor.getCount()>0){
+            return  true;
+        }
+        else{
+            return  false;
+        }
+    }
+
+//    public int getUserIDLogin(String username, String pwd){
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//
+//        String sql = "SELECT id FROM User WHERE username = ? AND password = ?";
+//        Cursor cursor = db.rawQuery(sql, new String[]{username, pwd});
+//        int userID = cursor.getColumnIndex("id");
+//        return userID;
+//    }
+
+
 }

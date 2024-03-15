@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.oucinema.model.User;
 
 
 public class ManageFilm extends AppCompatActivity {
@@ -36,6 +40,12 @@ public class ManageFilm extends AppCompatActivity {
                 startActivity(intentAddFilm);
             }
         });
+//        Intent intents = getIntent();
+//        User user = intents.getParcelableExtra("user");
+//        int userID = user.getId();
+//        TextView testID;
+//        testID= findViewById(R.id.textView22);
+//        testID.setText(userID);
 
     }
 }

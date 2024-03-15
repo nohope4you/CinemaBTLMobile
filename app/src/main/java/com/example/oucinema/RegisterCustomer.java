@@ -16,7 +16,7 @@ import com.example.oucinema.model.User;
 public class RegisterCustomer extends AppCompatActivity {
 
     Button btnRegist;
-    EditText hoTenKH,sdtKH,emailKH,username,password;
+    EditText hoTenKH,sdtKH,emailKH,username,password,repassword;
     DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class RegisterCustomer extends AppCompatActivity {
         emailKH =(EditText) findViewById(R.id.textEmail);
         username = (EditText)findViewById(R.id.textTaiKhoanDangKy);
         password =(EditText)  findViewById(R.id.textMatKhauDangKy);
+        repassword = (EditText) findViewById(R.id.textXacNhanMatKhauDangKy);
 
 
         // Tạo Intent
@@ -48,21 +49,37 @@ public class RegisterCustomer extends AppCompatActivity {
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                User  u ;
-//                Role role = new Role(1,"User");
-//
-//
-//
-//                   u = new User(-1,hoTenKH.getText().toString(),sdtKH.getText().toString(),emailKH.getText().toString(),"Nam",username.getText().toString(),password.getText().toString(),
-//                           role);
-//                dbHelper = new DBHelper(RegisterCustomer.this);
-//                boolean b = dbHelper.addUser(hoTenKH.getText().toString(),sdtKH.getText().toString(),
-//                        emailKH.getText().toString(),"Nam",username.getText().toString(),password.getText().toString(),role);
-//                    Toast.makeText(RegisterCustomer.this,u.toString(),Toast.LENGTH_LONG).show();
-//
-//
+                User  u ;
+                Role role = new Role(1,"User");
+                String hotenKH, sdt, email,userName,passWord,repwd;
+                hotenKH = hoTenKH.getText().toString();
+                sdt = sdtKH.getText().toString();
+                email = emailKH.getText().toString();
+                userName = username.getText().toString();
+                passWord = password.getText().toString();
+                repwd = repassword.getText().toString();
+                if(hotenKH.equals("")||sdt.equals("")||email.equals("")||userName.equals("")||passWord.equals("")){
+                    Toast.makeText(RegisterCustomer.this,"Vui lòng nhập đầy đủ thông tin",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    if(passWord.equals(repwd)){
+                        if(dbHelper.checkUserExist(userName)){
+                            Toast.makeText(RegisterCustomer.this,"Tài khoản đã tồn tại",Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            u = new User(-1,hotenKH,sdt,
+                                    email,"Nam",userName,passWord,
+                                    role);
+                            dbHelper = new DBHelper(RegisterCustomer.this);
+                            boolean b = dbHelper.addUser(u);
+                            Toast.makeText(RegisterCustomer.this,"Đăng ký thành công",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(RegisterCustomer.this,"Xác nhận mật khẩu không khớp",Toast.LENGTH_LONG).show();
+                    }
 
-
+                }
             }
         });
 
