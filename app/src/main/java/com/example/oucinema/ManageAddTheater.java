@@ -6,13 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.example.oucinema.model.RapPhim;
+
+import java.util.ArrayList;
 
 public class ManageAddTheater extends AppCompatActivity {
+    ListView listViewRapPhim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_update_theater);
+
+
 
         // Nơi gọi biến
         ImageView btnReturn= findViewById(R.id.turn_back_managefilm);

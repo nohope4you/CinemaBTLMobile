@@ -7,9 +7,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
+import com.example.oucinema.model.RapPhim;
 import com.example.oucinema.model.Role;
 import com.example.oucinema.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBName = "cinema.db";
@@ -59,11 +64,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 "id INTEGER primary key autoincrement," +
                 "tenRap TEXT NOT NULL, " +
                 "diaChi TEXT NOT NULL," +
-                "soDienThoaiLienHeTEXT NOT NULL," +
+                "soDienThoaiLienHe TEXT NOT NULL," +
                 "isDelete BOOLEAN," +
                 "userUpdate INTEGER" +
                 ");");
-
+        sqLiteDatabase.execSQL("insert into RapPhim(tenRap,diaChi,soDienThoaiLienHe,isDelete,userUpdate) values('Rạp 1','Tân Bình','09876226262',false,1) ");
+        sqLiteDatabase.execSQL("insert into RapPhim(tenRap,diaChi,soDienThoaiLienHe,isDelete,userUpdate) values('Rạp 2','Tân Bình','09876226262',false,1) ");
         //Bảng Ghế
         sqLiteDatabase.execSQL("create table Ghe(" +
                 "id INTEGER  primary key autoincrement," +
@@ -72,7 +78,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 "isDelete BOOLEAN," +
                 "userUpdate INTEGER" +
                 ");");
-
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('A1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('B1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('C1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('D1','Thường',false,1) ");
         //Bảng Phòng
         sqLiteDatabase.execSQL("create table Phong (" +
                 "id INTEGER  primary key autoincrement," +
@@ -138,7 +147,11 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("insert into Role(nameRole) values('User') ");
         sqLiteDatabase.execSQL("insert into Role(nameRole) values('Admin') ");
 
-        sqLiteDatabase.execSQL("insert into User(hoTen,phoneNumber,email,gioiTinh,username,password,roleID)values ('Admin','123456789','Admin@gmail.com','admin','admin123',2)");
+
+
+        sqLiteDatabase.execSQL("insert into User(hoTen,phoneNumber,email,gioiTinh,username,password,roleID)values ('Admin','123456789','Admin@gmail.com','Nam','admin','admin123',2)");
+
+
     }
 
 
@@ -201,15 +214,74 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-//    public int getUserIDLogin(String username, String pwd){
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//
-//        String sql = "SELECT id FROM User WHERE username = ? AND password = ?";
-//        Cursor cursor = db.rawQuery(sql, new String[]{username, pwd});
-//        int userID = cursor.getColumnIndex("id");
-//        return userID;
-//    }
+    public String getUserIDLogin(String username, String pwd) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM User WHERE username = ? AND password = ?";
+        Cursor cursor = db.rawQuery(sql, new String[]{username, pwd});
+        if (cursor != null && cursor.getCount() > 0) {
+            int columnIndex = cursor.getColumnIndex("id");
+            String columnName = cursor.getColumnName(columnIndex);
+            Log.d("MyActivity", "Column name: " + columnName);
+            while (cursor.moveToNext()) {
+                String userID = cursor.getString(columnIndex);
 
+                Log.d("Test", "UserID: " + userID);
+                return userID;
+            }
+            String userID = cursor.getString(columnIndex);
+            return userID;
+        }
+        else {
+            String userID = "0";
+            return userID;
+        }
+    }
+
+    public String getUserNAMELogin(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM User WHERE id = ?";
+        Cursor cursor = db.rawQuery(sql, new String[]{id});
+        if (cursor != null && cursor.getCount() > 0) {
+            int columnIndex = cursor.getColumnIndex("hoTen");
+            String columnName = cursor.getColumnName(columnIndex);
+            Log.d("MyActivity", "Column name: " + columnName);
+            while (cursor.moveToNext()) {
+                String userID = cursor.getString(columnIndex);
+                // Process user data here (e.g., using userID)
+                Log.d("Test", "UserID: " + userID);
+                return userID;
+            }
+            String userID = cursor.getString(columnIndex);
+            return userID;
+        } else {
+            // Handle the case of a null or empty Cursor
+            String userID = "0";
+            return userID;
+        }
+    }
+
+    public ArrayList<RapPhim> getRapPhim (){
+        ArrayList<RapPhim> danhSachRapPhim = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM RapPhim", null);
+
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String tenRap = cursor.getString(1);
+            String diaChi = cursor.getString(2);
+            String sdt = cursor.getString(3);
+
+            RapPhim rapPhim = new RapPhim(id, tenRap, diaChi, sdt,false,1);
+
+            danhSachRapPhim.add(rapPhim);
+        }
+//        for (RapPhim item : danhSachRapPhim) {
+//            Log.d("TAG", item.getTenRap());
+//        }
+        cursor.close();
+        database.close();
+        return danhSachRapPhim;
+    }
 
 }

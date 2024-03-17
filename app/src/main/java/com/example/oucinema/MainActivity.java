@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.oucinema.model.User;
@@ -52,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     if(dbHelper.userLogin(username,pwd)){
                         if(dbHelper.checkRoleUser(username,pwd)){
-//                            int id = dbHelper.getUserIDLogin(username,pwd);
+                            String userid = dbHelper.getUserIDLogin(username,pwd);
                             Intent intent = new Intent(MainActivity.this,ManageFilm.class);
-//                            intent.putExtra("user", id);
+                            intent.putExtra("user_id", userid);
                             startActivity(intent);
                         }
                         else{

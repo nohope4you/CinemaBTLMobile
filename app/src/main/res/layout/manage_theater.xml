@@ -8,12 +8,14 @@
 
 
     <ListView
+        android:id="@+id/listViewRapPhim"
         android:layout_width="359dp"
         android:layout_height="334dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manage_search_theater">
+
 
     </ListView>
 
