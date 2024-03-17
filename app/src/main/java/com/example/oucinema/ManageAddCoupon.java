@@ -45,22 +45,33 @@ public class ManageAddCoupon extends AppCompatActivity {
         btnThemCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MaGiamGia mgg = new MaGiamGia();
-                mgg.setTenMaGiam(AddTenMG.getText().toString());
-                mgg.setPhanTramGiam(Integer.parseInt(AddPTMG.getText().toString()));
-                java.sql.Date date = java.sql.Date.valueOf(AddTGHL.getText().toString());
-                mgg.setThoiGianHieuLuc(date);
-                boolean b = dbHelper.addCoupon(mgg);
-                if(b){
-                    Toast.makeText(ManageAddCoupon.this,"Thêm mã giảm giá thành công",Toast.LENGTH_LONG).show();
-                    AddTenMG.getText().clear();
-                    AddPTMG.getText().clear();
-                    AddTGHL.getText().clear();
+            try{
+                if(AddTenMG.getText().toString().equals("")||AddPTMG.getText().toString().equals("")||AddTGHL.getText().toString().equals("")){
+                    Toast.makeText(ManageAddCoupon.this,"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_LONG).show();
                 }
-                else
-                {
-                    Toast.makeText(ManageAddCoupon.this,"Thêm mã giảm giá Thất bại",Toast.LENGTH_LONG).show();
+                else{
+                    MaGiamGia mgg = new MaGiamGia();
+                    mgg.setTenMaGiam(AddTenMG.getText().toString());
+                    mgg.setPhanTramGiam(Integer.parseInt(AddPTMG.getText().toString()));
+                    java.sql.Date date = java.sql.Date.valueOf(AddTGHL.getText().toString());
+                    mgg.setThoiGianHieuLuc(date);
+                    boolean b = dbHelper.addCoupon(mgg);
+                    if(b){
+                        Toast.makeText(ManageAddCoupon.this,"Thêm mã giảm giá thành công",Toast.LENGTH_LONG).show();
+                        AddTenMG.getText().clear();
+                        AddPTMG.getText().clear();
+                        AddTGHL.getText().clear();
+                    }
+                    else
+                    {
+                        Toast.makeText(ManageAddCoupon.this,"Thêm mã giảm giá Thất bại",Toast.LENGTH_LONG).show();
+                    }
                 }
+            }catch (Exception e){
+                Toast.makeText(ManageAddCoupon.this,"Lỗi định dạng yyyy-MM-dd",Toast.LENGTH_LONG).show();
+            }
+
+
             }
         });
 

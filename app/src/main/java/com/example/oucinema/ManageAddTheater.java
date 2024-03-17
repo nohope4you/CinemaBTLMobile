@@ -49,21 +49,34 @@ public class ManageAddTheater extends AppCompatActivity {
         btnThemTheater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RapPhim theater = new RapPhim();
-                theater.setTenRap(AddTenRap.getText().toString());
-                theater.setDiaChi(AddDiaChiRap.getText().toString());
-                theater.setSoDienThoaiLienHe(AddSDTRap.getText().toString());
-                boolean b = dbHelper.addTheater(theater);
-                if(b){
-                    Toast.makeText(ManageAddTheater.this,"Thêm rạp phim thành công",Toast.LENGTH_LONG).show();
-                    AddTenRap.getText().clear();
-                    AddDiaChiRap.getText().clear();
-                    AddSDTRap.getText().clear();
+                try{
+                    if(AddTenRap.getText().toString().equals("")||AddDiaChiRap.getText().toString().equals("")||
+                            AddSDTRap.getText().toString().equals("")){
+                        Toast.makeText(ManageAddTheater.this,"Vui lòng nhập đủ thông tin",Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        RapPhim theater = new RapPhim();
+                        theater.setTenRap(AddTenRap.getText().toString());
+                        theater.setDiaChi(AddDiaChiRap.getText().toString());
+                        theater.setSoDienThoaiLienHe(AddSDTRap.getText().toString());
+                        boolean b = dbHelper.addTheater(theater);
+                        if(b){
+                            Toast.makeText(ManageAddTheater.this,"Thêm rạp phim thành công",Toast.LENGTH_LONG).show();
+                            AddTenRap.getText().clear();
+                            AddDiaChiRap.getText().clear();
+                            AddSDTRap.getText().clear();
+                        }
+                        else
+                        {
+                            Toast.makeText(ManageAddTheater.this,"Thêm rạp phim Thất bại",Toast.LENGTH_LONG).show();
+                        }
+                    }
                 }
-                else
-                {
-                    Toast.makeText(ManageAddTheater.this,"Thêm rạp phim Thất bại",Toast.LENGTH_LONG).show();
+                catch (Exception e){
+                    Toast.makeText(ManageAddTheater.this,"Có lỗi xảy ra",Toast.LENGTH_LONG).show();
                 }
+
+
             }
         });
     }

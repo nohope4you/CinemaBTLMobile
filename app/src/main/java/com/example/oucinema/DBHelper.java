@@ -493,8 +493,10 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("ngayChieu", ngayChieuString);
         cv.put("gioChieu",gioChieuString);
         cv.put("giaMacDinh",suat.getGiaMacDinh());
-        cv.put("phimID",1);
-        cv.put("phongID",1);
+        int idPhim= suat.getPhimID().getId();
+        int idPhong = suat.getPhongID().getId();
+        cv.put("phimID",idPhim);
+        cv.put("phongID",idPhong);
         cv.put("isDelete",false);
         cv.put("userUpdate",1);
 
@@ -542,8 +544,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        int idRap = room.getRapPhimID().getId();
         cv.put("tenPhong",room.getTenPhong());
-        cv.put("rapPhimID", 1);
+        cv.put("rapPhimID",idRap);
         cv.put("isDelete",false);
         cv.put("userUpdate",1);
 
