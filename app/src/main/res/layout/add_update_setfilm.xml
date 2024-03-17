@@ -70,20 +70,20 @@
 
     <Spinner
         android:id="@+id/Thongtinsuattenphim"
-        android:layout_width="185dp"
+        android:layout_width="175dp"
         android:layout_height="60dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="256dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:gravity="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
         android:id="@+id/Thongtinsuatngaychieu"
-        android:layout_width="185dp"
+        android:layout_width="175dp"
         android:layout_height="60dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
@@ -99,7 +99,7 @@
 
     <EditText
         android:id="@+id/Thongtinsuatgiochieu"
-        android:layout_width="185dp"
+        android:layout_width="175dp"
         android:layout_height="60dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
@@ -117,7 +117,7 @@
         android:id="@+id/Thongtinsuatgia"
         android:layout_width="356dp"
         android:layout_height="59dp"
-        android:layout_marginTop="189dp"
+        android:layout_marginTop="252dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -125,14 +125,15 @@
         android:inputType="number"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
     <Spinner
         android:id="@+id/thongtinsuattenphong"
-        android:layout_width="185dp"
+        android:layout_width="175dp"
         android:layout_height="60dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="256dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:gravity="center"
         android:textStyle="bold"

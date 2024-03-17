@@ -10,7 +10,7 @@
         android:id="@+id/Thongtinmagiamten"
         android:layout_width="306dp"
         android:layout_height="60dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -75,7 +75,7 @@
         android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Thời gian hiệu lực ..."
-        android:inputType="number"
+        android:inputType="date"
         android:textStyle="bold"
         android:gravity="center"
         android:background="@drawable/cssthongtinaddupdatemanage"
@@ -109,7 +109,7 @@
             android:layout_marginEnd="30dp"
             android:text="THÔNG TIN MÃ GIẢM"
             android:textColor="#C0E62A"
-            android:textSize="30dp"
+            android:textSize="28dp"
             android:textStyle="bold" />
     </LinearLayout>
 

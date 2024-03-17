@@ -298,6 +298,26 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
         return danhSachRapPhim;
     }
+// Thêm rạp
+    public boolean addTheater(RapPhim theater){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tenRap",theater.getTenRap());
+        cv.put("diaChi",theater.getDiaChi());
+        cv.put("soDienThoaiLienHe",theater.getSoDienThoaiLienHe());
+        cv.put("isDelete",false);
+        cv.put("userUpdate",1);
+
+        long theater1 = db.insert("RapPhim", null, cv);
+        if(theater1 ==-1){
+            return false;
+        }
+        else{
+            return  true;
+        }
+    }
+
 
     // Hàm cho Phim
     public ArrayList<Phim> getPhim (){
@@ -460,6 +480,33 @@ public class DBHelper extends SQLiteOpenHelper {
         return listSuat;
     }
 
+    // Thêm suất phim
+    public boolean addSetFilm(Suat suat){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String ngayChieuString = sdf.format(suat.getNgayChieu());
+        SimpleDateFormat sdfh = new SimpleDateFormat("hh:mm:ss");
+        String gioChieuString = sdfh.format(suat.getGioChieu());
+
+        cv.put("ngayChieu", ngayChieuString);
+        cv.put("gioChieu",gioChieuString);
+        cv.put("giaMacDinh",suat.getGiaMacDinh());
+        cv.put("phimID",1);
+        cv.put("phongID",1);
+        cv.put("isDelete",false);
+        cv.put("userUpdate",1);
+
+        long suat1 = db.insert("Suat", null, cv);
+        if(suat1 ==-1){
+            return false;
+        }
+        else{
+            return  true;
+        }
+    }
+
     // Hàm cho Phòng
     public ArrayList<Phong> getPhong (){
         ArrayList<Phong> listPhong = new ArrayList<>();
@@ -490,6 +537,24 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
         return listPhong;
     }
+    // Thêm phòng
+    public boolean addRoom(Phong room){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("tenPhong",room.getTenPhong());
+        cv.put("rapPhimID", 1);
+        cv.put("isDelete",false);
+        cv.put("userUpdate",1);
+
+        long room1 = db.insert("Phong", null, cv);
+        if(room1 ==-1){
+            return false;
+        }
+        else{
+            return  true;
+        }
+    }
 
     // Hàm cho Mã giảm giá
     public ArrayList<MaGiamGia> getGoupon (){
@@ -516,6 +581,27 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return listCoupon;
+    }
+
+    public boolean addCoupon(MaGiamGia mgg){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String ngayPhatHanhString = sdf.format(mgg.getThoiGianHieuLuc());
+        cv.put("tenMaGiam",mgg.getTenMaGiam());
+        cv.put("phanTramGiam",mgg.getPhanTramGiam());
+        cv.put("thoiGianHieuLuc",ngayPhatHanhString);
+        cv.put("isDelete",false);
+        cv.put("userUpdate",1);
+
+        long mgg1 = db.insert("MaGiamGia", null, cv);
+        if(mgg1 ==-1){
+            return false;
+        }
+        else{
+            return  true;
+        }
     }
 
     // Hàm cho Vé

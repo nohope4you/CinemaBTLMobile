@@ -38,7 +38,7 @@
         android:id="@+id/Thongtinphongtenphong"
         android:layout_width="262dp"
         android:layout_height="61dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="240dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
