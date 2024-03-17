@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtHoTenUserlist"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="left|center"
+        android:text="Tên User" />
+
+    <TextView
+        android:id="@+id/textusernamelist"
+        android:layout_width="175dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/txtHoTenUserlist"
+        android:gravity="left|center"
+        android:text="Username" />
+</RelativeLayout>

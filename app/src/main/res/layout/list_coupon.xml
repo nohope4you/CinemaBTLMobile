@@ -2,28 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
-        android:id="@+id/textTenPhim"
+        android:id="@+id/textTenMaGiamGia"
         android:gravity="center"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:text="Tên phim" />
+        android:text="textTenMaGiamGia" />
 
     <TextView
-        android:id="@+id/textTheLoai"
+        android:id="@+id/textPhantram"
         android:layout_width="120dp"
         android:layout_height="80dp"
         android:gravity="center"
         android:layout_marginLeft="12dp"
-        android:layout_toRightOf="@id/textTenPhim"
-        android:text="Ngày phát hành" />
+        android:layout_toRightOf="@id/textTenMaGiamGia"
+        android:text="textPhantram" />
     <TextView
-        android:id="@+id/textngayphathanh"
+        android:id="@+id/textThoiGianHieuLuc"
         android:layout_width="120dp"
         android:layout_height="80dp"
         android:gravity="center"
         android:layout_marginLeft="12dp"
-        android:layout_toRightOf="@id/textTheLoai"
-        android:text="Đạo diễn" />
+        android:layout_toRightOf="@id/textPhantram"
+        android:text="textThoiGianHieuLuc" />
 </RelativeLayout>

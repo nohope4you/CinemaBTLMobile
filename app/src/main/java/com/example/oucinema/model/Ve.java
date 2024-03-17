@@ -8,17 +8,19 @@ public class Ve {
     private Ghe gheID;
     private MaGiamGia maID;
     private User userID;
+    private Double giaTien;
     private Date thoiGianDat;
     private String hinhThuc;
     private Boolean isDelete;
     private int userUpdate;
 
-    public Ve(int id, Suat suatID, Ghe gheID, MaGiamGia maID, User userID, Date thoiGianDat, String hinhThuc, Boolean isDelete, int userUpdate) {
+    public Ve(int id, Suat suatID, Ghe gheID, MaGiamGia maID, User userID, Double giaTien, Date thoiGianDat, String hinhThuc, Boolean isDelete, int userUpdate) {
         this.id = id;
         this.suatID = suatID;
         this.gheID = gheID;
         this.maID = maID;
         this.userID = userID;
+        this.giaTien = giaTien;
         this.thoiGianDat = thoiGianDat;
         this.hinhThuc = hinhThuc;
         this.isDelete = isDelete;
@@ -66,6 +68,14 @@ public class Ve {
 
     public void setUserID(User userID) {
         this.userID = userID;
+    }
+
+    public Double getGiaTien() {
+        return giaTien;
+    }
+
+    public void setGiaTien(Double giaTien) {
+        this.giaTien = giaTien;
     }
 
     public Date getThoiGianDat() {

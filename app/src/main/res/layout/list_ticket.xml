@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textuseridticketlist"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="USER ID" />
+
+    <TextView
+        android:id="@+id/textgheuserticketlist"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="center"
+        android:layout_toRightOf="@id/textuseridticketlist"
+        android:text="GHẾ" />
+    <TextView
+        android:id="@+id/texttienticketlist"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/textgheuserticketlist"
+        android:text="TIỀN" />
+    <TextView
+        android:id="@+id/textsuatticketlist"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_below="@+id/textuseridticketlist"
+        android:text="SUẤT" />
+    <TextView
+        android:id="@+id/textthoigianticketlist"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@id/textgheuserticketlist"
+        android:layout_toRightOf="@+id/textsuatticketlist"
+        android:text="TIME" />
+    <TextView
+        android:id="@+id/texthinhthucticketlist"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@id/texttienticketlist"
+        android:layout_toRightOf="@+id/textthoigianticketlist"
+        android:text="HÌNH THỨC" />
+</RelativeLayout>

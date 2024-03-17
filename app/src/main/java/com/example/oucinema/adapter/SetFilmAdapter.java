@@ -12,18 +12,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.oucinema.R;
+import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.Phim;
+import com.example.oucinema.model.Suat;
+import com.example.oucinema.model.User;
 
 
 import java.util.ArrayList;
 
-public class FilmAdapter extends ArrayAdapter<Phim> {
+public class SetFilmAdapter extends ArrayAdapter<Suat> {
 
     private Context mcontext;
     private int mResource;
 
 
-    public FilmAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Phim> objects) {
+    public SetFilmAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Suat> objects) {
         super(context, resource, objects);
         this.mcontext=context;
         this.mResource = resource;
@@ -34,13 +37,14 @@ public class FilmAdapter extends ArrayAdapter<Phim> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
         convertView=layoutInflater.inflate(mResource,parent,false);
-        TextView tvTenPhim = convertView.findViewById(R.id.textTenPhim);
-        TextView tvTheLoai = convertView.findViewById(R.id.textTheLoai);
-        TextView tvNgayPhatHanh = convertView.findViewById(R.id.textngayphathanh);
+        TextView tvPHIM =  convertView.findViewById(R.id.textphimsetfilm);
+        TextView tvPHONG = convertView.findViewById(R.id.textphongsetfilm);
+        TextView tvGIA = convertView.findViewById(R.id.textgiasetfilm);
 
-        tvTenPhim.setText(getItem(position).getTenPhim());
-        tvTheLoai.setText(getItem(position).getTheLoai());
-        tvNgayPhatHanh.setText(getItem(position).getNgayPhatHanh().toString());
+        tvPHIM.setText(getItem(position).getPhimID().getTenPhim());
+        tvPHONG.setText(getItem(position).getPhongID().getTenPhong());
+        tvGIA.setText(getItem(position).getGiaMacDinh().toString());
+
 
         return convertView;
     }

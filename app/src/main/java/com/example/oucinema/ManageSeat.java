@@ -3,7 +3,9 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -49,6 +51,18 @@ public class ManageSeat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(intentAddSeat);
+            }
+        });
+
+        lvSeat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Ghe gheSelection= listGhe.get(position);
+                intentAddSeat.putExtra("ghe_id",gheSelection.getId());
+                intentAddSeat.putExtra("tenGhe",gheSelection.getTenGhe());
+                intentAddSeat.putExtra("loaiGhe",gheSelection.getLoaiGhe());
+                startActivity(intentAddSeat);
+
             }
         });
 

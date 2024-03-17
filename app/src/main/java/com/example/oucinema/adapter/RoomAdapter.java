@@ -12,18 +12,20 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.oucinema.R;
+import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.Phim;
+import com.example.oucinema.model.Phong;
 
 
 import java.util.ArrayList;
 
-public class FilmAdapter extends ArrayAdapter<Phim> {
+public class RoomAdapter extends ArrayAdapter<Phong> {
 
     private Context mcontext;
     private int mResource;
 
 
-    public FilmAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Phim> objects) {
+    public RoomAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Phong> objects) {
         super(context, resource, objects);
         this.mcontext=context;
         this.mResource = resource;
@@ -34,14 +36,13 @@ public class FilmAdapter extends ArrayAdapter<Phim> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
         convertView=layoutInflater.inflate(mResource,parent,false);
-        TextView tvTenPhim = convertView.findViewById(R.id.textTenPhim);
-        TextView tvTheLoai = convertView.findViewById(R.id.textTheLoai);
-        TextView tvNgayPhatHanh = convertView.findViewById(R.id.textngayphathanh);
+        TextView tvID = convertView.findViewById(R.id.textidphong);
+        TextView tvTENPHONG = convertView.findViewById(R.id.texttenphong);
+        TextView tvTENRAP = convertView.findViewById(R.id.texttenrap);
 
-        tvTenPhim.setText(getItem(position).getTenPhim());
-        tvTheLoai.setText(getItem(position).getTheLoai());
-        tvNgayPhatHanh.setText(getItem(position).getNgayPhatHanh().toString());
-
+        tvID.setText(String.valueOf(getItem(position).getId()));
+        tvTENPHONG.setText(getItem(position).getTenPhong());
+//        tvTENRAP.setText(getItem(position).getRapPhimID().getTenRap());
         return convertView;
     }
 }

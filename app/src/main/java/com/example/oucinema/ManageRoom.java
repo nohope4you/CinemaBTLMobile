@@ -6,15 +6,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.example.oucinema.adapter.RoomAdapter;
+import com.example.oucinema.adapter.SeatAdapter;
+import com.example.oucinema.model.Ghe;
+import com.example.oucinema.model.Phong;
+
+import java.util.ArrayList;
 
 
 public class ManageRoom extends AppCompatActivity {
-
+    DBHelper dbHelper;
+    ListView lvRoom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_room);
+        dbHelper = new DBHelper(ManageRoom.this);
 
+        lvRoom = findViewById(R.id.listViewRoom);
+        ArrayList<Phong> listPhong = dbHelper.getPhong();
+
+        RoomAdapter roomAdapter = new RoomAdapter(this,R.layout.list_room,listPhong);
+        lvRoom.setAdapter(roomAdapter);
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);
         ImageView btnAddFilm= findViewById(R.id.manage_add_room);

@@ -6,14 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.example.oucinema.adapter.CouponAdapter;
+import com.example.oucinema.model.MaGiamGia;
+
+import java.util.ArrayList;
 
 
 public class ManageCoupon extends AppCompatActivity {
-
+    DBHelper dbHelper;
+    ListView lvCoupon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_coupon);
+        dbHelper = new DBHelper(ManageCoupon.this);
+
+
+        lvCoupon = findViewById(R.id.listViewCoupon);
+        ArrayList<MaGiamGia> listCoupon = dbHelper.getGoupon();
+
+        CouponAdapter coupnAdapter = new CouponAdapter(this,R.layout.list_coupon,listCoupon);
+        lvCoupon.setAdapter(coupnAdapter);
 
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);
