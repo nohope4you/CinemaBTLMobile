@@ -8,14 +8,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.oucinema.adapter.FilmAdapter;
+import com.example.oucinema.adapter.TheaterAdapter;
+import com.example.oucinema.model.Phim;
+import com.example.oucinema.model.RapPhim;
 import com.example.oucinema.model.User;
+
+import java.util.ArrayList;
 
 
 public class ManageFilm extends AppCompatActivity {
 
     DBHelper dbHelper;
+    ListView lvFilm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +41,11 @@ public class ManageFilm extends AppCompatActivity {
             textID.setText("Errorrrrr");
         }
 
+        lvFilm = findViewById(R.id.listViewFilm);
+        ArrayList<Phim> listPhim = dbHelper.getPhim();
+
+        FilmAdapter filmAdapter = new FilmAdapter(this,R.layout.list_film,listPhim);
+        lvFilm.setAdapter(filmAdapter);
 
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);

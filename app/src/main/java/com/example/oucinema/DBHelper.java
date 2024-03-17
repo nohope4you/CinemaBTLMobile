@@ -1,6 +1,5 @@
 package com.example.oucinema;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,12 +8,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.oucinema.model.Ghe;
+import com.example.oucinema.model.Phim;
 import com.example.oucinema.model.RapPhim;
-import com.example.oucinema.model.Role;
 import com.example.oucinema.model.User;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBName = "cinema.db";
@@ -58,7 +60,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "linkTrailer TEXT NOT NULL," +
                 "isDelete BOOLEAN," +
                 "userUpdate INTEGER);");
-
+        sqLiteDatabase.execSQL("insert into Phim(tenPhim,moTa,theLoai,thoiLuong,ngayPhatHanh,daoDien,hinhAnh,linkTrailer,isDelete,userUpdate) " +
+                "                         values('Mai','Phim về Mai và Sâu','Tình cảm',120,'2024-3-13','Trấn Thành','hinhanh','linktrailer',false,1) ");
         //Bảng Rạp Phim
         sqLiteDatabase.execSQL("create table RapPhim(" +
                 "id INTEGER primary key autoincrement," +
@@ -91,6 +94,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "userUpdate INTEGER," +
                 "foreign key (rapPhimID) references RapPhim(id)" +
                 ");");
+        sqLiteDatabase.execSQL("insert into Phong(tenPhong,rapPhimID,isDelete,userUpdate) values('Phòng 1',1,false,1) ");
+        sqLiteDatabase.execSQL("insert into Phong(tenPhong,rapPhimID,isDelete,userUpdate) values('Phòng 2',2,false,1) ");
 
         //Bảng Suất
         sqLiteDatabase.execSQL("create table Suat (" +
@@ -105,7 +110,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "foreign key (phimID) references Phim(id)," +
                 "foreign key (phongID) references Phong(id)" +
                 ");");
-
+        sqLiteDatabase.execSQL("insert into Suat(ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('14/3/2024','14:30:00',45000,1,1,false,1) ");
+        sqLiteDatabase.execSQL("insert into Suat(ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('14/3/2024','15:30:00',45000,1,2,false,1) ");
         //Bảng Mã giảm giá
         sqLiteDatabase.execSQL("create table MaGiamGia (" +
                 "id INTEGER primary key autoincrement," +
@@ -260,6 +266,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Hàm cho Rạp Phim
     public ArrayList<RapPhim> getRapPhim (){
         ArrayList<RapPhim> danhSachRapPhim = new ArrayList<>();
 
@@ -276,12 +283,59 @@ public class DBHelper extends SQLiteOpenHelper {
 
             danhSachRapPhim.add(rapPhim);
         }
-//        for (RapPhim item : danhSachRapPhim) {
-//            Log.d("TAG", item.getTenRap());
-//        }
         cursor.close();
         database.close();
         return danhSachRapPhim;
     }
 
+    // Hàm cho Phim
+    public ArrayList<Phim> getPhim (){
+        ArrayList<Phim> listFilm = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM Phim", null);
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            String tenPhim = cursor.getString(1);
+            String theLoai = cursor.getString(3);
+            String daoDien = cursor.getString(6);
+
+           Phim phim = new Phim();
+           phim.setTenPhim(tenPhim);
+            phim.setDaoDien(daoDien);
+
+           phim.setTheLoai(theLoai);
+
+
+            listFilm.add(phim);
+        }
+        cursor.close();
+        database.close();
+        return listFilm;
+    }
+
+    // Hàm cho Ghế
+    public ArrayList<Ghe> getGhe (){
+        ArrayList<Ghe> listSeat = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM Ghe", null);
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            String tenGhe = cursor.getString(1);
+            String loaiGhe = cursor.getString(2);
+            Ghe ghe = new Ghe();
+            ghe.setTenGhe(tenGhe);
+            ghe.setLoaiGhe(loaiGhe);
+
+            listSeat.add(ghe);
+        }
+        cursor.close();
+        database.close();
+        return listSeat;
+    }
 }
