@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.oucinema.DBHelper;
+import com.example.oucinema.ManageSeat;
 import com.example.oucinema.R;
 import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.Phim;
@@ -33,13 +36,14 @@ public class SeatAdapter extends ArrayAdapter<Ghe> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(mcontext);
         convertView=layoutInflater.inflate(mResource,parent,false);
         TextView tvTenGhe = convertView.findViewById(R.id.textTenGhe);
         TextView tvLoaiGhe = convertView.findViewById(R.id.textLoaiGhe);
+
         tvTenGhe.setText(getItem(position).getTenGhe());
         tvLoaiGhe.setText(getItem(position).getLoaiGhe());
-
         return convertView;
     }
 }

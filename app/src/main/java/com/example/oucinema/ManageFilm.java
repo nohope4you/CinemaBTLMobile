@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.example.oucinema.model.Phim;
 import com.example.oucinema.model.RapPhim;
 import com.example.oucinema.model.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -64,6 +66,45 @@ public class ManageFilm extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Lấy dữ liệu chuyển trang
+        lvFilm.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Phim item = listPhim.get(position);
+
+                // Lấy dữ liệu item
+                int itemId = item.getId();
+                String itemName = item.getTenPhim();
+                String itemMoTa = item.getMoTa();
+                Log.d("mô tả: ",item.getMoTa().toString());
+                String itemTheLoai = item.getTheLoai();
+                int itemThoiLuong = item.getThoiLuong();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String itemNgayPhatHanh = sdf.format(item.getNgayPhatHanh());
+                String itemDaoDien = item.getDaoDien();
+//                String itemHinhAnh = item.getHinhAnh().toString();
+
+
+                // Khởi động trang khác với dữ liệu
+                Intent intent = new Intent(ManageFilm.this, ManageAddFilm.class);
+                intent.putExtra("item_id", itemId);
+                intent.putExtra("item_name", itemName);
+                intent.putExtra("item_moTa", itemMoTa);
+                intent.putExtra("item_theLoai", itemTheLoai);
+                intent.putExtra("item_thoiLuong", itemThoiLuong);
+                intent.putExtra("item_ngayPhatHanh", itemNgayPhatHanh);
+                intent.putExtra("item_daoDien", itemDaoDien);
+//                intent.putExtra("item_hinhAnh", itemName);
+
+//                intent.putExtra("item_isDelete", itemName);
+//                intent.putExtra("item_userUpdate", itemName);
+                startActivity(intent);
+            }
+        });
+
+
+
         // Mở trang thêm sửa phim
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,12 +112,7 @@ public class ManageFilm extends AppCompatActivity {
                 startActivity(intentAddFilm);
             }
         });
-//        Intent intents = getIntent();
-//        User user = intents.getParcelableExtra("user");
-//        int userID = user.getId();
-//        TextView testID;
-//        testID= findViewById(R.id.textView22);
-//        testID.setText(userID);
+
 
 
     }

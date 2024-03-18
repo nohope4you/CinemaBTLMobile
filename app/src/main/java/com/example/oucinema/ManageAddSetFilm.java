@@ -89,24 +89,24 @@ public class ManageAddSetFilm extends AppCompatActivity {
                     Phong tempPhong = new Phong();
                     tempPhong.setId(idPhong);
 
-                    Log.d("test ",String.valueOf(idPhong) );
+//                    Log.d("test ",String.valueOf(idPhong) );
 
                     suat.setPhimID(phimSelected);
-                    Log.d("test ",String.valueOf(suat.getPhimID().getId()));
+//                    Log.d("test ",String.valueOf(suat.getPhimID().getId()));
                     suat.setPhongID(tempPhong);
 
 
-//                    boolean b = dbHelper.addSetFilm(suat);
-//                    if(b){
-//                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim thành công",Toast.LENGTH_LONG).show();
-//                        AddSetFilmNC.getText().clear();
-//                        AddSetFilmTL.getText().clear();
-//                        AddSetFilmGMD.getText().clear();
-//                    }
-//                    else
-//                    {
-//                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim Thất bại !!!",Toast.LENGTH_LONG).show();
-//                    }
+                    boolean b = dbHelper.addSetFilm(suat);
+                    if(b){
+                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim thành công",Toast.LENGTH_LONG).show();
+                        AddSetFilmNC.getText().clear();
+                        AddSetFilmTL.getText().clear();
+                        AddSetFilmGMD.getText().clear();
+                    }
+                    else
+                    {
+                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim Thất bại !!!",Toast.LENGTH_LONG).show();
+                    }
                 }
                 }
 

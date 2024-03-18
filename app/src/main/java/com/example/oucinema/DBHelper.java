@@ -330,14 +330,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
             int id = cursor.getInt(0);
             String tenPhim = cursor.getString(1);
+            String moTa = cursor.getString(2);
             String theLoai = cursor.getString(3);
             String daoDien = cursor.getString(6);
+            int thoiLuong = cursor.getInt(4);
             String thoiGianPhatHanh = cursor.getString(5);
             java.sql.Date date = java.sql.Date.valueOf(thoiGianPhatHanh.toString());
 
            Phim phim = new Phim();
+           phim.setId(id);
            phim.setTenPhim(tenPhim);
+           phim.setMoTa(moTa);
             phim.setDaoDien(daoDien);
+            phim.setThoiLuong(thoiLuong);
 
            phim.setTheLoai(theLoai);
            phim.setNgayPhatHanh(date);
@@ -356,7 +361,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String ngayPhatHanhString = sdf.format(phim.getNgayPhatHanh());
 
-        cv.put("ngayPhatHanh", ngayPhatHanhString);
         cv.put("tenPhim",phim.getTenPhim());
         cv.put("moTa",phim.getMoTa());
         cv.put("theLoai",phim.getTheLoai());
@@ -377,12 +381,37 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean updateFilm (Phim phim, String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String ngayPhatHanhString = sdf.format(phim.getNgayPhatHanh());
+
+        cv.put("tenPhim",phim.getTenPhim());
+        cv.put("moTa",phim.getMoTa());
+        cv.put("theLoai",phim.getTheLoai());
+        cv.put("thoiLuong",phim.getThoiLuong());
+        cv.put("ngayPhatHanh",ngayPhatHanhString);
+        cv.put("daoDien",phim.getDaoDien());
+        cv.put("hinhAnh","test");
+        cv.put("linkTrailer",phim.getLinkTrailer());
+        cv.put("isDelete",false);
+        cv.put("userUpdate",1);
+        long phim1 = db.update("Phim",cv,"id= "+id,null);
+        if(phim1 ==-1){
+            return false;
+        }
+        else{
+            return  true;
+        }
+    }
+
     // Hàm cho Ghế
     public ArrayList<Ghe> getGhe (){
         ArrayList<Ghe> listSeat = new ArrayList<>();
 
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM Ghe", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM Ghe WHERE isDelete=0", null);
 
         while (cursor.moveToNext()) {
 
@@ -416,6 +445,19 @@ public class DBHelper extends SQLiteOpenHelper {
             return  true;
         }
     }
+
+//    public boolean deleteGhe(Ghe ghe){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put("isDelete",ghe.getDelete());
+//        long ghe1 = db.update("Ghe",cv,"id"+"="+ghe.getId(),null);
+//        if(ghe1 ==-1){
+//            return false;
+//        }
+//        else{
+//            return  true;
+//        }
+//    }
 
 
     // Hàm cho User

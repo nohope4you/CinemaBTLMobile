@@ -29,9 +29,9 @@ public class SpinnerFilmAdapter extends ArrayAdapter<Phim> {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_selected_film,parent,false);
         TextView tvFilmSelected =convertView.findViewById(R.id.tv_selected_film);
         Phim p = this.getItem(position);
-        if(p!=null){
+
             tvFilmSelected.setText(p.getTenPhim());
-        }
+
         return convertView;
     }
 
