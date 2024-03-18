@@ -36,9 +36,9 @@
 
     <EditText
         android:id="@+id/Thongtinphongtenphong"
-        android:layout_width="262dp"
+        android:layout_width="350dp"
         android:layout_height="61dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="280dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -46,13 +46,13 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <Spinner
         android:id="@+id/Thongtinphongmarap"
-        android:layout_width="262dp"
+        android:layout_width="350dp"
         android:layout_height="61dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
@@ -67,38 +67,53 @@
 
     <Button
         android:id="@+id/btnthongtinphongthem"
-        android:layout_width="172dp"
+        android:layout_width="400dp"
         android:layout_height="63dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnthongtinphongsua"
-        android:layout_width="172dp"
+        android:layout_width="190dp"
         android:layout_height="63dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
-        android:textSize="20dp"
         android:textColor="@color/white"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnthongtinphongxoa"
+        android:layout_width="190dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:text="Xóa"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView14"
-        android:layout_width="404dp"
-        android:layout_height="191dp"
+        android:layout_width="409dp"
+        android:layout_height="241dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"

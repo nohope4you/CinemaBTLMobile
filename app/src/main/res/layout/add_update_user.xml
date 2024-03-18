@@ -42,7 +42,7 @@
         android:id="@+id/thongtinuserhoten"
         android:layout_width="185dp"
         android:layout_height="49dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="272dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -58,7 +58,7 @@
         android:id="@+id/thongtinusersdt"
         android:layout_width="185dp"
         android:layout_height="49dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="272dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -104,7 +104,7 @@
         android:id="@+id/thongtinusermatkhau"
         android:layout_width="185dp"
         android:layout_height="49dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -131,9 +131,9 @@
 
     <Button
         android:id="@+id/btn_themuserquanli"
-        android:layout_width="185dp"
+        android:layout_width="400dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="88dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
         android:textColor="@color/white"
@@ -141,14 +141,14 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suauserql"
-        android:layout_width="185dp"
+        android:layout_width="190dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="26dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
         android:textColor="@color/white"
@@ -156,13 +156,28 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_xoauserql"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:text="xóa"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView19"
-        android:layout_width="285dp"
-        android:layout_height="195dp"
+        android:layout_width="353dp"
+        android:layout_height="254dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"

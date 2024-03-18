@@ -38,15 +38,15 @@
         android:id="@+id/Thongtinphimtenphim"
         android:layout_width="170dp"
         android:layout_height="63dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="232dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
-        android:textStyle="bold"
-        android:background="@drawable/cssthongtinaddupdatemanage"
         android:hint="Tên phim ..."
         android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -54,14 +54,14 @@
         android:id="@+id/Thongtinphimmota"
         android:layout_width="170dp"
         android:layout_height="63dp"
-        android:layout_marginTop="118dp"
+        android:layout_marginTop="232dp"
         android:layout_marginEnd="24dp"
+        android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
-        android:textStyle="bold"
-        android:background="@drawable/cssthongtinaddupdatemanage"
         android:hint="Mô tả ..."
         android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/Thongtinphimtenphim"
@@ -142,7 +142,7 @@
 
     <Button
         android:id="@+id/btn_suaphim"
-        android:layout_width="383dp"
+        android:layout_width="180dp"
         android:layout_height="46dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -152,6 +152,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_xoaphim"
+        android:layout_width="180dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:text="Xóa"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -187,9 +203,11 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="209dp"
-        android:layout_height="109dp"
+        android:layout_width="306dp"
+        android:layout_height="191dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         app:srcCompat="@drawable/imagefilm" />

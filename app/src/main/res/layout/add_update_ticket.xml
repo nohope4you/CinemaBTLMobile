@@ -40,39 +40,54 @@
 
     <Button
         android:id="@+id/btn_themve"
-        android:layout_width="161dp"
+        android:layout_width="400dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="84dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suave"
-        android:layout_width="161dp"
+        android:layout_width="190dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="26dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
-        android:textSize="20dp"
         android:textColor="@color/white"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_xoave"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:text="Xóa"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.977"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/Thongtinvekhachang"
         android:layout_width="187dp"
         android:layout_height="58dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="212dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -80,7 +95,7 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintHorizontal_bias="0.973"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -104,12 +119,12 @@
         android:id="@+id/Thongtinvesuatchieu"
         android:layout_width="187dp"
         android:layout_height="58dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="212dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:gravity="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintHorizontal_bias="0.035"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -145,7 +160,7 @@
         android:id="@+id/Thongtinvegiatien"
         android:layout_width="385dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="152dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -154,7 +169,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
@@ -172,8 +186,8 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="299dp"
-        android:layout_height="151dp"
+        android:layout_width="320dp"
+        android:layout_height="194dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toStartOf="parent"

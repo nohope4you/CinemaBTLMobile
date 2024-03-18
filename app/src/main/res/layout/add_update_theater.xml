@@ -36,39 +36,55 @@
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="157dp" />
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_themrap"
-        android:layout_width="161dp"
+        android:layout_width="400dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="104dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suarap"
-        android:layout_width="161dp"
+        android:layout_width="190dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_xoarap"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/cssbuttonpagethemsuaquanli"
+        android:text="xóa"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.972"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/Thongtinraptenrap"
-        android:layout_width="280dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:layout_marginTop="236dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
@@ -84,7 +100,7 @@
 
     <EditText
         android:id="@+id/thongtinrapdiachi"
-        android:layout_width="280dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
@@ -99,7 +115,7 @@
 
     <EditText
         android:id="@+id/thongtinrapsdt"
-        android:layout_width="280dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
