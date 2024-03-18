@@ -58,9 +58,14 @@ public class ManageSeat extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Ghe gheSelection= listGhe.get(position);
-                intentAddSeat.putExtra("ghe_id",gheSelection.getId());
-                intentAddSeat.putExtra("tenGhe",gheSelection.getTenGhe());
-                intentAddSeat.putExtra("loaiGhe",gheSelection.getLoaiGhe());
+                int itemId = gheSelection.getId();
+                String itemName = gheSelection.getTenGhe();
+                String itemLoai = gheSelection.getLoaiGhe();
+
+
+                intentAddSeat.putExtra("ghe_id",itemId);
+                intentAddSeat.putExtra("ten_Ghe",itemName);
+                intentAddSeat.putExtra("loai_Ghe",itemLoai);
                 startActivity(intentAddSeat);
 
             }

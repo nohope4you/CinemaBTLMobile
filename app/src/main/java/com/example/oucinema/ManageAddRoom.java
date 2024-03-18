@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ManageAddRoom extends AppCompatActivity {
     DBHelper dbHelper;
     EditText AddTenPhong;
-    Button btnThemRoom;
+    Button btnThemRoom,btnSuaRoom;
     Spinner spinTheater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,43 @@ public class ManageAddRoom extends AppCompatActivity {
         // Nơi gọi biến
         AddTenPhong = findViewById(R.id.Thongtinphongtenphong);
         btnThemRoom=findViewById(R.id.btnthongtinphongthem);
+        btnSuaRoom = findViewById(R.id.btnthongtinphongsua);
+
         spinTheater=findViewById(R.id.Thongtinphongmarap);
         ArrayList<RapPhim> listRap = dbHelper.getRapPhim();
         SpinnerTheaterAdapter spinnerTheaterAdapter = new SpinnerTheaterAdapter(this,R.layout.item_selected_theater,listRap);
         spinTheater.setAdapter(spinnerTheaterAdapter);
+
+        //Lấy biến intent
+        int idRoom = getIntent().getIntExtra("room_id",-1);
+        int idRap = getIntent().getIntExtra("rap_id",-1);
+        String nameRoom = getIntent().getStringExtra("room_name");
+
+        // update dữ liệu từ intent
+        if(idRoom!=-1 && idRap!=-1){
+            AddTenPhong.setText(nameRoom);
+
+
+            int[] arrayIdRap = new int[listRap.size()];
+            for (int i = 0; i < listRap.size(); i++) {
+                arrayIdRap[i] = listRap.get(i).getId();
+            }
+
+            int position = -1;
+            for (int i = 0; i < listRap.size(); i++) {
+                if (listRap.get(i).getId() == idRap) {
+                    position = i;
+                    break;
+                }
+            }
+            if (position != -1) {
+                spinTheater.setSelection(position);
+            }
+
+        }else{
+            AddTenPhong.getText().clear();
+
+        }
 
 
         // Nơi gọi biến
@@ -51,7 +84,45 @@ public class ManageAddRoom extends AppCompatActivity {
             }
         });
 
-        // Thêm mã giảm giá
+
+        //Sửa phòng
+        btnSuaRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Phong room = new Phong();
+
+                room.setTenPhong(AddTenPhong.getText().toString());
+
+                RapPhim selectedRap = (RapPhim) spinTheater.getSelectedItem();
+                int id = selectedRap.getId();
+                RapPhim tempRap = new RapPhim();
+                tempRap.setId(id);
+                String idd=String.valueOf(idRoom);
+
+//                Log.d("test: ",String.valueOf(selectedRap.getId()));
+                if(AddTenPhong.getText().toString().equals("")){
+                    Toast.makeText(ManageAddRoom.this,"Vui lòng điền đầy đủ thông tin",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    if(selectedRap!=null){
+                        room.setRapPhimID(tempRap);
+                        boolean b = dbHelper.updatePhong(room,idd);
+                        if(b){
+                            Toast.makeText(ManageAddRoom.this,"Sửa phòng thành công",Toast.LENGTH_LONG).show();
+                            AddTenPhong.getText().clear();
+                        }
+                        else
+                        {
+                            Toast.makeText(ManageAddRoom.this,"Sửa phòng Thất bại",Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(ManageAddRoom.this,"Vui lòng chọn rạp phim",Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            }
+        });
+        // Thêm phòng
         btnThemRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

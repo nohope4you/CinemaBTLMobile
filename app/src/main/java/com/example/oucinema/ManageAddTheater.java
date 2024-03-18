@@ -19,7 +19,7 @@ public class ManageAddTheater extends AppCompatActivity {
     ListView listViewRapPhim;
     DBHelper dbHelper;
     EditText AddTenRap, AddDiaChiRap, AddSDTRap;
-    Button btnThemTheater;
+    Button btnThemTheater,btnUpdateTheater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,22 @@ public class ManageAddTheater extends AppCompatActivity {
         AddDiaChiRap=findViewById(R.id.thongtinrapdiachi);
         AddSDTRap=findViewById(R.id.thongtinrapsdt);
         btnThemTheater=findViewById(R.id.btn_themrap);
+        btnUpdateTheater=findViewById(R.id.btn_suarap);
+
+        //lấy intent
+        int id  = getIntent().getIntExtra("theater_id",-1);
+        String name = getIntent().getStringExtra("theater_name");
+        String diachi=getIntent().getStringExtra("theater_diachi");
+        String sdt = getIntent().getStringExtra("theater_sdt");
+        if(id!=-1){
+            AddTenRap.setText(name);
+            AddDiaChiRap.setText(diachi);
+            AddSDTRap.setText(sdt);
+        }else{
+            AddTenRap.getText().clear();
+            AddDiaChiRap.getText().clear();
+            AddSDTRap.getText().clear();
+        }
 
 
         // Nơi gọi biến
@@ -43,6 +59,40 @@ public class ManageAddTheater extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(intent);
+            }
+        });
+
+        //Sửa rạp
+        btnUpdateTheater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    if(AddTenRap.getText().toString().equals("")||AddDiaChiRap.getText().toString().equals("")||
+                            AddSDTRap.getText().toString().equals("")){
+                        Toast.makeText(ManageAddTheater.this,"Vui lòng nhập đủ thông tin",Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        RapPhim theater = new RapPhim();
+                        theater.setTenRap(AddTenRap.getText().toString());
+                        theater.setDiaChi(AddDiaChiRap.getText().toString());
+                        theater.setSoDienThoaiLienHe(AddSDTRap.getText().toString());
+                        String idd = String.valueOf(id);
+                        boolean b = dbHelper.updateRap(theater,idd);
+                        if(b){
+                            Toast.makeText(ManageAddTheater.this,"Sửa rạp phim thành công",Toast.LENGTH_LONG).show();
+                            AddTenRap.getText().clear();
+                            AddDiaChiRap.getText().clear();
+                            AddSDTRap.getText().clear();
+                        }
+                        else
+                        {
+                            Toast.makeText(ManageAddTheater.this,"Sửa rạp phim Thất bại",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+                catch (Exception e){
+                    Toast.makeText(ManageAddTheater.this,"Có lỗi xảy ra",Toast.LENGTH_LONG).show();
+                }
             }
         });
         // Thêm mã rạp

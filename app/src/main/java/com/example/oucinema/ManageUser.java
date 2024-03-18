@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -49,6 +50,28 @@ public class ManageUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(intentAddUser);
+            }
+        });
+
+        lvUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                User u = listUser.get(i);
+                int id = u.getId();
+                String name = u.getHoTen();
+                String phone = u.getPhoneNumber();
+                String email = u.getEmail();
+                int role = u.getRoleID().getId();
+                intentAddUser.putExtra("user_id",id);
+                intentAddUser.putExtra("user_name",name);
+                intentAddUser.putExtra("user_phone",phone);
+                intentAddUser.putExtra("user_email",email);
+                intentAddUser.putExtra("user_role",role);
+                intentAddUser.putExtra("user_username",u.getUsername());
+                intentAddUser.putExtra("user_pwd",u.getPassword());
+                startActivity(intentAddUser);
+
+
             }
         });
 

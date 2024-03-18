@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class ManageAddSetFilm extends AppCompatActivity {
     DBHelper dbHelper;
     EditText AddSetFilmNC,AddSetFilmTL,AddSetFilmGMD;
-    Button btnThemSetFilm;
+    Button btnThemSetFilm,btnUpdateSet;
     Spinner spinFilm,spinPhong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,14 @@ public class ManageAddSetFilm extends AppCompatActivity {
         btnThemSetFilm=findViewById(R.id.btn_themsuat);
         spinFilm=findViewById(R.id.Thongtinsuattenphim);
         spinPhong=findViewById(R.id.thongtinsuattenphong);
+        btnUpdateSet=findViewById(R.id.btn_suasuat);
+        // lấy intent
+        int id = getIntent().getIntExtra("set_id",-1);
+        String ngayChieu = getIntent().getStringExtra("set_ngay");
+        String gioChieu = getIntent().getStringExtra("set_gio");
+        Double gia = getIntent().getDoubleExtra("set_gia",-1);
+        int phimID =getIntent().getIntExtra("set_phim",-1);
+        int phongID = getIntent().getIntExtra("set_phong",-1);
 
         ArrayList<Phim> listPhim = dbHelper.getPhim();
         SpinnerFilmAdapter spinnerFilmAdapter = new SpinnerFilmAdapter(this,R.layout.item_selected_film,listPhim);
@@ -47,6 +55,69 @@ public class ManageAddSetFilm extends AppCompatActivity {
         ArrayList<Phong> listPhong = dbHelper.getPhong();
         SpinnerRoomAdapter spinnerRoomAdapter = new SpinnerRoomAdapter(this,R.layout.item_selected_room,listPhong);
         spinPhong.setAdapter(spinnerRoomAdapter);
+
+        if(id!=-1 && phimID!=-1 && phongID!=-1){
+            AddSetFilmNC.setText(ngayChieu);
+            AddSetFilmTL.setText(gioChieu);
+            AddSetFilmGMD.setText(String.valueOf(gia));
+
+            int[] arrayIdRap = new int[listPhim.size()];
+            for (int i = 0; i < listPhim.size(); i++) {
+                arrayIdRap[i] = listPhim.get(i).getId();
+            }
+
+            int position = -1;
+            for (int i = 0; i < listPhim.size(); i++) {
+                if (listPhim.get(i).getId() == phimID) {
+                    position = i;
+                    break;
+                }
+            }
+            if (position != -1) {
+                spinFilm.setSelection(position);
+            }
+//            -----------------------------
+            int[] arrayIdPhong = new int[listPhong.size()];
+            for (int i = 0; i < listPhong.size(); i++) {
+                arrayIdPhong[i] = listPhong.get(i).getId();
+            }
+            int position2 = -1;
+            for (int i = 0; i < listPhong.size(); i++) {
+                if (listPhong.get(i).getId() == phongID) {
+                    position2 = i;
+                    break;
+                }
+            }
+            if (position2 != -1) {
+                spinPhong.setSelection(position2);
+            }
+
+
+//            int[] arrayIdPhong = new int[listPhong.size()];
+//            for (int i = 0; i < listPhong.size(); i++) {
+//                arrayIdPhong[i] = listPhong.get(i).getId();
+//            }
+//
+//            // lặp array đúng id thì dừng
+//            int position2 = -1;
+//            for (int i = 0; i < listPhong.size(); i++) {
+//                if (listPhong.get(i).getId() == phongID) {
+//                    position2 = i;
+//                    break;
+//                }
+//
+//
+//                // có id rồi gắn vào vị trí spinner
+//                if (position2 != -1) {
+//                    spinPhong.setSelection(position);
+//                }
+//            }
+
+        }else{
+            AddSetFilmGMD.getText().clear();
+            AddSetFilmTL.getText().clear();
+            AddSetFilmNC.getText().clear();
+        }
 
 
 
@@ -62,6 +133,58 @@ public class ManageAddSetFilm extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //sửa
+        btnUpdateSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Suat suat = new Suat();
+                if(AddSetFilmNC.getText().toString().equals("")||
+                        AddSetFilmTL.getText().toString().equals("")||
+                        AddSetFilmGMD.getText().toString().equals(""))
+                {
+                    Toast.makeText(ManageAddSetFilm.this,"Điền đầy đủ thông tin !!!",Toast.LENGTH_LONG).show();
+
+                }
+                else{
+                    java.sql.Date date = java.sql.Date.valueOf(AddSetFilmNC.getText().toString());
+                    suat.setNgayChieu(date);
+                    java.sql.Time time = java.sql.Time.valueOf(AddSetFilmTL.getText().toString());
+                    suat.setGioChieu(time);
+                    suat.setGiaMacDinh(Double.parseDouble(AddSetFilmGMD.getText().toString()));
+
+                    Phim phimSelected = (Phim) spinFilm.getSelectedItem();
+                    Log.d("test ",String.valueOf( phimSelected.getTheLoai()) );
+                    Log.d("test ",String.valueOf( phimSelected.getId()) );
+                    Log.d("test ","-------------------------" );
+                    Phong phongSelected = (Phong) spinPhong.getSelectedItem();
+                    int idPhong = phongSelected.getId();
+                    Phong tempPhong = new Phong();
+                    tempPhong.setId(idPhong);
+
+//                    Log.d("test ",String.valueOf(idPhong) );
+
+                    suat.setPhimID(phimSelected);
+//                    Log.d("test ",String.valueOf(suat.getPhimID().getId()));
+                    suat.setPhongID(tempPhong);
+                    String idd=String.valueOf(id);
+
+
+                    boolean b = dbHelper.updateSuat(suat,idd);
+                    if(b){
+                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim thành công",Toast.LENGTH_LONG).show();
+                        AddSetFilmNC.getText().clear();
+                        AddSetFilmTL.getText().clear();
+                        AddSetFilmGMD.getText().clear();
+                    }
+                    else
+                    {
+                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim Thất bại !!!",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+
+
         btnThemSetFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

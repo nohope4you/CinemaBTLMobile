@@ -17,15 +17,13 @@ public class ManageAddSeat extends AppCompatActivity {
     DBHelper dbHelper;
     RadioButton rdThuong,rdVIP;
     EditText etTenGhe;
-    Button btnTHEMGHE;
+    Button btnTHEMGHE,btnSUAGHE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_update_seat);
         dbHelper = new DBHelper(ManageAddSeat.this);
-        //Nơi lấy intent Putextra
-        int gheId = getIntent().getIntExtra("ghe_id", -1);
-        String tenGheExtra = getIntent().getStringExtra("tenGhe");
+
 
 
         // Nơi gọi biến
@@ -34,17 +32,25 @@ public class ManageAddSeat extends AppCompatActivity {
         btnTHEMGHE = findViewById(R.id.btn_themghe);
         rdThuong = findViewById(R.id.radioGheThuong);
         rdVIP = findViewById(R.id.radioButtonGheVIP);
+        btnSUAGHE=findViewById(R.id.btn_suaghe);
+        //Nơi lấy intent Putextra
+        int gheId = getIntent().getIntExtra("ghe_id", -1);
+        String tenGhe = getIntent().getStringExtra("ten_Ghe");
+        String loaiGhe = getIntent().getStringExtra("loai_Ghe");
 
-//        if(tenGheExtra.equals("")){
-//            Log.d("Ghế: ",tenGheExtra.toString());
-//            etTenGhe.setText(tenGheExtra.toString());
-//        }
-//        else{
-//            etTenGhe.setText(tenGheExtra.toString());
-//        }
+
 
         // Tạo Intent
         Intent intent = new Intent(this, ManageSeat.class);
+
+        // update dữ liệu từ intent
+        if(gheId!=-1){
+            etTenGhe.setText(tenGhe);
+            if(loaiGhe.contains("VIP"))
+                rdVIP.setChecked(true);
+        }else{
+            rdThuong.setChecked(true);
+        }
 
         btnTHEMGHE.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +72,32 @@ public class ManageAddSeat extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(ManageAddSeat.this,"Thêm ghế Thất bại",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        btnSUAGHE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ghe g = new Ghe();
+                String tengheString = etTenGhe.getText().toString();
+                g.setTenGhe(tengheString);
+                if(rdThuong.isChecked()){
+                    g.setLoaiGhe(rdThuong.getText().toString());
+                }
+                else{
+                    g.setLoaiGhe(rdVIP.getText().toString());
+                }
+                String idseat = String.valueOf(gheId);
+                Log.d("id: ",idseat);
+                boolean b = dbHelper.updateGhe(g,idseat);
+
+                if(b){
+                    Toast.makeText(ManageAddSeat.this,"Sửa ghế thành công",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(ManageAddSeat.this,"Sửa ghế Thất bại",Toast.LENGTH_LONG).show();
                 }
             }
         });

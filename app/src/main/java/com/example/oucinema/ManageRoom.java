@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import com.example.oucinema.adapter.RoomAdapter;
 import com.example.oucinema.adapter.SeatAdapter;
 import com.example.oucinema.model.Ghe;
+import com.example.oucinema.model.Phim;
 import com.example.oucinema.model.Phong;
 
 import java.util.ArrayList;
@@ -48,6 +50,21 @@ public class ManageRoom extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(intentAddRoom);
+            }
+        });
+
+        lvRoom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Phong p= listPhong.get(position);
+                int itemId = p.getId();
+                int itemRapID = p.getRapPhimID().getId();
+                String itemName = p.getTenPhong();
+
+                intentAddRoom.putExtra("room_id",itemId);
+                intentAddRoom.putExtra("rap_id",itemRapID);
+                intentAddRoom.putExtra("room_name",itemName);
                 startActivity(intentAddRoom);
             }
         });

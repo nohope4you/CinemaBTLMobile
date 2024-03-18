@@ -73,7 +73,7 @@
         android:layout_height="47dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
-        android:text="Sửa"
+        android:text="Xoá"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"

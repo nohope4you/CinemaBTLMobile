@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.oucinema.adapter.TheaterAdapter;
+import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.RapPhim;
 
 import java.util.ArrayList;
@@ -51,6 +52,21 @@ public class ManageTheater extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(intentAddTheater);
+            }
+        });
+        lvRap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                RapPhim rp= listRap.get(position);
+                int idr = rp.getId();
+                String name = rp.getTenRap();
+                String diachi = rp.getDiaChi();
+                String sdt = rp.getSoDienThoaiLienHe();
+                intentAddTheater.putExtra("theater_id",idr);
+                intentAddTheater.putExtra("theater_name",name);
+                intentAddTheater.putExtra("theater_diachi",diachi);
+                intentAddTheater.putExtra("theater_sdt",sdt);
                 startActivity(intentAddTheater);
             }
         });
