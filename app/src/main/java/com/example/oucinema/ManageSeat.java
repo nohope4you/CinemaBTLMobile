@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,17 +23,34 @@ import java.util.ArrayList;
 public class ManageSeat extends AppCompatActivity {
     DBHelper dbHelper;
     ListView lvSeat;
+    SearchView tk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_seat);
         dbHelper = new DBHelper(ManageSeat.this);
+        tk = findViewById(R.id.manage_search_seat);
+
 
         lvSeat = findViewById(R.id.listViewSeat);
         ArrayList<Ghe> listGhe = dbHelper.getGhe();
 
         SeatAdapter seatAdapter = new SeatAdapter(this,R.layout.list_seat,listGhe);
         lvSeat.setAdapter(seatAdapter);
+
+        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyActivity", "Before filtering: " + listGhe.size() + " items");
+                seatAdapter.getFilter().filter(newText);
+                Log.d("MyActivity", "After filtering: " + seatAdapter.getCount() + " items");
+                return true;
+            }
+        });
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);
         ImageView btnAddFilm= findViewById(R.id.manage_add_seat);

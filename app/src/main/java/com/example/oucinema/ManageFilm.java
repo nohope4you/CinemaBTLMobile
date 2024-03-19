@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import  android.support.v7.widget.SearchView;
 import com.example.oucinema.adapter.FilmAdapter;
 import com.example.oucinema.adapter.TheaterAdapter;
 import com.example.oucinema.model.Phim;
@@ -26,11 +27,13 @@ public class ManageFilm extends AppCompatActivity {
 
     DBHelper dbHelper;
     ListView lvFilm;
+    SearchView tk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_film);
         dbHelper = new DBHelper(ManageFilm.this);
+        tk = findViewById(R.id.manage_search_film);
         TextView textID;
         textID= findViewById(R.id.textView22);
 
@@ -55,6 +58,23 @@ public class ManageFilm extends AppCompatActivity {
         // Tạo Intent
         Intent intent = new Intent(this, NavBarManager.class);
         Intent intentAddFilm = new Intent(this, ManageAddFilm.class);
+
+        //hàm search
+        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyActivity", "Before filtering: " + listPhim.size() + " items");
+                filmAdapter.getFilter().filter(newText);
+                Log.d("MyActivity", "After filtering: " + filmAdapter.getCount() + " items");
+                return true;
+            }
+        });
+
 
         // Quay về trang navbar
         btnMenuList.setOnClickListener(new View.OnClickListener() {

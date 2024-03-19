@@ -3,6 +3,7 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,17 +23,33 @@ import java.util.ArrayList;
 public class ManageTicket extends AppCompatActivity {
     DBHelper dbHelper;
     ListView lvTicket;
+    SearchView tk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_ticket);
         dbHelper = new DBHelper(ManageTicket.this);
+        tk= findViewById(R.id.manage_search_ticket);
 
         lvTicket = findViewById(R.id.listViewTicket);
         ArrayList<Ve> listVe = dbHelper.getTicket();
 
         TicketAdapter ticketAdapter = new TicketAdapter(this,R.layout.list_ticket,listVe);
         lvTicket.setAdapter(ticketAdapter);
+
+        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyActivity", "Before filtering: " + listVe.size() + " items");
+                ticketAdapter.getFilter().filter(newText);
+                Log.d("MyActivity", "After filtering: " + ticketAdapter.getCount() + " items");
+                return true;
+            }
+        });
 
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);

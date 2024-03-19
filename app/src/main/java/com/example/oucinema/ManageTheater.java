@@ -3,6 +3,8 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,18 +23,32 @@ public class ManageTheater extends AppCompatActivity {
 
     DBHelper dbHelper;
     ListView lvRap;
+    SearchView tk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_theater);
         dbHelper = new DBHelper(ManageTheater.this);
-
+        tk= findViewById(R.id.manage_search_theater);
         lvRap = findViewById(R.id.listViewRapPhim);
+
         ArrayList<RapPhim> listRap = dbHelper.getRapPhim();
 
         TheaterAdapter theaterAdapter = new TheaterAdapter(this,R.layout.list_theater,listRap);
         lvRap.setAdapter(theaterAdapter);
-
+        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyActivity", "Before filtering: " + listRap.size() + " items");
+                theaterAdapter.getFilter().filter(newText);
+                Log.d("MyActivity", "After filtering: " + theaterAdapter.getCount() + " items");
+                return true;
+            }
+        });
 
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);

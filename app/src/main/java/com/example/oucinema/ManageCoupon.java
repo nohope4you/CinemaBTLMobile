@@ -3,6 +3,7 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,11 +21,13 @@ import java.util.ArrayList;
 public class ManageCoupon extends AppCompatActivity {
     DBHelper dbHelper;
     ListView lvCoupon;
+    SearchView tk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_coupon);
         dbHelper = new DBHelper(ManageCoupon.this);
+        tk = findViewById(R.id.manage_search_coupon);
 
 
         lvCoupon = findViewById(R.id.listViewCoupon);
@@ -32,6 +35,21 @@ public class ManageCoupon extends AppCompatActivity {
 
         CouponAdapter coupnAdapter = new CouponAdapter(this,R.layout.list_coupon,listCoupon);
         lvCoupon.setAdapter(coupnAdapter);
+
+        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyActivity", "Before filtering: " + listCoupon.size() + " items");
+                coupnAdapter.getFilter().filter(newText);
+                Log.d("MyActivity", "After filtering: " + coupnAdapter.getCount() + " items");
+                return true;
+            }
+        });
 
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);

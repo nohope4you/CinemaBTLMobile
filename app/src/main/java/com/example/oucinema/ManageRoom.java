@@ -3,6 +3,7 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,17 +23,31 @@ import java.util.ArrayList;
 public class ManageRoom extends AppCompatActivity {
     DBHelper dbHelper;
     ListView lvRoom;
+    SearchView tk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_room);
         dbHelper = new DBHelper(ManageRoom.this);
-
+        tk= findViewById(R.id.manage_search_room);
         lvRoom = findViewById(R.id.listViewRoom);
         ArrayList<Phong> listPhong = dbHelper.getPhong();
-
         RoomAdapter roomAdapter = new RoomAdapter(this,R.layout.list_room,listPhong);
         lvRoom.setAdapter(roomAdapter);
+
+        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("MyActivity", "Before filtering: " + listPhong.size() + " items");
+                roomAdapter.getFilter().filter(newText);
+                Log.d("MyActivity", "After filtering: " + roomAdapter.getCount() + " items");
+                return true;
+            }
+        });
         // Nơi gọi biến
         ImageView btnMenuList= findViewById(R.id.menu_list);
         ImageView btnAddFilm= findViewById(R.id.manage_add_room);
