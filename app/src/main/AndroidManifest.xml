@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.oucinema">
+<!--  cho phép các quyền-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -163,6 +166,9 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="cloudinary://994941553523981:tupyLCTsEYrDeDmpXp0WFP8ST34@dajbt7dew"/>
 
     </application>
 

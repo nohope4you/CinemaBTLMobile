@@ -68,6 +68,12 @@ public class NavBarManager extends AppCompatActivity {
                         Intent intent_coupon = new Intent(NavBarManager.this, ManageCoupon.class);
                         startActivity(intent_coupon);
                         break;
+                    case R.id.nav_manager_logout:
+                        Intent intent_main = new Intent(NavBarManager.this, MainActivity.class);
+                        intent_main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent_main);
+                        finish();
+                        break;
                 }
                 return false;
             }
