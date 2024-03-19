@@ -99,7 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <EditText
+    <Spinner
         android:id="@+id/Thongtinveghe"
         android:layout_width="187dp"
         android:layout_height="58dp"
@@ -129,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
-        android:id="@+id/Thongtinvethoigiandat"
+        android:id="@+id/thongtinvethoigiandat"
         android:layout_width="187dp"
         android:layout_height="58dp"
         android:layout_marginTop="16dp"
@@ -138,7 +138,7 @@
         android:gravity="center"
         android:inputType="time"
         android:textStyle="bold"
-        android:text="Thời gian đặt..."
+        android:hint="Thời gian đặt..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +155,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Thongtinvethoigiandat" />
+        app:layout_constraintTop_toBottomOf="@+id/thongtinvethoigiandat" />
 
     <EditText
         android:id="@+id/Thongtinvegiatien"
@@ -180,7 +180,7 @@
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="Hình thức"
+        android:hint="Hình thức"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.964"
         app:layout_constraintStart_toStartOf="parent"

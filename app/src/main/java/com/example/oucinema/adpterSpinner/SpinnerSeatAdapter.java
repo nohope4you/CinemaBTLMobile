@@ -10,15 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.oucinema.R;
+import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.Suat;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class SpinnerSetAdapter extends ArrayAdapter<Suat> {
+public class SpinnerSeatAdapter extends ArrayAdapter<Ghe> {
 
 
-    public SpinnerSetAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Suat> objects) {
+    public SpinnerSeatAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Ghe> objects) {
         super(context, resource, objects);
 
     }
@@ -26,20 +27,22 @@ public class SpinnerSetAdapter extends ArrayAdapter<Suat> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_selected_set,parent,false);
-        TextView tvFilmSelected =convertView.findViewById(R.id.tv_selected_set);
-        Suat u = this.getItem(position);
-        tvFilmSelected.setText(u.getTenSuat());
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_selected_seat,parent,false);
+        TextView tvFilmSelected =convertView.findViewById(R.id.tv_selected_seat);
+        Ghe ghe = this.getItem(position);
+
+        tvFilmSelected.setText(ghe.getTenGhe());
+
         return convertView;
     }
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_set,parent,false);
-        TextView tvFilm =convertView.findViewById(R.id.tv_set);
-        Suat u = this.getItem(position);
-        if(u!=null){
-            tvFilm.setText(u.getTenSuat());
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_seat,parent,false);
+        TextView tvFilm =convertView.findViewById(R.id.tv_seat);
+        Ghe ghe = this.getItem(position);
+        if(ghe!=null){
+            tvFilm.setText(ghe.getTenGhe());
         }
         return convertView;
     }

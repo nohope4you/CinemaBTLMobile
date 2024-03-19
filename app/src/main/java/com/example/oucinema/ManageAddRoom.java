@@ -1,5 +1,6 @@
 package com.example.oucinema;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class ManageAddRoom extends AppCompatActivity {
     DBHelper dbHelper;
     EditText AddTenPhong;
-    Button btnThemRoom,btnSuaRoom;
+    Button btnThemRoom,btnSuaRoom,btnDeletePhong;
     Spinner spinTheater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ManageAddRoom extends AppCompatActivity {
         AddTenPhong = findViewById(R.id.Thongtinphongtenphong);
         btnThemRoom=findViewById(R.id.btnthongtinphongthem);
         btnSuaRoom = findViewById(R.id.btnthongtinphongsua);
+        btnDeletePhong= findViewById(R.id.btnthongtinphongxoa);
 
         spinTheater=findViewById(R.id.Thongtinphongmarap);
         ArrayList<RapPhim> listRap = dbHelper.getRapPhim();
@@ -67,6 +69,8 @@ public class ManageAddRoom extends AppCompatActivity {
 
         }else{
             AddTenPhong.getText().clear();
+            btnDeletePhong.setEnabled(false);
+            btnDeletePhong.setTextColor(Color.parseColor("#C7C8CC"));
 
         }
 
@@ -120,6 +124,24 @@ public class ManageAddRoom extends AppCompatActivity {
                     }
                 }
 
+            }
+        });
+        //Xoá
+        btnDeletePhong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Phong phong = new Phong();
+                phong.setId(idRoom);
+                String idd= String.valueOf(idRoom);
+                boolean b = dbHelper.deletePhong(phong,idd);
+                if(b){
+                    Toast.makeText(ManageAddRoom.this,"Xoá phòng thành công",Toast.LENGTH_LONG).show();
+                    AddTenPhong.getText().clear();
+                }
+                else
+                {
+                    Toast.makeText(ManageAddRoom.this,"Xoá phòng Thất bại",Toast.LENGTH_LONG).show();
+                }
             }
         });
         // Thêm phòng

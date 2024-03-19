@@ -19,7 +19,7 @@ public class ManageAddTheater extends AppCompatActivity {
     ListView listViewRapPhim;
     DBHelper dbHelper;
     EditText AddTenRap, AddDiaChiRap, AddSDTRap;
-    Button btnThemTheater,btnUpdateTheater;
+    Button btnThemTheater,btnUpdateTheater,btnDeleteTheater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class ManageAddTheater extends AppCompatActivity {
         AddSDTRap=findViewById(R.id.thongtinrapsdt);
         btnThemTheater=findViewById(R.id.btn_themrap);
         btnUpdateTheater=findViewById(R.id.btn_suarap);
+        btnDeleteTheater=findViewById(R.id.btn_xoarap);
 
         //lấy intent
         int id  = getIntent().getIntExtra("theater_id",-1);
@@ -93,6 +94,31 @@ public class ManageAddTheater extends AppCompatActivity {
                 catch (Exception e){
                     Toast.makeText(ManageAddTheater.this,"Có lỗi xảy ra",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        btnDeleteTheater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    RapPhim r = new RapPhim();
+                    r.setId(id);
+                    String idd=String.valueOf(id);
+                    boolean b = dbHelper.deleteRap(r,idd);
+                    if(b){
+                        Toast.makeText(ManageAddTheater.this,"Xoá rạp phim thành công",Toast.LENGTH_LONG).show();
+                        AddTenRap.getText().clear();
+                        AddDiaChiRap.getText().clear();
+                        AddSDTRap.getText().clear();
+                    }
+                    else
+                    {
+                        Toast.makeText(ManageAddTheater.this,"Xoá rạp phim Thất bại",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(ManageAddTheater.this,"Chưa có rạp để xoá ",Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
         // Thêm mã rạp

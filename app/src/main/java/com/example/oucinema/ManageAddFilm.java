@@ -1,6 +1,7 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,7 @@ import com.example.oucinema.model.Phim;
 public class ManageAddFilm extends AppCompatActivity {
     DBHelper dbHelper;
     EditText etTenPhim, etMoTa, etTheLoai, etThoiLuong, etNgayPhatHanh, etDaoDien, etLinkTrailer;
-    Button btnThemFilm,btnSuaFilm;
+    Button btnThemFilm,btnSuaFilm,btnXoaFilm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class ManageAddFilm extends AppCompatActivity {
         etLinkTrailer = findViewById(R.id.Thongtinphimlinktrailer);
         btnThemFilm = findViewById(R.id.btn_themphim);
         btnSuaFilm=findViewById(R.id.btn_suaphim);
+        btnXoaFilm = findViewById(R.id.btn_xoaphim);
 
 
         // Update dữ liệu
@@ -58,6 +60,8 @@ public class ManageAddFilm extends AppCompatActivity {
             etNgayPhatHanh.getText().clear();
             etDaoDien.getText().clear();
             etLinkTrailer.getText().clear();
+            btnXoaFilm.setEnabled(false);
+            btnXoaFilm.setTextColor(Color.parseColor("#C7C8CC"));
         } else {
             etTenPhim.setText(itemName);
             etMoTa.setText(itemMoTa);
@@ -65,6 +69,7 @@ public class ManageAddFilm extends AppCompatActivity {
             etThoiLuong.setText(String.valueOf(itemThoiLuong));
             etNgayPhatHanh.setText(itemNgayPhatHanh);
             etDaoDien.setText(itemDaoDien);
+
         }
 
 
@@ -91,6 +96,22 @@ public class ManageAddFilm extends AppCompatActivity {
                 }
             }
         });
+        //Xoá
+        btnXoaFilm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Phim phim = new Phim();
+                phim.setId(itemId);
+                String idd= String.valueOf(itemId);
+                boolean b = dbHelper.deleteFilm(phim,idd);
+                if (b) {
+                    Toast.makeText(ManageAddFilm.this, "Xoá phim thành công", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(ManageAddFilm.this, "Xoá phim Thất bại", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
         //Sửa thông tin phim
         btnSuaFilm.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,6 +3,7 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -64,6 +65,7 @@ public class ManageRoom extends AppCompatActivity {
 
                 intentAddRoom.putExtra("room_id",itemId);
                 intentAddRoom.putExtra("rap_id",itemRapID);
+                Log.d("ID rạp ",String.valueOf(itemRapID));
                 intentAddRoom.putExtra("room_name",itemName);
                 startActivity(intentAddRoom);
             }

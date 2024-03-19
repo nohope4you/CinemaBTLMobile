@@ -1,6 +1,7 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +18,7 @@ public class ManageAddSeat extends AppCompatActivity {
     DBHelper dbHelper;
     RadioButton rdThuong,rdVIP;
     EditText etTenGhe;
-    Button btnTHEMGHE,btnSUAGHE;
+    Button btnTHEMGHE,btnSUAGHE,btnXOAGHE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class ManageAddSeat extends AppCompatActivity {
         rdThuong = findViewById(R.id.radioGheThuong);
         rdVIP = findViewById(R.id.radioButtonGheVIP);
         btnSUAGHE=findViewById(R.id.btn_suaghe);
+        btnXOAGHE = findViewById(R.id.btn_xoaghe);
         //Nơi lấy intent Putextra
         int gheId = getIntent().getIntExtra("ghe_id", -1);
         String tenGhe = getIntent().getStringExtra("ten_Ghe");
@@ -50,6 +52,8 @@ public class ManageAddSeat extends AppCompatActivity {
                 rdVIP.setChecked(true);
         }else{
             rdThuong.setChecked(true);
+            btnXOAGHE.setEnabled(false);
+            btnXOAGHE.setTextColor(Color.parseColor("#C7C8CC"));
         }
 
         btnTHEMGHE.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +77,28 @@ public class ManageAddSeat extends AppCompatActivity {
                 {
                     Toast.makeText(ManageAddSeat.this,"Thêm ghế Thất bại",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        btnXOAGHE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Ghe g = new Ghe();
+                    g.setId(gheId);
+                    String idd= String.valueOf(gheId);
+                    boolean b = dbHelper.deleteGhe(g,idd);
+
+                    if(b){
+                        Toast.makeText(ManageAddSeat.this,"Xoá ghế thành công",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(ManageAddSeat.this,"Xoá ghế Thất bại",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(ManageAddSeat.this,e.toString(),Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

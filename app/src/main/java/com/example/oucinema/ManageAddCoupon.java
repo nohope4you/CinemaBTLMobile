@@ -1,6 +1,7 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ import com.example.oucinema.model.Phim;
 public class ManageAddCoupon extends AppCompatActivity {
     DBHelper dbHelper;
     EditText AddTenMG, AddPTMG, AddTGHL;
-    Button btnThemCoupon,btnUpdateCoupon;
+    Button btnThemCoupon,btnUpdateCoupon,btnDeleteCP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class ManageAddCoupon extends AppCompatActivity {
         AddTGHL=findViewById(R.id.thongtinmagiamhieuluc);
         btnThemCoupon=findViewById(R.id.btnthongtinmagiamthem);
         btnUpdateCoupon=findViewById(R.id.btnthongtinmagiamsua);
+        btnDeleteCP = findViewById(R.id.btnthongtinmagiamxoa);
 
         // lấy intent
         int id = getIntent().getIntExtra("coupon_id",-1);
@@ -51,6 +53,8 @@ public class ManageAddCoupon extends AppCompatActivity {
             AddTGHL.getText().clear();
             AddTenMG.getText().clear();
             AddPTMG.getText().clear();
+            btnDeleteCP.setEnabled(false);
+            btnDeleteCP.setTextColor(Color.parseColor("#C7C8CC"));
         }
 
         // Quay về quản lí phim
@@ -89,6 +93,28 @@ public class ManageAddCoupon extends AppCompatActivity {
                 }catch (Exception e){
                     Toast.makeText(ManageAddCoupon.this,"Lỗi định dạng yyyy-MM-dd",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btnDeleteCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    MaGiamGia mgg = new MaGiamGia();
+                    mgg.setId(id);
+                    String idd=String.valueOf(id);
+                    boolean b = dbHelper.deleteMgg(mgg,idd);
+                    if(b){
+                        Toast.makeText(ManageAddCoupon.this,"Xoá mã giảm giá thành công",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(ManageAddCoupon.this,"Xoá mã giảm giá thất bại",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(ManageAddCoupon.this,"Chưa chọn mã giảm giá để xoá",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

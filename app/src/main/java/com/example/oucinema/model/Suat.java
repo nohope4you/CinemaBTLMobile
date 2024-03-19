@@ -5,6 +5,7 @@ import java.sql.Time;
 
 public class Suat {
     private int id;
+    private String tenSuat;
     private Date ngayChieu;
     private Time gioChieu;
     private Double giaMacDinh;
@@ -13,8 +14,9 @@ public class Suat {
     private Boolean isDelete;
     private int userUpdate;
 
-    public Suat(int id, Date ngayChieu, Time gioChieu, Double giaMacDinh, Phim phimID, Phong phongID, Boolean isDelete, int userUpdate) {
+    public Suat(int id, String tenSuat, Date ngayChieu, Time gioChieu, Double giaMacDinh, Phim phimID, Phong phongID, Boolean isDelete, int userUpdate) {
         this.id = id;
+        this.tenSuat = tenSuat;
         this.ngayChieu = ngayChieu;
         this.gioChieu = gioChieu;
         this.giaMacDinh = giaMacDinh;
@@ -30,6 +32,14 @@ public class Suat {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTenSuat() {
+        return tenSuat;
+    }
+
+    public void setTenSuat(String tenSuat) {
+        this.tenSuat = tenSuat;
     }
 
     public Date getNgayChieu() {

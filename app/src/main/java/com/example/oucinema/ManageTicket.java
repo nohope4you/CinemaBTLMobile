@@ -3,6 +3,7 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -65,19 +66,22 @@ public class ManageTicket extends AppCompatActivity {
                 String thoiGianDat = sdf.format(v.getThoiGianDat());
                 int suatID = v.getSuatID().getId();
                 int cpID = v.getMaID().getId();
+                int userID = v.getUserID().getId();
 
                 Double giatien = v.getGiaTien();
                 String hinhthuc = v.getHinhThuc();
-                String gheName = v.getGheID().getTenGhe();
+                int gheID = v.getGheID().getId();
 
                 intentAddTicket.putExtra("ve_id",id);
                 intentAddTicket.putExtra("ve_cp",cpID);
                 intentAddTicket.putExtra("ve_ngaydat",thoiGianDat);
+                Log.d("ngày đặt: ", String.valueOf(gheID)+ " "+ String.valueOf(suatID) + " "+String.valueOf(id));
                 intentAddTicket.putExtra("ve_suat",suatID);
+                intentAddTicket.putExtra("ve_user",userID);
                 intentAddTicket.putExtra("ve_gia",giatien);
                 intentAddTicket.putExtra("ve_hinhthuc",hinhthuc);
                 intentAddTicket.putExtra("ve_hoten",hoten);
-                intentAddTicket.putExtra("ve_ghe",gheName);
+                intentAddTicket.putExtra("ve_ghe",gheID);
                 startActivity(intentAddTicket);
 
 

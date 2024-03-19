@@ -1,6 +1,7 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,7 +62,6 @@ public class ManageSeat extends AppCompatActivity {
                 int itemId = gheSelection.getId();
                 String itemName = gheSelection.getTenGhe();
                 String itemLoai = gheSelection.getLoaiGhe();
-
 
                 intentAddSeat.putExtra("ghe_id",itemId);
                 intentAddSeat.putExtra("ten_Ghe",itemName);

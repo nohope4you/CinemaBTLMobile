@@ -1,6 +1,7 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class ManageAddSetFilm extends AppCompatActivity {
     DBHelper dbHelper;
     EditText AddSetFilmNC,AddSetFilmTL,AddSetFilmGMD;
-    Button btnThemSetFilm,btnUpdateSet;
+    Button btnThemSetFilm,btnUpdateSet,btnDeleteSet;
     Spinner spinFilm,spinPhong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class ManageAddSetFilm extends AppCompatActivity {
         spinFilm=findViewById(R.id.Thongtinsuattenphim);
         spinPhong=findViewById(R.id.thongtinsuattenphong);
         btnUpdateSet=findViewById(R.id.btn_suasuat);
+        btnDeleteSet = findViewById(R.id.btn_xoasuat);
         // lấy intent
         int id = getIntent().getIntExtra("set_id",-1);
         String ngayChieu = getIntent().getStringExtra("set_ngay");
@@ -91,32 +93,12 @@ public class ManageAddSetFilm extends AppCompatActivity {
             if (position2 != -1) {
                 spinPhong.setSelection(position2);
             }
-
-
-//            int[] arrayIdPhong = new int[listPhong.size()];
-//            for (int i = 0; i < listPhong.size(); i++) {
-//                arrayIdPhong[i] = listPhong.get(i).getId();
-//            }
-//
-//            // lặp array đúng id thì dừng
-//            int position2 = -1;
-//            for (int i = 0; i < listPhong.size(); i++) {
-//                if (listPhong.get(i).getId() == phongID) {
-//                    position2 = i;
-//                    break;
-//                }
-//
-//
-//                // có id rồi gắn vào vị trí spinner
-//                if (position2 != -1) {
-//                    spinPhong.setSelection(position);
-//                }
-//            }
-
         }else{
             AddSetFilmGMD.getText().clear();
             AddSetFilmTL.getText().clear();
             AddSetFilmNC.getText().clear();
+            btnDeleteSet.setEnabled(false);
+            btnDeleteSet.setTextColor(Color.parseColor("#C7C8CC"));
         }
 
 
@@ -180,6 +162,25 @@ public class ManageAddSetFilm extends AppCompatActivity {
                     {
                         Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim Thất bại !!!",Toast.LENGTH_LONG).show();
                     }
+                }
+            }
+        });
+        btnDeleteSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Suat suat = new Suat();
+                suat.setId(id);
+                String idd = String.valueOf(id);
+                boolean b = dbHelper.deleteSuat(suat,idd);
+                if(b){
+                    Toast.makeText(ManageAddSetFilm.this,"Xoá suất phim thành công",Toast.LENGTH_LONG).show();
+                    AddSetFilmNC.getText().clear();
+                    AddSetFilmTL.getText().clear();
+                    AddSetFilmGMD.getText().clear();
+                }
+                else
+                {
+                    Toast.makeText(ManageAddSetFilm.this,"Xoá suất phim Thất bại !!!",Toast.LENGTH_LONG).show();
                 }
             }
         });
