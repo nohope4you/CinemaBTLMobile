@@ -9,14 +9,15 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="317dp"
-        android:layout_height="739dp"
+        android:layout_width="276dp"
+        android:layout_height="618dp"
         android:layout_gravity="start"
+        android:layout_marginTop="4dp"
         app:itemIconTint="#6E0C70"
-        app:headerLayout="@layout/nav_header"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
         app:menu="@menu/menunavbar_employer">
 
 
@@ -52,5 +53,36 @@
         app:layout_constraintStart_toStartOf="@+id/view3"
         app:srcCompat="@drawable/statistic"
         />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="285dp"
+        android:layout_height="124dp"
+        android:background="@drawable/backgroundnavigationmanage"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/navigation_manage_ten"
+            android:layout_width="152dp"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:text="Tên USER"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

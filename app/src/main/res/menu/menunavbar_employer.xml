@@ -5,10 +5,6 @@
 
             <menu>
 
-                <item android:id="@+id/nav_manager_ten"
-                    android:title="Tên"
-                    android:icon="@drawable/movie" />
-
                 <item android:id="@+id/nav_manager_Film"
                     android:title="Quản lí phim"
                     android:icon="@drawable/movie" />

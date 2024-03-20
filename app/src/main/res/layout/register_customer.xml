@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#b3bbef">
+    android:background="#323131">
 
 
     <ImageView
@@ -15,37 +15,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/iconou" />
+        app:srcCompat="@drawable/cinemalogo" />
 
     <View
         android:id="@+id/view2"
         android:layout_width="417dp"
         android:layout_height="454dp"
-        android:background="#C2C8FF"
+        android:background="#EEEEEE	"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/textHoTenKhachHangDangKy"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/business_card" />
+        app:layout_constraintVertical_bias="0.926" />
 
     <EditText
         android:id="@+id/textHoTenKhachHangDangKy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/cssbuttonloginandregister"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nhập họ và tên ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,11 +44,13 @@
 
     <EditText
         android:id="@+id/textSDTDangKy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/cssbuttonloginandregister"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nhập số điện thoại ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,11 +58,13 @@
 
     <EditText
         android:id="@+id/textTaiKhoanDangKy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="64dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="58dp"
+        android:background="@drawable/cssbuttonloginandregister"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nhập tài khoản ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/view2"
@@ -77,11 +72,13 @@
 
     <EditText
         android:id="@+id/textEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/cssbuttonloginandregister"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nhập email ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,11 +86,13 @@
 
     <EditText
         android:id="@+id/textMatKhauDangKy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/cssbuttonloginandregister"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nhập mật khẩu ..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,10 +100,12 @@
 
     <EditText
         android:id="@+id/textXacNhanMatKhauDangKy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@drawable/cssbuttonloginandregister"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
         android:ems="10"
         android:hint="Xác nhận lại mật khẩu ..."
         android:inputType="textPersonName"
@@ -113,90 +114,41 @@
 
     <Button
         android:id="@+id/btnXacNhanDangKy"
-        android:layout_width="173dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="311dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/cssbuttonpagelogin"
         android:text="Xác nhận"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/textSDTDangKy"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/phone" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/textEmail"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/email" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/textTaiKhoanDangKy"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/user__1_" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/textXacNhanMatKhauDangKy"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
-        app:srcCompat="@drawable/reset_password" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/textMatKhauDangKy"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:srcCompat="@drawable/reset_password" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="436dp"
         android:layout_height="62dp"
-        android:background="#6775F1"
+        android:background="#303030"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:layout_marginTop="10dp"
             android:id="@+id/btnquaylaidangnhap"
-            android:layout_width="82dp"
-            android:layout_height="58dp"
-            android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/arrow_left" />
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            app:srcCompat="@drawable/turnback" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="298dp"
             android:layout_height="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="ĐĂNG KÝ TÀI KHOẢN"
             android:textColor="#FFFFFF"
             android:textSize="25dp"

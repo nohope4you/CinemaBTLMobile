@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class NavBarManager extends AppCompatActivity {
     // Biến navigationview
     private NavigationView navigationView;
-    TextView textID;
+    TextView textName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +25,16 @@ public class NavBarManager extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_view);
 
 
+        textName = findViewById(R.id.navigation_manage_ten);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null && bundle.containsKey("user_name")) {
+            String userName = bundle.getString("user_name");
+            Log.d("Test", "UserIDssssss: " + userName);
+            textName.setText(userName);
+        } else {
+            textName.setText("Errorrrrr");
+        }
 
-//        textID = findViewById(R.id.textview23);
-//        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null && bundle.containsKey("user_name")) {
-//            String userId = bundle.getString("user_name");
-//            Log.d("Test", "UserIDssssss: " + userId);
-//            Intent intent = new Intent(NavBarManager.this,NavBarHeader.class);
-//            intent.putExtra("user_name", userId);
-//            startActivity(intent);
-//        } else {
-//            textID.setText("Errorrrrr");
-//        }
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

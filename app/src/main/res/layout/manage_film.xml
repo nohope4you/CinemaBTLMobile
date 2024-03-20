@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D5D9E8">
+    android:background="#F4E8FF">
 
     <ListView
         android:id="@+id/listViewFilm"
@@ -22,7 +22,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="413dp"
         android:layout_height="71dp"
-        android:background="#700BAD"
+        android:background="#000000"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
