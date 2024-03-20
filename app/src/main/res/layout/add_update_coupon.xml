@@ -41,7 +41,7 @@
 
     <Button
         android:id="@+id/btnthongtinmagiamthem"
-        android:layout_width="400dp"
+        android:layout_width="370dp"
         android:layout_height="47dp"
         android:layout_marginBottom="108dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -57,30 +57,30 @@
     <Button
         android:id="@+id/btnthongtinmagiamxoa"
         android:layout_width="180dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="18dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Xóa"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnthongtinmagiamthem" />
 
     <Button
         android:id="@+id/btnthongtinmagiamsua"
         android:layout_width="180dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="18dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Sửa"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnthongtinmagiamthem" />
 

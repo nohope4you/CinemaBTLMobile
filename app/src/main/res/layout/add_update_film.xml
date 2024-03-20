@@ -38,7 +38,7 @@
         android:id="@+id/Thongtinphimtenphim"
         android:layout_width="170dp"
         android:layout_height="63dp"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="196dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"
@@ -46,7 +46,7 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -54,7 +54,7 @@
         android:id="@+id/Thongtinphimmota"
         android:layout_width="170dp"
         android:layout_height="63dp"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="196dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
@@ -63,7 +63,7 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.961"
         app:layout_constraintStart_toEndOf="@+id/Thongtinphimtenphim"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
@@ -128,7 +128,7 @@
 
     <Button
         android:id="@+id/btn_themphim"
-        android:layout_width="383dp"
+        android:layout_width="370dp"
         android:layout_height="46dp"
         android:layout_marginBottom="68dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -203,8 +203,8 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="306dp"
-        android:layout_height="191dp"
+        android:layout_width="300dp"
+        android:layout_height="168dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

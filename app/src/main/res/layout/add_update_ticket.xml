@@ -40,7 +40,7 @@
 
     <Button
         android:id="@+id/btn_themve"
-        android:layout_width="400dp"
+        android:layout_width="370dp"
         android:layout_height="47dp"
         android:layout_marginBottom="84dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -50,12 +50,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suave"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="47dp"
         android:layout_marginBottom="26dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -65,12 +64,12 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"  />
 
     <Button
         android:id="@+id/btn_xoave"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="47dp"
         android:layout_marginBottom="26dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -80,7 +79,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -160,8 +159,8 @@
     <EditText
         android:id="@+id/Thongtinvegiatien"
         android:layout_width="385dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="152dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="143dp"
         android:background="@drawable/cssthongtinaddupdatemanage"
         android:ems="10"
         android:gravity="center"

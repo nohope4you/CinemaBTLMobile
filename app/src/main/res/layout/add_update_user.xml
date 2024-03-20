@@ -131,9 +131,9 @@
 
     <Button
         android:id="@+id/btn_themuserquanli"
-        android:layout_width="400dp"
+        android:layout_width="370dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
         android:textColor="@color/white"
@@ -141,12 +141,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suauserql"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="47dp"
         android:layout_marginBottom="26dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -156,12 +155,12 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_xoauserql"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="47dp"
         android:layout_marginBottom="26dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -171,7 +170,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

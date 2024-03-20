@@ -65,7 +65,7 @@ public class ManageAddTicket extends AppCompatActivity {
         int suat = getIntent().getIntExtra("ve_suat",-1);
         int user = getIntent().getIntExtra("ve_user",-1);
         String time = getIntent().getStringExtra("ve_ngaydat");
-        Log.d("ngày đặt",time);
+//        Log.d("ngày đặt",time);
         String hinhthuc = getIntent().getStringExtra("ve_hinhthuc");
         String hoten = getIntent().getStringExtra("ve_hoten");
         Double gia = getIntent().getDoubleExtra("ve_gia",-1);

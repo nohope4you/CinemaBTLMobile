@@ -39,9 +39,9 @@
 
     <Button
         android:id="@+id/btn_themrap"
-        android:layout_width="400dp"
+        android:layout_width="370dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
         android:text="Thêm"
         android:textColor="@color/white"
@@ -49,12 +49,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_suarap"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="47dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -64,12 +63,12 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/btn_xoarap"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="47dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/cssbuttonpagethemsuaquanli"
@@ -79,7 +78,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
