@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8FFF4">
+    android:background="#F2F7FF">
 
     <EditText
         android:id="@+id/Thongtinmagiamten"
@@ -104,7 +104,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="413dp"
         android:layout_height="71dp"
-        android:background="#700BAD"
+        android:background="#303030"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +116,7 @@
             android:layout_width="55dp"
             android:layout_height="46dp"
             android:layout_marginEnd="30dp"
-            app:srcCompat="@drawable/arrow_left" />
+            app:srcCompat="@drawable/turnback" />
 
         <TextView
             android:id="@+id/textView2"
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
             android:text="THÔNG TIN MÃ GIẢM"
-            android:textColor="#C0E62A"
+            android:textColor="#FFFFFF"
             android:textSize="28dp"
             android:textStyle="bold" />
     </LinearLayout>
