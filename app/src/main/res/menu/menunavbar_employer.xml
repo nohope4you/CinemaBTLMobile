@@ -2,7 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/group_main">
         <item android:title="Quản lí thông tin rạp">
+
             <menu>
+
+                <item android:id="@+id/nav_manager_ten"
+                    android:title="Tên"
+                    android:icon="@drawable/movie" />
+
                 <item android:id="@+id/nav_manager_Film"
                     android:title="Quản lí phim"
                     android:icon="@drawable/movie" />

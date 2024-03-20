@@ -12,20 +12,14 @@
         android:layout_width="317dp"
         android:layout_height="739dp"
         android:layout_gravity="start"
+        app:itemIconTint="#6E0C70"
+        app:headerLayout="@layout/nav_header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menunavbar_employer"
-        app:headerLayout="@layout/nav_header"
-        app:itemIconTint="#6E0C70"
-        >
+        app:menu="@menu/menunavbar_employer">
 
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
     </android.support.design.widget.NavigationView>
 
     <View
