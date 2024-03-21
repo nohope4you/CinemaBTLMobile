@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,12 @@ public class ManageAddCoupon extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_update_coupon);
         dbHelper = new DBHelper(ManageAddCoupon.this);
-
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from addcoupon "+user_id);
+        else
+            Log.d("test","addcoupon userid error ");
         // Nơi gọi biến
         AddTenMG = findViewById(R.id.Thongtinmagiamten);
         AddPTMG=findViewById(R.id.Thongtinmagiamphantram);
@@ -61,6 +67,8 @@ public class ManageAddCoupon extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
                 startActivity(intent);
             }
         });
@@ -79,7 +87,9 @@ public class ManageAddCoupon extends AppCompatActivity {
                         mgg.setPhanTramGiam(Integer.parseInt(AddPTMG.getText().toString()));
                         java.sql.Date date = java.sql.Date.valueOf(AddTGHL.getText().toString());
                         mgg.setThoiGianHieuLuc(date);
+                        mgg.setUserUpdate(Integer.parseInt(user_id));
                         String idd = String.valueOf(id);
+
                         boolean b = dbHelper.updateMgg(mgg,idd);
                         if(b){
                             Toast.makeText(ManageAddCoupon.this,"Sửa mã giảm giá thành công",Toast.LENGTH_LONG).show();
@@ -132,6 +142,7 @@ public class ManageAddCoupon extends AppCompatActivity {
                     mgg.setPhanTramGiam(Integer.parseInt(AddPTMG.getText().toString()));
                     java.sql.Date date = java.sql.Date.valueOf(AddTGHL.getText().toString());
                     mgg.setThoiGianHieuLuc(date);
+                    mgg.setUserUpdate(Integer.parseInt(user_id));
                     boolean b = dbHelper.addCoupon(mgg);
                     if(b){
                         Toast.makeText(ManageAddCoupon.this,"Thêm mã giảm giá thành công",Toast.LENGTH_LONG).show();

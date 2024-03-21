@@ -24,13 +24,18 @@ public class NavBarManager extends AppCompatActivity {
         setContentView(R.layout.menu_bar);
         navigationView = findViewById(R.id.navigation_view);
 
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+
 
         textName = findViewById(R.id.navigation_manage_ten);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("user_name")) {
             String userName = bundle.getString("user_name");
-            Log.d("Test", "UserIDssssss: " + userName);
+            Log.d("Test", "Name: " + userName);
+            Log.d("Test", "UserID: " + user_id);
             textName.setText(userName);
+
         } else {
             textName.setText("Errorrrrr");
         }
@@ -41,34 +46,50 @@ public class NavBarManager extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_manager_Film:
                         Intent intent = new Intent(NavBarManager.this, ManageFilm.class);
+                        intent.putExtra("user_name",user_name);
+                        intent.putExtra("user_id",user_id);
                         startActivity(intent);
                         break;
                     case R.id.nav_manager_ticket:
                         Intent intent_ticket = new Intent(NavBarManager.this, ManageTicket.class);
+                        intent_ticket.putExtra("user_name",user_name);
+                        intent_ticket.putExtra("user_id",user_id);
                         startActivity(intent_ticket);
                         break;
                     case R.id.nav_manager_seat:
                         Intent intent_seat = new Intent(NavBarManager.this, ManageSeat.class);
+                        intent_seat.putExtra("user_id",user_id);
+                        intent_seat.putExtra("user_name",user_name);
                         startActivity(intent_seat);
                         break;
                     case R.id.nav_manager_setfilm:
                         Intent intent_setfilm = new Intent(NavBarManager.this, ManageSetFilm.class);
+                        intent_setfilm.putExtra("user_id",user_id);
+                        intent_setfilm.putExtra("user_name",user_name);
                         startActivity(intent_setfilm);
                         break;
                     case R.id.nav_manager_theater:
                         Intent intent_theater = new Intent(NavBarManager.this, ManageTheater.class);
+                        intent_theater.putExtra("user_id",user_id);
+                        intent_theater.putExtra("user_name",user_name);
                         startActivity(intent_theater);
                         break;
                     case R.id.nav_manager_user:
                         Intent intent_user = new Intent(NavBarManager.this, ManageUser.class);
+                        intent_user.putExtra("user_id",user_id);
+                        intent_user.putExtra("user_name",user_name);
                         startActivity(intent_user);
                         break;
                     case R.id.nav_manager_room:
                         Intent intent_room = new Intent(NavBarManager.this, ManageRoom.class);
+                        intent_room.putExtra("user_id",user_id);
+                        intent_room.putExtra("user_name",user_name);
                         startActivity(intent_room);
                         break;
                     case R.id.nav_manager_discount:
                         Intent intent_coupon = new Intent(NavBarManager.this, ManageCoupon.class);
+                        intent_coupon.putExtra("user_id",user_id);
+                        intent_coupon.putExtra("user_name",user_name);
                         startActivity(intent_coupon);
                         break;
                     case R.id.nav_manager_logout:

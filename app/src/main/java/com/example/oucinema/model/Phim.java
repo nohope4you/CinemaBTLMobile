@@ -11,12 +11,12 @@ public class Phim {
     private int thoiLuong;
     private Date ngayPhatHanh;
     private String daoDien;
-    private Blob hinhAnh;
+    private String hinhAnh;
     private String linkTrailer;
     private Boolean isDelete;
     private int userUpdate;
 
-    public Phim(int id, String tenPhim, String moTa, String theLoai, int thoiLuong, Date ngayPhatHanh, String daoDien, Blob hinhAnh, String linkTrailer, Boolean isDelete, int userUpdate) {
+    public Phim(int id, String tenPhim, String moTa, String theLoai, int thoiLuong, Date ngayPhatHanh, String daoDien, String hinhAnh, String linkTrailer, Boolean isDelete, int userUpdate) {
         this.id = id;
         this.tenPhim = tenPhim;
         this.moTa = moTa;
@@ -31,6 +31,23 @@ public class Phim {
     }
 
     public Phim() {
+    }
+
+    @Override
+    public String toString() {
+        return "Phim{" +
+                "id=" + id +
+                ", tenPhim='" + tenPhim + '\'' +
+                ", moTa='" + moTa + '\'' +
+                ", theLoai='" + theLoai + '\'' +
+                ", thoiLuong=" + thoiLuong +
+                ", ngayPhatHanh=" + ngayPhatHanh +
+                ", daoDien='" + daoDien + '\'' +
+                ", hinhAnh='" + hinhAnh + '\'' +
+                ", linkTrailer='" + linkTrailer + '\'' +
+                ", isDelete=" + isDelete +
+                ", userUpdate=" + userUpdate +
+                '}';
     }
 
     public int getId() {
@@ -89,11 +106,11 @@ public class Phim {
         this.daoDien = daoDien;
     }
 
-    public Blob getHinhAnh() {
+    public String getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(Blob hinhAnh) {
+    public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 

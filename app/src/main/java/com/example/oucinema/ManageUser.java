@@ -31,7 +31,12 @@ public class ManageUser extends AppCompatActivity {
         dbHelper = new DBHelper(ManageUser.this);
         tk= findViewById(R.id.manage_search_user);
         lvUser = findViewById(R.id.listViewUser);
-
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from ticket "+user_id);
+        else
+            Log.d("test","error ");
         ArrayList<User> listUser = dbHelper.getAllUser();
 
         UserAdapter userAdapter = new UserAdapter(this,R.layout.list_user,listUser);
@@ -61,6 +66,8 @@ public class ManageUser extends AppCompatActivity {
         btnMenuList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_name",user_name);
+                intent.putExtra("user_id",user_id);
                 startActivity(intent);
             }
         });
@@ -68,6 +75,8 @@ public class ManageUser extends AppCompatActivity {
         btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intentAddUser.putExtra("user_id",user_id);
+                intentAddUser.putExtra("user_name",user_name);
                 startActivity(intentAddUser);
             }
         });
@@ -81,7 +90,10 @@ public class ManageUser extends AppCompatActivity {
                 String phone = u.getPhoneNumber();
                 String email = u.getEmail();
                 int role = u.getRoleID().getId();
-                intentAddUser.putExtra("user_id",id);
+                intentAddUser.putExtra("user_names",user_name);
+                Log.d("MyActivity", "Before filtering: " +user_name);
+                intentAddUser.putExtra("user_id",user_id);
+                intentAddUser.putExtra("user_id2",id);
                 intentAddUser.putExtra("user_name",name);
                 intentAddUser.putExtra("user_phone",phone);
                 intentAddUser.putExtra("user_email",email);

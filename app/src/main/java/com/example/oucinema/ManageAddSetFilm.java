@@ -32,7 +32,12 @@ public class ManageAddSetFilm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_update_setfilm);
         dbHelper = new DBHelper(ManageAddSetFilm.this);
-
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from addsetfilm "+user_id);
+        else
+            Log.d("test","error ");
         // Nơi gọi biến
         AddSetFilmNC = findViewById(R.id.Thongtinsuatngaychieu);
         AddSetFilmTL=findViewById(R.id.Thongtinsuatgiochieu);
@@ -112,6 +117,8 @@ public class ManageAddSetFilm extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
                 startActivity(intent);
             }
         });
@@ -133,6 +140,7 @@ public class ManageAddSetFilm extends AppCompatActivity {
                     java.sql.Time time = java.sql.Time.valueOf(AddSetFilmTL.getText().toString());
                     suat.setGioChieu(time);
                     suat.setGiaMacDinh(Double.parseDouble(AddSetFilmGMD.getText().toString()));
+                    suat.setUserUpdate(Integer.parseInt(user_id));
 
                     Phim phimSelected = (Phim) spinFilm.getSelectedItem();
                     Log.d("test ",String.valueOf( phimSelected.getTheLoai()) );
@@ -171,6 +179,7 @@ public class ManageAddSetFilm extends AppCompatActivity {
                 Suat suat = new Suat();
                 suat.setId(id);
                 String idd = String.valueOf(id);
+                suat.setUserUpdate(Integer.parseInt(user_id));
                 boolean b = dbHelper.deleteSuat(suat,idd);
                 if(b){
                     Toast.makeText(ManageAddSetFilm.this,"Xoá suất phim thành công",Toast.LENGTH_LONG).show();
@@ -218,7 +227,7 @@ public class ManageAddSetFilm extends AppCompatActivity {
                     suat.setPhimID(phimSelected);
 //                    Log.d("test ",String.valueOf(suat.getPhimID().getId()));
                     suat.setPhongID(tempPhong);
-
+                    suat.setUserUpdate(Integer.parseInt(user_id));
 
                     boolean b = dbHelper.addSetFilm(suat);
                     if(b){

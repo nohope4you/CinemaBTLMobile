@@ -29,8 +29,13 @@ public class ManageSeat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_seat);
         dbHelper = new DBHelper(ManageSeat.this);
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from seat "+user_id);
+        else
+            Log.d("test","error ");
         tk = findViewById(R.id.manage_search_seat);
-
 
         lvSeat = findViewById(R.id.listViewSeat);
         ArrayList<Ghe> listGhe = dbHelper.getGhe();
@@ -62,6 +67,8 @@ public class ManageSeat extends AppCompatActivity {
         btnMenuList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
                 startActivity(intent);
             }
         });
@@ -69,6 +76,9 @@ public class ManageSeat extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Log.d("test","user id from seat "+user_id);
+                intentAddSeat.putExtra("user_name",user_name);
+                intentAddSeat.putExtra("user_id",user_id);
                 startActivity(intentAddSeat);
             }
         });
@@ -80,8 +90,10 @@ public class ManageSeat extends AppCompatActivity {
                 int itemId = gheSelection.getId();
                 String itemName = gheSelection.getTenGhe();
                 String itemLoai = gheSelection.getLoaiGhe();
-
+                intentAddSeat.putExtra("user_name",user_name);
+                intentAddSeat.putExtra("user_id",user_id);
                 intentAddSeat.putExtra("ghe_id",itemId);
+                intentAddSeat.putExtra("user_id",user_id);
                 intentAddSeat.putExtra("ten_Ghe",itemName);
                 intentAddSeat.putExtra("loai_Ghe",itemLoai);
                 startActivity(intentAddSeat);

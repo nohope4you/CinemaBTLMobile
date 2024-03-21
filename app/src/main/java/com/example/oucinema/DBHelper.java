@@ -321,7 +321,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("diaChi", theater.getDiaChi());
         cv.put("soDienThoaiLienHe", theater.getSoDienThoaiLienHe());
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", theater.getUserUpdate());
 
         long theater1 = db.insert("RapPhim", null, cv);
         if (theater1 == -1) {
@@ -338,7 +338,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("diaChi", theater.getDiaChi());
         cv.put("soDienThoaiLienHe", theater.getSoDienThoaiLienHe());
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", theater.getUserUpdate());
 
 
         long theater1 = db.update("RapPhim", cv, "id= " + id, null);
@@ -353,7 +353,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("isDelete", true);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", theater.getUserUpdate());
         long theater1 = db.update("RapPhim", cv, "id= " + id, null);
         if (theater1 == -1) {
             return false;
@@ -376,6 +376,7 @@ public class DBHelper extends SQLiteOpenHelper {
             String moTa = cursor.getString(2);
             String theLoai = cursor.getString(3);
             String daoDien = cursor.getString(6);
+            String hinhAnh = cursor.getString(7);
             int thoiLuong = cursor.getInt(4);
             String thoiGianPhatHanh = cursor.getString(5);
             java.sql.Date date = java.sql.Date.valueOf(thoiGianPhatHanh.toString());
@@ -386,7 +387,7 @@ public class DBHelper extends SQLiteOpenHelper {
             phim.setMoTa(moTa);
             phim.setDaoDien(daoDien);
             phim.setThoiLuong(thoiLuong);
-
+            phim.setHinhAnh(hinhAnh);
             phim.setTheLoai(theLoai);
             phim.setNgayPhatHanh(date);
 
@@ -410,10 +411,10 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("thoiLuong", phim.getThoiLuong());
         cv.put("ngayPhatHanh", ngayPhatHanhString);
         cv.put("daoDien", phim.getDaoDien());
-        cv.put("hinhAnh", "test");
+        cv.put("hinhAnh", phim.getHinhAnh());
         cv.put("linkTrailer", phim.getLinkTrailer());
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", phim.getUserUpdate());
 
         long phim1 = db.insert("Phim", null, cv);
         if (phim1 == -1) {
@@ -438,7 +439,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("hinhAnh", "test");
         cv.put("linkTrailer", phim.getLinkTrailer());
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", phim.getUserUpdate());
         long phim1 = db.update("Phim", cv, "id= " + id, null);
         if (phim1 == -1) {
             return false;
@@ -451,7 +452,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("isDelete", true);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", phim.getUserUpdate());
         long phim1 = db.update("Phim", cv, "id= " + id, null);
         if (phim1 == -1) {
             return false;
@@ -491,7 +492,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("tenGhe", ghe.getTenGhe());
         cv.put("loaiGhe", ghe.getLoaiGhe());
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", ghe.getUserUpdate());
 
         long ghe1 = db.insert("Ghe", null, cv);
         if (ghe1 == -1) {
@@ -507,7 +508,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("tenGhe", ghe.getTenGhe());
         cv.put("loaiGhe", ghe.getLoaiGhe());
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", ghe.getUserUpdate());
 
 
         long phim1 = db.update("Ghe", cv, "id= " + id, null);
@@ -523,7 +524,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put("isDelete", true);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", ghe.getUserUpdate());
 
 
         long phim1 = db.update("Ghe", cv, "id= " + id, null);
@@ -655,7 +656,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("phimID", idPhim);
         cv.put("phongID", idPhong);
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", suat.getUserUpdate());
 
         long suat1 = db.insert("Suat", null, cv);
         if (suat1 == -1) {
@@ -681,7 +682,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("phimID", idPhim);
         cv.put("phongID", idPhong);
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", suat.getUserUpdate());
 
         long suat1 = db.update("Suat", cv, "id= " + id, null);
         if (suat1 == -1) {
@@ -694,7 +695,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("isDelete", true);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", suat.getUserUpdate());
         long suat1 = db.update("Suat", cv, "id= " + id, null);
         if (suat1 == -1) {
             return false;
@@ -744,7 +745,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("tenPhong", room.getTenPhong());
         cv.put("rapPhimID", idRap);
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", room.getUserUpdate());
 
         long room1 = db.insert("Phong", null, cv);
         if (room1 == -1) {
@@ -761,7 +762,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("tenPhong", phong.getTenPhong());
         cv.put("rapPhimID", idRap);
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", phong.getUserUpdate());
 
         long room1 = db.update("Phong", cv, "id= " + id, null);
         if (room1 == -1) {
@@ -774,7 +775,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("isDelete", true);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", phong.getUserUpdate());
 
         long room1 = db.update("Phong", cv, "id= " + id, null);
         if (room1 == -1) {
@@ -821,7 +822,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("phanTramGiam", mgg.getPhanTramGiam());
         cv.put("thoiGianHieuLuc", ngayPhatHanhString);
         cv.put("isDelete", false);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", mgg.getUserUpdate());
 
         long mgg1 = db.insert("MaGiamGia", null, cv);
         if (mgg1 == -1) {
@@ -935,6 +936,8 @@ public class DBHelper extends SQLiteOpenHelper {
         String thoiGianDat = sdf.format(ve.getThoiGianDat());
         cv.put("thoiGianDat",thoiGianDat);
         cv.put("hinhThuc",ve.getHinhThuc());
+        cv.put("isDelete", true);
+        cv.put("userUpdate", ve.getUserUpdate());
 
 
         long ve1 = db.update("Ve", cv, "id= " + id, null);
@@ -948,7 +951,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("isDelete", true);
-        cv.put("userUpdate", 1);
+        cv.put("userUpdate", ve.getUserUpdate());
 
 
         long ve1 = db.update("Ve", cv, "id= " + id, null);

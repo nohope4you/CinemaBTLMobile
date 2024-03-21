@@ -30,7 +30,12 @@ public class ManageTicket extends AppCompatActivity {
         setContentView(R.layout.manage_ticket);
         dbHelper = new DBHelper(ManageTicket.this);
         tk= findViewById(R.id.manage_search_ticket);
-
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from ticket "+user_id);
+        else
+            Log.d("test","error ");
         lvTicket = findViewById(R.id.listViewTicket);
         ArrayList<Ve> listVe = dbHelper.getTicket();
 
@@ -62,6 +67,8 @@ public class ManageTicket extends AppCompatActivity {
         btnMenuList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
                 startActivity(intent);
             }
         });
@@ -69,6 +76,8 @@ public class ManageTicket extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intentAddTicket.putExtra("user_name",user_name);
+                intentAddTicket.putExtra("user_id",user_id);
                 startActivity(intentAddTicket);
             }
         });
@@ -88,7 +97,8 @@ public class ManageTicket extends AppCompatActivity {
                 Double giatien = v.getGiaTien();
                 String hinhthuc = v.getHinhThuc();
                 int gheID = v.getGheID().getId();
-
+                intentAddTicket.putExtra("user_name",user_name);
+                intentAddTicket.putExtra("user_id",user_id);
                 intentAddTicket.putExtra("ve_id",id);
                 intentAddTicket.putExtra("ve_cp",cpID);
                 intentAddTicket.putExtra("ve_ngaydat",thoiGianDat);

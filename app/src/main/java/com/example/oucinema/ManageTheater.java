@@ -31,7 +31,12 @@ public class ManageTheater extends AppCompatActivity {
         dbHelper = new DBHelper(ManageTheater.this);
         tk= findViewById(R.id.manage_search_theater);
         lvRap = findViewById(R.id.listViewRapPhim);
-
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from theater "+user_id);
+        else
+            Log.d("test","error ");
         ArrayList<RapPhim> listRap = dbHelper.getRapPhim();
 
         TheaterAdapter theaterAdapter = new TheaterAdapter(this,R.layout.list_theater,listRap);
@@ -61,6 +66,8 @@ public class ManageTheater extends AppCompatActivity {
         btnMenuList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_name",user_name);
+                intent.putExtra("user_id",user_id);
                 startActivity(intent);
             }
         });
@@ -68,6 +75,8 @@ public class ManageTheater extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intentAddTheater.putExtra("user_name",user_name);
+                intentAddTheater.putExtra("user_id",user_id);
                 startActivity(intentAddTheater);
             }
         });
@@ -79,6 +88,8 @@ public class ManageTheater extends AppCompatActivity {
                 String name = rp.getTenRap();
                 String diachi = rp.getDiaChi();
                 String sdt = rp.getSoDienThoaiLienHe();
+                intentAddTheater.putExtra("user_name",user_name);
+                intentAddTheater.putExtra("user_id",user_id);
                 intentAddTheater.putExtra("theater_id",idr);
                 intentAddTheater.putExtra("theater_name",name);
                 intentAddTheater.putExtra("theater_diachi",diachi);

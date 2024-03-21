@@ -37,6 +37,7 @@ public class ManageFilm extends AppCompatActivity {
         TextView textID;
         textID= findViewById(R.id.textView22);
 
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("user_id")) {
             String userId = bundle.getString("user_id");
@@ -45,7 +46,8 @@ public class ManageFilm extends AppCompatActivity {
         } else {
             textID.setText("Errorrrrr");
         }
-
+        String user_name = dbHelper.getUserNAMELogin(textID.getText().toString());
+        String user_id = getIntent().getStringExtra("user_id");
         lvFilm = findViewById(R.id.listViewFilm);
         ArrayList<Phim> listPhim = dbHelper.getPhim();
 
@@ -80,9 +82,10 @@ public class ManageFilm extends AppCompatActivity {
         btnMenuList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user_name = dbHelper.getUserNAMELogin(textID.getText().toString());
+
                 Intent intent = new Intent(ManageFilm.this,NavBarManager.class);
                 intent.putExtra("user_name", user_name);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });
@@ -103,11 +106,14 @@ public class ManageFilm extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String itemNgayPhatHanh = sdf.format(item.getNgayPhatHanh());
                 String itemDaoDien = item.getDaoDien();
-//                String itemHinhAnh = item.getHinhAnh().toString();
+                String itemHinhAnh = item.getHinhAnh();
 
 
                 // Khởi động trang khác với dữ liệu
                 Intent intent = new Intent(ManageFilm.this, ManageAddFilm.class);
+                intent.putExtra("item_hinhAnh",itemHinhAnh);
+                intent.putExtra("user_name", user_name);
+                intent.putExtra("user_id",user_id);
                 intent.putExtra("item_id", itemId);
                 intent.putExtra("item_name", itemName);
                 intent.putExtra("item_moTa", itemMoTa);
@@ -129,6 +135,8 @@ public class ManageFilm extends AppCompatActivity {
         btnAddFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intentAddFilm.putExtra("user_name", user_name);
+                intentAddFilm.putExtra("user_id", user_id);
                 startActivity(intentAddFilm);
             }
         });

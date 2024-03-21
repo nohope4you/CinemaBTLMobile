@@ -3,6 +3,7 @@ package com.example.oucinema;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +26,12 @@ public class ManageAddTheater extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_update_theater);
         dbHelper = new DBHelper(ManageAddTheater.this);
-
+        String user_name = getIntent().getStringExtra("user_name");
+        String user_id = getIntent().getStringExtra("user_id");
+        if(user_id !=null)
+            Log.d("test","user id from addsetheater "+user_id);
+        else
+            Log.d("test","error ");
         // Nơi gọi biến
         AddTenRap = findViewById(R.id.Thongtinraptenrap);
         AddDiaChiRap=findViewById(R.id.thongtinrapdiachi);
@@ -59,6 +65,8 @@ public class ManageAddTheater extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
                 startActivity(intent);
             }
         });
@@ -78,6 +86,7 @@ public class ManageAddTheater extends AppCompatActivity {
                         theater.setDiaChi(AddDiaChiRap.getText().toString());
                         theater.setSoDienThoaiLienHe(AddSDTRap.getText().toString());
                         String idd = String.valueOf(id);
+                        theater.setUserUpdate(Integer.parseInt(user_id));
                         boolean b = dbHelper.updateRap(theater,idd);
                         if(b){
                             Toast.makeText(ManageAddTheater.this,"Sửa rạp phim thành công",Toast.LENGTH_LONG).show();
@@ -103,6 +112,7 @@ public class ManageAddTheater extends AppCompatActivity {
                     RapPhim r = new RapPhim();
                     r.setId(id);
                     String idd=String.valueOf(id);
+                    r.setUserUpdate(Integer.parseInt(user_id));
                     boolean b = dbHelper.deleteRap(r,idd);
                     if(b){
                         Toast.makeText(ManageAddTheater.this,"Xoá rạp phim thành công",Toast.LENGTH_LONG).show();
@@ -135,6 +145,7 @@ public class ManageAddTheater extends AppCompatActivity {
                         theater.setTenRap(AddTenRap.getText().toString());
                         theater.setDiaChi(AddDiaChiRap.getText().toString());
                         theater.setSoDienThoaiLienHe(AddSDTRap.getText().toString());
+                        theater.setUserUpdate(Integer.parseInt(user_id));
                         boolean b = dbHelper.addTheater(theater);
                         if(b){
                             Toast.makeText(ManageAddTheater.this,"Thêm rạp phim thành công",Toast.LENGTH_LONG).show();

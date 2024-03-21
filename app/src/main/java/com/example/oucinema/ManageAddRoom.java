@@ -29,7 +29,12 @@ public class ManageAddRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_update_room);
         dbHelper = new DBHelper(ManageAddRoom.this);
-
+        String user_id = getIntent().getStringExtra("user_id");
+        String user_name = getIntent().getStringExtra("user_name");
+        if(user_id !=null)
+            Log.d("test","user id from addroom "+user_id);
+        else
+            Log.d("test","error ");
         // Nơi gọi biến
         AddTenPhong = findViewById(R.id.Thongtinphongtenphong);
         btnThemRoom=findViewById(R.id.btnthongtinphongthem);
@@ -84,6 +89,8 @@ public class ManageAddRoom extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_name",user_name);
                 startActivity(intent);
             }
         });
@@ -110,6 +117,7 @@ public class ManageAddRoom extends AppCompatActivity {
                 else{
                     if(selectedRap!=null){
                         room.setRapPhimID(tempRap);
+                        room.setUserUpdate(Integer.parseInt(user_id));
                         boolean b = dbHelper.updatePhong(room,idd);
                         if(b){
                             Toast.makeText(ManageAddRoom.this,"Sửa phòng thành công",Toast.LENGTH_LONG).show();
@@ -133,6 +141,7 @@ public class ManageAddRoom extends AppCompatActivity {
                 Phong phong = new Phong();
                 phong.setId(idRoom);
                 String idd= String.valueOf(idRoom);
+                phong.setUserUpdate(Integer.getInteger(user_id));
                 boolean b = dbHelper.deletePhong(phong,idd);
                 if(b){
                     Toast.makeText(ManageAddRoom.this,"Xoá phòng thành công",Toast.LENGTH_LONG).show();
@@ -164,6 +173,7 @@ public class ManageAddRoom extends AppCompatActivity {
                 else{
                     if(selectedRap!=null){
                         room.setRapPhimID(tempRap);
+                        room.setUserUpdate(Integer.getInteger(user_id));
                         boolean b = dbHelper.addRoom(room);
                         if(b){
                             Toast.makeText(ManageAddRoom.this,"Thêm phòng thành công",Toast.LENGTH_LONG).show();
