@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/cssbackgroundlistforuser"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewFilmUser"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+    <TextView
+        android:id="@+id/textTenPhimFilmUser"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/imageViewFilmUser"
+        android:gravity="center"
+        android:text="Tên phim" />
+
+    <TextView
+        android:id="@+id/textTheLoaiFilmUser"
+        android:layout_width="110dp"
+        android:layout_height="150dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@id/textTenPhimFilmUser"
+        android:gravity="center"
+        android:text="Ngày phát hành" />
+
+</RelativeLayout>

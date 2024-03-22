@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.SearchView
-            android:id="@+id/manage_search_room"
+            android:id="@+id/user_search_film"
             android:layout_width="369dp"
             android:layout_height="wrap_content"
             android:background="@drawable/csssearchviewuser" />
@@ -123,11 +123,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="156dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="PHIM MỚI"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:layout_marginLeft="20dp"
+        android:text="PHIM SẮP CHIẾU"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -138,11 +139,12 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="39dp"
         android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="PHIM SẮP CHIẾU"
+        android:gravity="start"
+        android:layout_marginLeft="20dp"
+        android:text="PHIM ĐANG CHIẾU"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -151,20 +153,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
-    <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="196dp"
+    <ListView
+        android:id="@+id/listview_user_home"
+        android:layout_width="439dp"
+        android:layout_height="278dp"
+
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-        <GridView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-        </GridView>
-    </ScrollView>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

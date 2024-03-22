@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else{
+                            String userid = dbHelper.getUserIDLogin(username,pwd);
                             Intent intent = new Intent(MainActivity.this,UserHome.class);
+                            intent.putExtra("user_id", userid);
                             startActivity(intent);
                         }
                     }
