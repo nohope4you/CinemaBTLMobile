@@ -399,6 +399,42 @@ public class DBHelper extends SQLiteOpenHelper {
         return listFilm;
     }
 
+    // Hàm cho user lấy 4 phim mới nhất
+    public ArrayList<Phim> getPhimfornewfilmUser() {
+        ArrayList<Phim> listFilm = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM Phim WHERE isDelete=false ORDER BY ngayPhatHanh DESC LIMIT 4", null);
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            String tenPhim = cursor.getString(1);
+            String moTa = cursor.getString(2);
+            String theLoai = cursor.getString(3);
+            String daoDien = cursor.getString(6);
+            String hinhAnh = cursor.getString(7);
+            int thoiLuong = cursor.getInt(4);
+            String thoiGianPhatHanh = cursor.getString(5);
+            java.sql.Date date = java.sql.Date.valueOf(thoiGianPhatHanh.toString());
+
+            Phim phim = new Phim();
+            phim.setId(id);
+            phim.setTenPhim(tenPhim);
+            phim.setMoTa(moTa);
+            phim.setDaoDien(daoDien);
+            phim.setThoiLuong(thoiLuong);
+            phim.setHinhAnh(hinhAnh);
+            phim.setTheLoai(theLoai);
+            phim.setNgayPhatHanh(date);
+
+            listFilm.add(phim);
+        }
+        cursor.close();
+        database.close();
+        return listFilm;
+    }
+
     public boolean addFilm(Phim phim) {
 
         SQLiteDatabase db = this.getWritableDatabase();

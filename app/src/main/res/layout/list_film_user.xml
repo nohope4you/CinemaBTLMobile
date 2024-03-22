@@ -16,7 +16,7 @@
         android:layout_height="150dp"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="#B1F1D8"
         android:layout_toRightOf="@+id/imageViewFilmUser"
         android:gravity="center"
         android:text="Tên phim" />
@@ -27,9 +27,9 @@
         android:layout_height="150dp"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="#B1F1D8"
         android:layout_toRightOf="@id/textTenPhimFilmUser"
         android:gravity="center"
-        android:text="Ngày phát hành" />
+        android:text="Thể loại" />
 
 </RelativeLayout>
