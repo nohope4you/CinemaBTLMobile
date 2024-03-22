@@ -217,9 +217,13 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="CLOUDINARY_URL"
-            android:value="cloudinary://994941553523981:tupyLCTsEYrDeDmpXp0WFP8ST34@dajbt7dew"/>
+        <activity android:name=".Statis"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

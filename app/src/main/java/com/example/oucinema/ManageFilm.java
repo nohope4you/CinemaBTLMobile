@@ -1,9 +1,12 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -28,25 +31,22 @@ public class ManageFilm extends AppCompatActivity {
     DBHelper dbHelper;
     ListView lvFilm;
     SearchView tk;
+    BottomNavigationView btnavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_film);
         dbHelper = new DBHelper(ManageFilm.this);
         tk = findViewById(R.id.manage_search_film);
-        TextView textID;
-        textID= findViewById(R.id.textView22);
+        btnavigation = findViewById(R.id.bottomNavigationView);
+
 
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.containsKey("user_id")) {
             String userId = bundle.getString("user_id");
             Log.d("Test", "UserID: " + userId);
-            textID.setText(String.valueOf(userId));
-        } else {
-            textID.setText("Errorrrrr");
-        }
-        String user_name = dbHelper.getUserNAMELogin(textID.getText().toString());
+
+        String user_name = dbHelper.getUserNAMELogin(userId);
         String user_id = getIntent().getStringExtra("user_id");
         lvFilm = findViewById(R.id.listViewFilm);
         ArrayList<Phim> listPhim = dbHelper.getPhim();
@@ -141,7 +141,40 @@ public class ManageFilm extends AppCompatActivity {
             }
         });
 
+        // Bottom Navigtaion View
+        btnavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.nav_manager_Film:
+                        Intent intent = new Intent(ManageFilm.this, ManageFilm.class);
+                        intent.putExtra("user_name",user_name);
+                        intent.putExtra("user_id",user_id);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_manager_t:
+                        Intent intent_ticket = new Intent(ManageFilm.this, ManageTicket.class);
+                        intent_ticket.putExtra("user_name",user_name);
+                        intent_ticket.putExtra("user_id",user_id);
+                        startActivity(intent_ticket);
+                        break;
 
+                    case R.id.nav_manager_static:
+                        Intent intent_setfilm = new Intent(ManageFilm.this, Statis.class);
+                        intent_setfilm.putExtra("user_id",user_id);
+                        intent_setfilm.putExtra("user_name",user_name);
+                        startActivity(intent_setfilm);
+                        break;
 
+                    case R.id.nav_manager_user:
+                        Intent intent_user = new Intent(ManageFilm.this, ManageUser.class);
+                        intent_user.putExtra("user_id",user_id);
+                        intent_user.putExtra("user_name",user_name);
+                        startActivity(intent_user);
+
+                }
+                return false;
+            }
+        });
     }
 }

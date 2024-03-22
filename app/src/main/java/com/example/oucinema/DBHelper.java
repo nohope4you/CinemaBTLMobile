@@ -15,6 +15,7 @@ import com.example.oucinema.model.Phong;
 import com.example.oucinema.model.RapPhim;
 import com.example.oucinema.model.Role;
 import com.example.oucinema.model.Suat;
+import com.example.oucinema.model.TempModel;
 import com.example.oucinema.model.User;
 import com.example.oucinema.model.Ve;
 
@@ -436,7 +437,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("thoiLuong", phim.getThoiLuong());
         cv.put("ngayPhatHanh", ngayPhatHanhString);
         cv.put("daoDien", phim.getDaoDien());
-        cv.put("hinhAnh", "test");
+        cv.put("hinhAnh", phim.getHinhAnh());
         cv.put("linkTrailer", phim.getLinkTrailer());
         cv.put("isDelete", false);
         cv.put("userUpdate", phim.getUserUpdate());
@@ -960,5 +961,50 @@ public class DBHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+
+    // Hàm cho thống kê
+    public ArrayList<TempModel> getStatisMovie() {
+        ArrayList<TempModel> listTemp = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Phim.tenPhim as 'tenPhim', count(ve.id) as 'Number' FROM Phim LEFT JOIN Suat ON Phim.id = Suat.phimID LEFT JOIN Ve ON  Suat.id = Ve.suatID GROUP BY Phim.id, Phim.tenPhim",null);
+
+        while (cursor.moveToNext()) {
+
+            TempModel temp = new TempModel();
+            temp.setNameMovie(cursor.getString(0));
+            temp.setNumber(cursor.getString(1));
+
+
+
+            listTemp.add(temp);
+        }
+        cursor.close();
+        database.close();
+        return listTemp;
+    }
+    public ArrayList<TempModel> getStatisTheater() {
+        ArrayList<TempModel> listTemp = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT RapPhim.tenRap as 'tenRap', count(Ve.id) as 'Number' " +
+                "FROM RapPhim " +
+                "LEFT JOIN Phong ON Phong.rapPhimID = RapPhim.id " +
+                "LEFT JOIN Suat ON Suat.phongID = Phong.id " +
+                "LEFT JOIN Ve ON Ve.suatID = Suat.id " +
+                "GROUP BY RapPhim.id,RapPhim.tenRap",null);
+
+        while (cursor.moveToNext()) {
+
+            TempModel temp = new TempModel();
+            temp.setNameMovie(cursor.getString(0));
+            temp.setNumber(cursor.getString(1));
+            listTemp.add(temp);
+        }
+        cursor.close();
+        database.close();
+        return listTemp;
     }
 }

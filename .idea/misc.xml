@@ -18,6 +18,8 @@
         <entry key="..\:/BTL_Android_Phuc/CinemaBTLMobile/app/src/main/res/menu/menunavbar_employer.xml" value="0.1296875" />
         <entry key="..\:/BTL_Android_Phuc/CinemaBTLMobile/app/src/main/res/menu/menunavbottom_user.xml" value="0.1296875" />
         <entry key="..\:/BTL_Android_Phuc/CinemaBTLMobile/app/src/main/res/menu/menunavbottombar_employer.xml" value="0.1296875" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/drawable/cssitemstatis.xml" value="0.1905" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/drawable/cssstatis.xml" value="0.1905" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/add_update_coupon.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/add_update_film.xml" value="0.25416666666666665" />
@@ -27,6 +29,7 @@
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/add_update_theater.xml" value="0.253125" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/add_update_ticket.xml" value="0.20854700854700856" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/add_update_user.xml" value="0.253125" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/cssitemstatis.xml" value="0.2076923076923077" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_cp.xml" value="0.253125" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_film.xml" value="0.253125" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_role.xml" value="0.25416666666666665" />
@@ -41,10 +44,13 @@
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_theater.xml" value="0.20854700854700856" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_user.xml" value="0.253125" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_set.xml" value="0.12360688956433637" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_statis.xml" value="0.20854700854700856" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_statis_theater.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_theater.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_user.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/list_coupon.xml" value="0.18984375" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/list_film.xml" value="0.264" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/list_film_user.xml" value="0.23731884057971014" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/list_room.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/list_seat.xml" value="0.19791666666666666" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/list_setfilm.xml" value="0.25416666666666665" />
@@ -62,6 +68,7 @@
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/menu_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/nav_header.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/register_customer.xml" value="0.152" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/statistic.xml" value="0.1" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/user_filmdetail.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/user_home.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/user_info.xml" value="0.25416666666666665" />

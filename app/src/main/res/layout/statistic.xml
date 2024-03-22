@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F7FF">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="413dp"
+            android:layout_height="71dp"
+            android:background="#303030"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/menu_list"
+                android:layout_width="55dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/turnback"
+                tools:layout_editor_absoluteX="83dp"
+                tools:layout_editor_absoluteY="278dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THỐNG KÊ VÉ ĐẶT"
+                android:textColor="#FFFFFF"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="138dp"
+                tools:layout_editor_absoluteY="157dp" />
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/tableLayoutStatis"
+            android:layout_width="413dp"
+            android:layout_height="252dp"
+            android:stretchColumns="1,2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+            <TextView
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Thống kê số lượng vé theo phim"
+                android:background="@drawable/cssitemstatis"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:width="134dp"
+                    android:padding="10dp"
+                    android:text="Tên phim"  android:background="@drawable/cssitemstatis"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_column="2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Số lượng vé đặt"  android:background="@drawable/cssitemstatis"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+            </TableRow>
+
+            <ListView
+                android:id="@+id/listMovieStatis"
+                android:layout_width="359dp"
+                android:layout_height="334dp"
+                >
+            </ListView>
+
+        </TableLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1,2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayoutStatis"
+            >
+            <TextView
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp
+"
+                android:text="Thống kê số lượng vé theo rạp"
+                android:background="@drawable/cssitemstatis"
+                android:textSize="16dp"
+                />
+            <TableRow>
+                <TextView
+                    android:layout_column="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:width="134dp"
+                    android:textStyle="bold"
+                    android:text="Tên rạp"  android:background="@drawable/cssitemstatis"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
+                    android:layout_column="2"
+                    android:gravity="center"
+                    android:padding="10dp" android:background="@drawable/cssitemstatis"
+                    android:text="Số lượng vé đặt"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    />
+            </TableRow>
+            <ListView
+                android:id="@+id/listMovieStatisTheater"
+                android:layout_width="359dp"
+                android:layout_height="334dp"
+                >
+            </ListView>
+
+
+        </TableLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

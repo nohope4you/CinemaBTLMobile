@@ -5,10 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#F4E8FF"
     android:layout_height="match_parent">
+
     <ListView
         android:id="@+id/listViewCoupon"
-        android:layout_width="359dp"
-        android:layout_height="334dp"
+        android:layout_width="398dp"
+        android:layout_height="367dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

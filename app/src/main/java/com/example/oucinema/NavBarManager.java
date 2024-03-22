@@ -17,12 +17,14 @@ public class NavBarManager extends AppCompatActivity {
     // Biến navigationview
     private NavigationView navigationView;
     TextView textName;
+    ImageView ivStatis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_bar);
         navigationView = findViewById(R.id.navigation_view);
+        ivStatis = findViewById(R.id.imageView33);
 
         String user_id = getIntent().getStringExtra("user_id");
         String user_name = getIntent().getStringExtra("user_name");
@@ -39,6 +41,15 @@ public class NavBarManager extends AppCompatActivity {
         } else {
             textName.setText("Errorrrrr");
         }
+
+        ivStatis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NavBarManager.this, Statis.class);
+                intent.putExtra("user_name",user_name);
+                intent.putExtra("user_id",user_id);
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -188,6 +188,7 @@ public class ManageAddFilm extends AppCompatActivity {
                     java.sql.Date date = java.sql.Date.valueOf(etNgayPhatHanh.getText().toString());
                     phim.setNgayPhatHanh(date);
                     phim.setDaoDien(etDaoDien.getText().toString());
+                    phim.setHinhAnh(urlString);
                     phim.setLinkTrailer(etLinkTrailer.getText().toString());
                     String idphim = String.valueOf(itemId);
                     phim.setUserUpdate(Integer.parseInt(user_id));

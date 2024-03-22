@@ -1,10 +1,13 @@
 package com.example.oucinema;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -103,6 +106,43 @@ public class ManageSetFilm extends AppCompatActivity {
                 intentAddSetFilm.putExtra("set_phong",phongID);
                 startActivity(intentAddSetFilm);
 
+            }
+        });
+
+        BottomNavigationView btnavigation = findViewById(R.id.bottomNavigationView);
+        // Bottom Navigtaion View
+        btnavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.nav_manager_Film:
+                        Intent intent = new Intent(ManageSetFilm.this, ManageFilm.class);
+                        intent.putExtra("user_name",user_name);
+                        intent.putExtra("user_id",user_id);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_manager_t:
+                        Intent intent_ticket = new Intent(ManageSetFilm.this, ManageTicket.class);
+                        intent_ticket.putExtra("user_name",user_name);
+                        intent_ticket.putExtra("user_id",user_id);
+                        startActivity(intent_ticket);
+                        break;
+
+                    case R.id.nav_manager_static:
+                        Intent intent_setfilm = new Intent(ManageSetFilm.this, Statis.class);
+                        intent_setfilm.putExtra("user_id",user_id);
+                        intent_setfilm.putExtra("user_name",user_name);
+                        startActivity(intent_setfilm);
+                        break;
+
+                    case R.id.nav_manager_user:
+                        Intent intent_user = new Intent(ManageSetFilm.this, ManageUser.class);
+                        intent_user.putExtra("user_id",user_id);
+                        intent_user.putExtra("user_name",user_name);
+                        startActivity(intent_user);
+
+                }
+                return false;
             }
         });
 
