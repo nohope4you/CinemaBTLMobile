@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.oucinema.model.DanhGia;
 import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.MaGiamGia;
 import com.example.oucinema.model.Phim;
@@ -435,6 +436,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return listFilm;
     }
 
+
     public boolean addFilm(Phim phim) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -658,6 +660,49 @@ public class DBHelper extends SQLiteOpenHelper {
 
             phong.setId(phongID);
             phong.setTenPhong(namePhong);
+            s.setId(id);
+            s.setTenSuat(nameSuat);
+            s.setPhimID(p);
+            s.setPhongID(phong);
+            s.setNgayChieu(ngayChieu);
+            s.setGioChieu(gioChieu);
+            s.setGiaMacDinh(gia);
+
+            listSuat.add(s);
+
+        }
+        cursor.close();
+        database.close();
+        return listSuat;
+    }
+
+    // Hàm cho Suất theo phim
+    public ArrayList<Suat> getSetFilmUser(String filmid , String rapid) {
+        ArrayList<Suat> listSuat = new ArrayList<>();
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Suat.* FROM Suat ,RapPhim, Phong WHERE Suat.isDelete=false AND Suat.phimID = ? AND RapPhim.id = ? AND Phong.rapPhimID = RapPhim.id AND Phong.id = Suat.phongID;", new String[]{filmid,rapid});
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            int phimID = cursor.getInt(5);
+            int phongID = cursor.getInt(6);
+            double gia = cursor.getDouble(4);
+            String nameSuat = cursor.getString(1);
+            String ngaychieu= cursor.getString(2);
+            String giochieu =cursor.getString(3);
+
+            java.sql.Date ngayChieu = java.sql.Date.valueOf(ngaychieu.toString());
+            java.sql.Time gioChieu = java.sql.Time.valueOf(giochieu.toString());
+            SimpleDateFormat sdfh = new SimpleDateFormat("hh:mm:ss");
+            String gioChieuString = sdfh.format(gioChieu);
+            Suat s = new Suat();
+            Phim p = new Phim();
+
+            Phong phong = new Phong();
+//            Log.d("Test", "UserID: " + namePhong);
+            p.setId(phimID);
+            phong.setId(phongID);
             s.setId(id);
             s.setTenSuat(nameSuat);
             s.setPhimID(p);
@@ -1043,4 +1088,54 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
         return listTemp;
     }
+
+    // bình luận đánh giá
+    public boolean addCommentandRate(DanhGia dg) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("danhGia", dg.getDanhGia());
+        cv.put("nguoiDanhGia", dg.getNguoiDanhGia());
+        cv.put("rating", dg.getRating());
+        cv.put("phimID", dg.getPhimID().getId());
+
+        long rate1 = db.insert("DanhGia", null, cv);
+        if (rate1 == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // Hàm cho bình luận đánh giá
+    public ArrayList<DanhGia> getDanhGia(String idPhim) {
+        ArrayList<DanhGia> listDanhGia = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM DanhGia WHERE DanhGia.phimID=?", new String[]{idPhim});
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            String danhGia = cursor.getString(1);
+            String nguoiDanhGia = cursor.getString(2);
+            Double rating = cursor.getDouble(3);
+
+            DanhGia dg = new DanhGia();
+            dg.setId(id);
+            dg.setDanhGia(danhGia);
+            dg.setNguoiDanhGia(nguoiDanhGia);
+            dg.setRating(rating);
+
+            listDanhGia.add(dg);
+        }
+        cursor.close();
+        database.close();
+        return listDanhGia;
+    }
+
+
+
+
 }

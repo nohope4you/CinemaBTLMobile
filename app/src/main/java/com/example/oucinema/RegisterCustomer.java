@@ -73,6 +73,11 @@ public class RegisterCustomer extends AppCompatActivity {
                             dbHelper = new DBHelper(RegisterCustomer.this);
                             boolean b = dbHelper.addUser(u);
                             Toast.makeText(RegisterCustomer.this,"Đăng ký thành công",Toast.LENGTH_LONG).show();
+                            sdtKH.getText().clear();
+                            emailKH.getText().clear();
+                            username.getText().clear();
+                            password.getText().clear();
+                            repassword.getText().clear();
                         }
                     }
                     else{

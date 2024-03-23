@@ -50,6 +50,7 @@ public class UserHome extends AppCompatActivity {
         img[3] = findViewById(R.id.image_film_new_4);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+
         // nơi gọi arraylist và adapter
         ArrayList<Phim> listPhim = dbHelper.getPhim();
         ArrayList<Phim> listimagePhim = dbHelper.getPhimfornewfilmUser();
@@ -66,6 +67,9 @@ public class UserHome extends AppCompatActivity {
         } else {
             userID = "0";
         }
+        String user_name = dbHelper.getUserNAMELogin(userID);
+
+
         // Tự động đổ dữ liệu vào imageView
         for(int i=0;i < 4;i++)
         {
@@ -88,6 +92,7 @@ public class UserHome extends AppCompatActivity {
                     case R.id.nav_user_memories:
                         Intent intent_ticket = new Intent(UserHome.this, UserHistory.class);
                         intent_ticket.putExtra("user_id",userID);
+                        intent_ticket.putExtra("user_name",user_name);
                         startActivity(intent_ticket);
                         break;
 //                    case R.id.nav_user_cart:
@@ -99,6 +104,7 @@ public class UserHome extends AppCompatActivity {
                     case R.id.nav_user_info:
                         Intent intent_setfilm = new Intent(UserHome.this, UserInfo.class);
                         intent_setfilm.putExtra("user_id",userID);
+                        intent_setfilm.putExtra("user_name",user_name);
                         startActivity(intent_setfilm);
                         break;
                 }
@@ -144,6 +150,7 @@ public class UserHome extends AppCompatActivity {
                 Intent intent = new Intent(UserHome.this, UserFilmDetail.class);
                 intent.putExtra("item_hinhAnh",itemHinhAnh);
                 intent.putExtra("user_id",userID);
+                intent.putExtra("user_name",user_name);
                 intent.putExtra("item_id", itemId);
                 intent.putExtra("item_name", itemName);
                 intent.putExtra("item_moTa", itemMoTa);

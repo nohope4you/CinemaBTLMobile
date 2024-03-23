@@ -20,47 +20,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menunavbottom_user" />
 
-    <ImageView
-        android:id="@+id/btnturnbackhome"
-        android:layout_width="35dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/turnback" />
-
 
     <ScrollView
         android:layout_width="410dp"
-        android:layout_height="661dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/turn_back_home"
+                android:layout_width="55dp"
+                android:layout_height="46dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/turnback" />
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:layout_marginLeft="170dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="PHIM"
                 android:textColor="@color/white"
                 android:textSize="30dp"
                 android:textStyle="bold" />
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="410dp"
                 android:layout_height="230dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -68,9 +68,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView10">
 
                 <ImageView
-                    android:id="@+id/imageView21"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/image_filmdetail_user"
+                    android:layout_width="150dp"
+                    android:layout_height="230dp"
                     app:srcCompat="@drawable/hinhphim2" />
 
                 <LinearLayout
@@ -90,15 +90,60 @@
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView15"
+                            android:layout_width="1dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="0.1"
+                            app:srcCompat="@drawable/clock" />
+
+                        <TextView
+                            android:id="@+id/thoiluong"
+                            android:layout_width="60dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center"
+                            android:text="120 phút"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imageView16"
+                            android:layout_width="19dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1"
+                            app:srcCompat="@drawable/lich" />
+
+                        <TextView
+                            android:id="@+id/ngaychieu"
+                            android:layout_width="75dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="center"
+                            android:text="2024-12-30"
+                            android:textColor="@color/white"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
+
                             <TextView
                                 android:id="@+id/textview17"
                                 android:layout_width="100dp"
@@ -109,10 +154,12 @@
                                 android:textColor="@color/white"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
+
                             <TextView
                                 android:id="@+id/txtviewdesciptionfilm"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="20dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text=" nội dung"
@@ -127,76 +174,111 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-            <RatingBar
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/star" />
+
+                <TextView
+                    android:id="@+id/bienrate"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="0.0"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textview40"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:text="/ 5"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:numStars="5"
-                android:rating="4"
-                android:progressTint="#F4E349"
-                />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Rạp phim"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Suất chiếu"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Rạp phim"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Suất chiếu"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <Spinner
                     android:id="@+id/filmdetailtheater"
                     android:layout_width="187dp"
+                    android:layout_height="58dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_height="58dp"
                     android:background="@drawable/csssearchviewuser"
                     android:gravity="center"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/filmdetailsetfilm"
                     android:layout_width="187dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_height="58dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/csssearchviewuser"
                     android:gravity="center"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnxacnhan"
                 android:layout_width="390dp"
                 android:layout_height="58dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:background="@drawable/csssearchviewuser"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="Tiến hành đặt vé" />
+                android:background="@drawable/csssearchviewuser"
+                android:text="Tiến hành đặt vé"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -207,16 +289,18 @@
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Đánh giá"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -224,43 +308,48 @@
                         android:id="@+id/rating"
                         android:layout_width="200dp"
                         android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_weight="1"
-                        android:ems="10"
-                        android:textColor="@color/white"
                         android:background="@drawable/csssearchviewuser"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Bình luận"
                         android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:textColor="@color/white" />
 
                     <Spinner
                         android:id="@+id/ratingstar"
                         android:layout_width="75dp"
-                        android:layout_marginLeft="5dp"
                         android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
                         android:background="@drawable/csssearchviewuser"
                         android:gravity="center"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/btndangrating"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:background="@drawable/csssearchviewuser"
+                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
-                        android:text="Đăng" />
+                        android:background="@drawable/csssearchviewuser"
+                        android:text="Đăng"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
 
                 <ListView
-                    android:layout_marginTop="5dp"
+                    android:id="@+id/listview_user_danhgia"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1" />
 
             </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
