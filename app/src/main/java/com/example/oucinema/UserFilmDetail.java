@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,6 +51,7 @@ public class UserFilmDetail extends AppCompatActivity {
     ListView listviewrate;
     private static final int REQUEST_CODE_PERMISSIONS = 123;
 
+
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -58,16 +62,16 @@ public class UserFilmDetail extends AppCompatActivity {
 
         // nơi gọi id từ các layout
         tenphim = findViewById(R.id.txtviewnamefilm);
-        mota= findViewById(R.id.txtviewdesciptionfilm);
-        ratesao= findViewById(R.id.bienrate);
-        thoiluong= findViewById(R.id.thoiluong);
-        ngayphathanh= findViewById(R.id.ngaychieu);
-        Danhgia= findViewById(R.id.btndangrating);
-        datve= findViewById(R.id.btnxacnhan);
-        ratesosao= findViewById(R.id.ratingstar);
-        rap= findViewById(R.id.filmdetailtheater);
-        suat= findViewById(R.id.filmdetailsetfilm);
-        Binhluan= findViewById(R.id.rating);
+        mota = findViewById(R.id.txtviewdesciptionfilm);
+        ratesao = findViewById(R.id.bienrate);
+        thoiluong = findViewById(R.id.thoiluong);
+        ngayphathanh = findViewById(R.id.ngaychieu);
+        Danhgia = findViewById(R.id.btndangrating);
+        datve = findViewById(R.id.btnxacnhan);
+        ratesosao = findViewById(R.id.ratingstar);
+        rap = findViewById(R.id.filmdetailtheater);
+        suat = findViewById(R.id.filmdetailsetfilm);
+        Binhluan = findViewById(R.id.rating);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         listviewrate = findViewById(R.id.listview_user_danhgia);
         ImageView btnReturn = findViewById(R.id.turn_back_home);
@@ -96,28 +100,37 @@ public class UserFilmDetail extends AppCompatActivity {
 
         // Khai báo array list
         ArrayList<RapPhim> listRap = dbHelper.getRapPhim();
-        SpinnerTheaterAdapter spinnerTheaterAdapter = new SpinnerTheaterAdapter(this,R.layout.item_selected_theater,listRap);
+        SpinnerTheaterAdapter spinnerTheaterAdapter = new SpinnerTheaterAdapter(this, R.layout.item_selected_theater, listRap);
         rap.setAdapter(spinnerTheaterAdapter);
         RapPhim selectedRap = (RapPhim) rap.getSelectedItem();
         int idselectedrap = selectedRap.getId();
 
-        ArrayList<Suat> listsetfilm = dbHelper.getSetFilmUser(String.valueOf(itemId),String.valueOf(idselectedrap));
-        SpinnerSetFilmAdapter spinnerSetFilmAdapter = new SpinnerSetFilmAdapter(this,R.layout.item_selected_setfilm_user,listsetfilm);
+
+        ArrayList<Suat> listsetfilm = dbHelper.getSetFilmUser(String.valueOf(itemId), String.valueOf(idselectedrap));
+        SpinnerSetFilmAdapter spinnerSetFilmAdapter = new SpinnerSetFilmAdapter(this, R.layout.item_selected_setfilm_user, listsetfilm);
         suat.setAdapter(spinnerSetFilmAdapter);
         int idselectedsuat = 0;
-       if(listsetfilm.isEmpty()){
-           suat.setVisibility(View.GONE);
-           Toast.makeText(this, "Không có suất chiếu.", Toast.LENGTH_SHORT).show();
-       }else{
-           suat.setVisibility(View.VISIBLE);
-           Suat selectedSuat = (Suat) suat.getSelectedItem();
-           idselectedsuat= selectedSuat.getId();
-       }
+        if (listsetfilm.isEmpty()) {
+            suat.setVisibility(View.GONE);
+            Toast.makeText(this, "Không có suất chiếu.", Toast.LENGTH_SHORT).show();
+        } else {
+            suat.setVisibility(View.VISIBLE);
+            Suat selectedSuat = (Suat) suat.getSelectedItem();
+            idselectedsuat = selectedSuat.getId();
+        }
 //        Suat selectedSuat = (Suat) suat.getSelectedItem();
 //        int idselectedsuat = selectedSuat.getId();
 
+        Double sao = dbHelper.getSaoDanhGia(String.valueOf(itemId));
+        if (sao != null){
+        ratesao.setText(String.valueOf(sao));}
+        else{
+            ratesao.setText("0.0");
+        }
+
+
         ArrayList<DanhGia> listDanhGia = dbHelper.getDanhGia(String.valueOf(itemId));
-        CommentAdapter commentAdapter = new CommentAdapter(this,R.layout.list_danhgia,listDanhGia);
+        CommentAdapter commentAdapter = new CommentAdapter(this, R.layout.list_danhgia, listDanhGia);
         listviewrate.setAdapter(commentAdapter);
 
         String[] numbers = {"1", "2", "3", "4", "5"};
@@ -127,9 +140,9 @@ public class UserFilmDetail extends AppCompatActivity {
 
 
         // set dữ liệu
-        tenphim.setText("Tên : "+itemName);
+        tenphim.setText("Tên : " + itemName);
         mota.setText(itemMoTa);
-        thoiluong.setText(String.valueOf(itemThoiLuong)+" phút");
+        thoiluong.setText(String.valueOf(itemThoiLuong) + " phút");
         ngayphathanh.setText(itemNgayPhatHanh);
 
         File file = new File(getFilesDir(), itemHinhAnh);
@@ -138,28 +151,67 @@ public class UserFilmDetail extends AppCompatActivity {
         imageView.setImageDrawable(drawable);
 
 
+        // Chọn rạp lấy theo dữ liệu vé
+        rap.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                RapPhim selectedRap = listRap.get(position);
+                int selectedRapId = selectedRap.getId();
+
+                // Thực hiện truy vấn cơ sở dữ liệu trên một luồng mới để tránh chặn giao diện người dùng
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Lấy danh sách suất chiếu từ cơ sở dữ liệu
+                        ArrayList<Suat> listsetfilm1 = dbHelper.getSetFilmUser(String.valueOf(itemId), String.valueOf(selectedRapId));
+                        // Gửi kết quả đến giao diện người dùng trên luồng giao diện chính
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Xử lý trường hợp không có suất chiếu
+                                if (listsetfilm1.isEmpty()) {
+                                    suat.setVisibility(View.GONE);
+                                    Toast.makeText(UserFilmDetail.this, "Không có suất chiếu.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    suat.setVisibility(View.VISIBLE);
+                                    SpinnerSetFilmAdapter spinnerSetFilmAdapter1 = new SpinnerSetFilmAdapter(UserFilmDetail.this, R.layout.item_selected_setfilm_user, listsetfilm1);
+                                    suat.setAdapter(spinnerSetFilmAdapter1);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Xử lý trường hợp không có gì được chọn
+            }
+        });
 
         // Quay về user home
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserFilmDetail.this, UserHome.class);
-                intent.putExtra("user_id",userID);
+                intent.putExtra("user_id", userID);
                 startActivity(intent);
             }
         });
 
         // Tiến hành đặt vé
+        Suat selectedSuat = (Suat) suat.getSelectedItem();
+        idselectedsuat = selectedSuat.getId();
         int finalIdselectedsuat = idselectedsuat;
         datve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserFilmDetail.this,UserProcessOder.class);
+                Intent intent = new Intent(UserFilmDetail.this, UserProcessOder.class);
                 intent.putExtra("rap_id", idselectedrap);
                 intent.putExtra("suat_id", finalIdselectedsuat);
-                intent.putExtra("item_id",itemId);
-                intent.putExtra("user_id",userID);
-                intent.putExtra("user_name",user_name);
+                intent.putExtra("item_id", itemId);
+                intent.putExtra("user_id", userID);
+                intent.putExtra("user_name", user_name);
 
                 startActivity(intent);
             }
@@ -169,7 +221,7 @@ public class UserFilmDetail extends AppCompatActivity {
         Danhgia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     Phim phimSelected = new Phim();
                     phimSelected.setId(itemId);
                     String selectedRatingString = (String) ratesosao.getSelectedItem();
@@ -181,14 +233,20 @@ public class UserFilmDetail extends AppCompatActivity {
                     dg.setNguoiDanhGia(user_name);
                     dg.setRating(selectedRating);
                     dg.setPhimID(phimSelected);
+
                     boolean b = dbHelper.addCommentandRate(dg);
                     if (b) {
                         Toast.makeText(UserFilmDetail.this, "Thêm bình luận thành công", Toast.LENGTH_LONG).show();
+                        ArrayList<DanhGia> listDanhGia = dbHelper.getDanhGia(String.valueOf(itemId));
+                        CommentAdapter commentAdapter = new CommentAdapter(UserFilmDetail.this, R.layout.list_danhgia, listDanhGia);
+                        listviewrate.setAdapter(commentAdapter);
+                        Double sao = dbHelper.getSaoDanhGia(String.valueOf(itemId));
+                        ratesao.setText(String.valueOf(sao));
                     } else {
                         Toast.makeText(UserFilmDetail.this, "Thêm bình luận Thất bại", Toast.LENGTH_LONG).show();
                     }
-                }catch (Exception e){
-                    Log.d("Taeeeeeeeeeeee" , "32"+String.valueOf(e));
+                } catch (Exception e) {
+                    Log.d("Taeeeeeeeeeeee", "32" + String.valueOf(e));
                     Toast.makeText(UserFilmDetail.this, "Có vấn đề trong quá trình bình luận !!!", Toast.LENGTH_LONG).show();
                 }
 
@@ -202,13 +260,13 @@ public class UserFilmDetail extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_user_home:
                         Intent intent = new Intent(UserFilmDetail.this, UserHome.class);
-                        intent.putExtra("user_id",userID);
+                        intent.putExtra("user_id", userID);
                         startActivity(intent);
                         break;
                     case R.id.nav_user_memories:
                         Intent intent_ticket = new Intent(UserFilmDetail.this, UserHistory.class);
-                        intent_ticket.putExtra("user_id",userID);
-                        intent_ticket.putExtra("user_name",user_name);
+                        intent_ticket.putExtra("user_id", userID);
+                        intent_ticket.putExtra("user_name", user_name);
                         startActivity(intent_ticket);
                         break;
 //                    case R.id.nav_user_cart:
@@ -219,8 +277,8 @@ public class UserFilmDetail extends AppCompatActivity {
 //                        break;
                     case R.id.nav_user_info:
                         Intent intent_setfilm = new Intent(UserFilmDetail.this, UserInfo.class);
-                        intent_setfilm.putExtra("user_id",userID);
-                        intent_setfilm.putExtra("user_name",user_name);
+                        intent_setfilm.putExtra("user_id", userID);
+                        intent_setfilm.putExtra("user_name", user_name);
                         startActivity(intent_setfilm);
                         break;
                 }

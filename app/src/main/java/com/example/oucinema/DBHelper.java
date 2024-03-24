@@ -1135,6 +1135,23 @@ public class DBHelper extends SQLiteOpenHelper {
         return listDanhGia;
     }
 
+    // tính sao
+    public Double getSaoDanhGia(String idPhim) {
+
+        Double kq = null;
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT AVG(DanhGia.rating) FROM DanhGia WHERE DanhGia.phimID=?", new String[]{idPhim});
+
+        while (cursor.moveToNext()) {
+            
+            Double rating = cursor.getDouble(0);
+            kq = rating;
+        }
+        cursor.close();
+        database.close();
+        return kq;
+    }
+
 
 
 

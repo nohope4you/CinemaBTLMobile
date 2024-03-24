@@ -32,8 +32,6 @@ public class CommentAdapter extends ArrayAdapter<DanhGia> {
 
     private Context mcontext;
     private int mResource;
-    ArrayList<DanhGia> listDanhGia;
-
 
     public CommentAdapter(@NonNull Context context, int resource, @NonNull ArrayList<DanhGia> objects) {
         super(context, resource, objects);
@@ -57,4 +55,5 @@ public class CommentAdapter extends ArrayAdapter<DanhGia> {
 
         return convertView;
     }
+
 }
