@@ -104,8 +104,17 @@ public class UserFilmDetail extends AppCompatActivity {
         ArrayList<Suat> listsetfilm = dbHelper.getSetFilmUser(String.valueOf(itemId),String.valueOf(idselectedrap));
         SpinnerSetFilmAdapter spinnerSetFilmAdapter = new SpinnerSetFilmAdapter(this,R.layout.item_selected_setfilm_user,listsetfilm);
         suat.setAdapter(spinnerSetFilmAdapter);
-        Suat selectedSuat = (Suat) suat.getSelectedItem();
-        int idselectedsuat = selectedSuat.getId();
+        int idselectedsuat = 0;
+       if(listsetfilm.isEmpty()){
+           suat.setVisibility(View.GONE);
+           Toast.makeText(this, "Không có suất chiếu.", Toast.LENGTH_SHORT).show();
+       }else{
+           suat.setVisibility(View.VISIBLE);
+           Suat selectedSuat = (Suat) suat.getSelectedItem();
+           idselectedsuat= selectedSuat.getId();
+       }
+//        Suat selectedSuat = (Suat) suat.getSelectedItem();
+//        int idselectedsuat = selectedSuat.getId();
 
         ArrayList<DanhGia> listDanhGia = dbHelper.getDanhGia(String.valueOf(itemId));
         CommentAdapter commentAdapter = new CommentAdapter(this,R.layout.list_danhgia,listDanhGia);
@@ -141,12 +150,13 @@ public class UserFilmDetail extends AppCompatActivity {
         });
 
         // Tiến hành đặt vé
+        int finalIdselectedsuat = idselectedsuat;
         datve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserFilmDetail.this,UserProcessOder.class);
                 intent.putExtra("rap_id", idselectedrap);
-                intent.putExtra("suat_id", idselectedsuat);
+                intent.putExtra("suat_id", finalIdselectedsuat);
                 intent.putExtra("item_id",itemId);
                 intent.putExtra("user_id",userID);
                 intent.putExtra("user_name",user_name);

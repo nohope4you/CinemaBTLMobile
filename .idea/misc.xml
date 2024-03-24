@@ -41,9 +41,11 @@
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_room.xml" value="0.2" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_seat.xml" value="0.20854700854700856" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_set.xml" value="0.25416666666666665" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_setfilm_user.xml" value="0.1" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_theater.xml" value="0.20854700854700856" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_selected_user.xml" value="0.253125" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_set.xml" value="0.12360688956433637" />
+        <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_setfilm_user.xml" value="0.1" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_statis.xml" value="0.20854700854700856" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_statis_theater.xml" value="0.25416666666666665" />
         <entry key="..\:/RepoMobile/BTL_Mobile/app/src/main/res/layout/item_theater.xml" value="0.25416666666666665" />

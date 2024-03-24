@@ -42,9 +42,12 @@ public class SpinnerSetFilmAdapter extends ArrayAdapter<Suat> {
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_setfilm_user,parent,false);
         TextView tvNgay =convertView.findViewById(R.id.tv_setfilm_ngaychieu);
+        TextView tvGio = convertView.findViewById(R.id.tv_setfilm_giochieu);
+
         Suat p = this.getItem(position);
         if(p!=null){
             tvNgay.setText(String.valueOf(p.getNgayChieu()));
+            tvGio.setText(String.valueOf(p.getGioChieu()));
         }
         return convertView;
     }

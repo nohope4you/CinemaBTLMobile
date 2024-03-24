@@ -19,8 +19,20 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="TEXT"
-            android:textColor="@color/white"
+            android:textColor="#303030"
             android:textSize="16dp" />
+        <TextView
+            android:id="@+id/tv_setfilm_giochieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="TEXT"
+            android:layout_toRightOf="@id/tv_setfilm_ngaychieu_selected"
+            android:textColor="#303030"
+            android:padding="5dp"
+            />
 
     </LinearLayout>
 
