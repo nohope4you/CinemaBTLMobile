@@ -196,6 +196,7 @@ public class ManageAddTicket extends AppCompatActivity {
                 ve.setGiaTien(gia);
                 ve.setHinhThuc(hinhthuc);
                 ve.setUserID(u);
+                ve.setUserUpdate(Integer.parseInt(user_id));
                 boolean b = dbHelper.updateVe(ve,idd);
                 if(b){
                     Toast.makeText(ManageAddTicket.this,"Sửa vé thành công",Toast.LENGTH_LONG).show();

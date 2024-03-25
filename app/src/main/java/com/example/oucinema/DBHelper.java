@@ -93,6 +93,34 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('B1','Thường',false,1) ");
         sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('C1','Thường',false,1) ");
         sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('D1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('A2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('B2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('C2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('D2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('A3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('B3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('C3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('D3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('A4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('B4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('C4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('D4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('E1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('F1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('G1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('H1','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('E2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('F2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('G2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('H2','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('E3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('F3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('G3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('H3','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('E4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('F4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('G4','Thường',false,1) ");
+        sqLiteDatabase.execSQL("insert into Ghe(tenGhe,loaiGhe,isDelete,userUpdate) values('H4','Thường',false,1) ");
         //Bảng Phòng
         sqLiteDatabase.execSQL("create table Phong (" +
                 "id INTEGER  primary key autoincrement," +
@@ -176,7 +204,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
     }
 
     public boolean addUser(User user) {
@@ -729,7 +756,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SimpleDateFormat sdfh = new SimpleDateFormat("hh:mm:ss");
         String gioChieuString = sdfh.format(suat.getGioChieu());
 
-        cv.put("tenSuat","Testt");
+        cv.put("tenSuat","Suất "+ngayChieuString);
         cv.put("ngayChieu", ngayChieuString);
         cv.put("gioChieu", gioChieuString);
         cv.put("giaMacDinh", suat.getGiaMacDinh());
@@ -1018,7 +1045,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String thoiGianDat = sdf.format(ve.getThoiGianDat());
         cv.put("thoiGianDat",thoiGianDat);
         cv.put("hinhThuc",ve.getHinhThuc());
-        cv.put("isDelete", true);
+        cv.put("isDelete", false);
         cv.put("userUpdate", ve.getUserUpdate());
 
 
@@ -1152,7 +1179,63 @@ public class DBHelper extends SQLiteOpenHelper {
         return kq;
     }
 
+    public Double getTienCuaSuat(String idSuat) {
+
+        Double kq = null;
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Suat.giaMacDinh FROM Suat WHERE Suat.id=?", new String[]{idSuat});
+
+        while (cursor.moveToNext()) {
+
+            Double giatien = cursor.getDouble(0);
+            kq = giatien;
+        }
+        cursor.close();
+        database.close();
+        return kq;
+    }
+
+    // Hàm cho danh sách ghế của vé
+    public ArrayList<Ghe> getGheSuat(String idSuat) {
+        ArrayList<Ghe> listGhe = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Ghe.tenGhe FROM Ve, Ghe WHERE Ve.suatID=? AND Ve.gheID = Ghe.id", new String[]{idSuat});
+
+        while (cursor.moveToNext()) {
+
+            String tenGhe = cursor.getString(0);
+
+            Ghe ghe = new Ghe();
+            ghe.setTenGhe(tenGhe);
+
+            listGhe.add(ghe);
+        }
+        cursor.close();
+        database.close();
+        return listGhe;
+    }
 
 
+    public boolean getVetamthoi(){
+        SQLiteDatabase database = getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("suatID", 7);
+        cv.put("gheID", 8);
+        cv.put("giamGiaID", 1);
+        cv.put("userID", 1);
+        cv.put("giaTien", 45000);
+        cv.put("thoiGianDat", "2024-3-15");
+        cv.put("hinhThuc", "Chuyển khoản");
+        cv.put("isDelete", false);
+        cv.put("userUpdate", 1);
+
+        db.insert("Ve", null, cv);
+
+        return true;
+
+    }
 
 }

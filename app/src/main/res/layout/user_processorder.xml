@@ -570,7 +570,7 @@
 
             <Button
                 android:layout_marginTop="30dp"
-                android:id="@+id/button3"
+                android:id="@+id/btn_tienhanhdat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
