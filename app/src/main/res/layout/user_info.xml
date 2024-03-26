@@ -89,36 +89,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtsdtuser" />
 
-    <RadioButton
-        android:id="@+id/rdbuttonnam"
-        android:layout_width="149dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/cssradiobuttonmanage"
-        android:gravity="center"
-        android:text="Nam"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtemailuser" />
 
-    <RadioButton
-        android:id="@+id/rdbuttonnnu"
-        android:layout_width="149dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/cssradiobuttonmanage"
-        android:checked="true"
-        android:gravity="center"
-        android:text="Nữ"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
+
+    <RadioGroup
+        android:id="@+id/groupGioiTinh"
+        android:layout_width="355dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtemailuser" />
+        app:layout_constraintTop_toBottomOf="@+id/txtemailuser">
+        <RadioButton
+            android:id="@+id/rdbuttonnam"
+            android:layout_width="149dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/cssradiobuttonmanage"
+            android:gravity="center"
+            android:text="Nam"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.118"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <RadioButton
+            android:id="@+id/rdbuttonnnu"
+            android:layout_width="149dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/cssradiobuttonmanage"
+            android:checked="true"
+            android:gravity="center"
+            android:text="Nữ"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.885"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </RadioGroup>
+
 
     <Button
         android:id="@+id/btnupdateuser"
@@ -136,7 +152,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnDangXuat"
         android:layout_width="350dp"
         android:layout_height="61dp"
         android:layout_marginBottom="12dp"
