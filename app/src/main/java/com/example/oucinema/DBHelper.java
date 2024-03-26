@@ -1235,17 +1235,18 @@ public class DBHelper extends SQLiteOpenHelper {
     public MaGiamGia getPhanTramCuaMGG(String s){
         MaGiamGia kq = new MaGiamGia();
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT MaGiamGia.id,MaGiamGia.phanTramGiam,MaGianGia.thoiGiamHieuLuc FROM MaGiamGia WHERE MaGiamGia.tenMaGiam=?", new String[]{s});
+        Cursor cursor = database.rawQuery("SELECT MaGiamGia.id,MaGiamGia.phanTramGiam,MaGiamGia.thoiGianHieuLuc FROM MaGiamGia WHERE MaGiamGia.tenMaGiam=?", new String[]{s});
 
         while (cursor.moveToNext()) {
 
             Integer id = cursor.getInt(0);
             Integer id1 = cursor.getInt(1);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String thoiGianHL = sdf.format(cursor.getString(2));
+            String ngayhieuluc = cursor.getString(2);
+
+            java.sql.Date ngayhlmagiam = java.sql.Date.valueOf(ngayhieuluc.toString());
             kq.setId(id);
             kq.setPhanTramGiam(id1);
-            kq.setThoiGianHieuLuc(Date.valueOf(thoiGianHL));
+            kq.setThoiGianHieuLuc(ngayhlmagiam);
         }
         cursor.close();
         database.close();
