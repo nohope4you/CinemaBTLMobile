@@ -24,6 +24,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBName = "cinema.db";
@@ -735,10 +736,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // Hàm cho Suất theo phim
-    public ArrayList<Suat> getSetFilmUser(String filmid , String rapid) {
+    public ArrayList<Suat> getSetFilmUser(String filmid , String rapid, String date) {
         ArrayList<Suat> listSuat = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT Suat.* FROM Suat ,RapPhim, Phong WHERE Suat.isDelete=false AND Suat.phimID = ? AND RapPhim.id = ? AND Phong.rapPhimID = RapPhim.id AND Phong.id = Suat.phongID;", new String[]{filmid,rapid});
+        Cursor cursor = database.rawQuery("SELECT Suat.* FROM Suat ,RapPhim, Phong WHERE Suat.isDelete=false AND Suat.phimID = ? AND RapPhim.id = ? AND Phong.rapPhimID = RapPhim.id AND Phong.id = Suat.phongID AND Suat.ngayChieu >=?;", new String[]{filmid,rapid,date});
 
         while (cursor.moveToNext()) {
 
@@ -1064,6 +1065,35 @@ public class DBHelper extends SQLiteOpenHelper {
         return listTicket;
     }
 
+    public boolean addVe(Ve ve) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        java.util.Date currentDate = new java.util.Date();
+        // Định dạng ngày thành chuỗi yyyy-MM-dd
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String formattedDate = dateFormat.format(currentDate);
+        System.out.println("Ngày hiện tại: " + formattedDate);
+        String stringDate = formattedDate;
+
+        cv.put("suatID", ve.getSuatID().getId());
+        cv.put("gheID", ve.getGheID().getId());
+        cv.put("giamGiaID", ve.getMaID().getId());
+        cv.put("userID", ve.getUserID().getId());
+        cv.put("giaTien", ve.getGiaTien());
+        cv.put("thoiGianDat", stringDate);
+        cv.put("hinhThuc", ve.getHinhThuc());
+        cv.put("isDelete", false);
+        cv.put("userUpdate", ve.getUserID().getId());
+
+        long mgg1 = db.insert("Ve", null, cv);
+        if (mgg1 == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public boolean updateVe(Ve ve, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -1231,7 +1261,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Ghe> listGhe = new ArrayList<>();
 
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT Ghe.tenGhe FROM Ve, Ghe WHERE Ve.suatID=? AND Ve.gheID = Ghe.id", new String[]{idSuat});
+        Cursor cursor = database.rawQuery("SELECT Ghe.tenGhe FROM Ve, Ghe WHERE Ve.suatID=? AND Ve.gheID = Ghe.id AND Ve.isDelete = 0", new String[]{idSuat});
 
         while (cursor.moveToNext()) {
 

@@ -36,7 +36,10 @@ import com.example.oucinema.model.RapPhim;
 import com.example.oucinema.model.Suat;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class UserFilmDetail extends AppCompatActivity {
@@ -147,8 +150,15 @@ public class UserFilmDetail extends AppCompatActivity {
                 AsyncTask.execute(new Runnable() {
                     @Override
                     public void run() {
+                        // Lấy ngày hiện tại
+                        Date currentDate = new Date();
+                        // Định dạng ngày thành chuỗi yyyy-MM-dd
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                        String formattedDate = dateFormat.format(currentDate);
+                        System.out.println("Ngày hiện tại: " + formattedDate);
+                        String stringDate = formattedDate;
                         // Lấy danh sách suất chiếu từ cơ sở dữ liệu
-                        ArrayList<Suat> listsetfilm1 = dbHelper.getSetFilmUser(String.valueOf(itemId), String.valueOf(selectedRapId));
+                        ArrayList<Suat> listsetfilm1 = dbHelper.getSetFilmUser(String.valueOf(itemId), String.valueOf(selectedRapId),stringDate);
                         // Gửi kết quả đến giao diện người dùng trên luồng giao diện chính
                         runOnUiThread(new Runnable() {
                             @Override
@@ -206,6 +216,7 @@ public class UserFilmDetail extends AppCompatActivity {
                 intent.putExtra("item_thoiLuong", itemThoiLuong);
                 intent.putExtra("item_ngayPhatHanh", itemNgayPhatHanh);
                 intent.putExtra("item_hinhAnh", itemHinhAnh);
+
 
                 startActivity(intent);
             }

@@ -17,8 +17,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.oucinema.model.Ghe;
 import com.example.oucinema.model.MaGiamGia;
 import com.example.oucinema.model.RapPhim;
+import com.example.oucinema.model.Suat;
+import com.example.oucinema.model.User;
+import com.example.oucinema.model.Ve;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -37,7 +41,8 @@ public class UserPayment extends AppCompatActivity {
     Double TienGiam, KqSauKhiGiam;
     Date TGHL;
     ImageView btnReturn;
-    private BottomNavigationView bottomNavigationView;
+    int suatid,soGhe;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +70,8 @@ public class UserPayment extends AppCompatActivity {
         } else {
             userID = "0";
         }
-        int suatid = getIntent().getIntExtra("suat_id",-1);
+        suatid = getIntent().getIntExtra("suat_id",-1);
+        soGhe = getIntent().getIntExtra("so_ghe",-1);
         String totalMoney= getIntent().getStringExtra("tongtien");
         tongtien.setText(totalMoney);
         String A1 = getIntent().getStringExtra("A1");
@@ -117,10 +123,11 @@ public class UserPayment extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         phuongthucthanhtoan.setAdapter(adapter);
 
-        // nút xác nhận
+        // nút kiểm tra
         kiemtramgg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try{
                 MaGiamGia mggs = new MaGiamGia();
                 String codept= etMGG.getText().toString();
                 mggs = dbHelper.getPhanTramCuaMGG(codept);
@@ -136,17 +143,160 @@ public class UserPayment extends AppCompatActivity {
                         TienGiam = Double.valueOf(tongtien.getText().toString()) * phanTram /100;
                         KqSauKhiGiam = Double.valueOf(tongtien.getText().toString()) - TienGiam;
                         tongtien.setText(String.valueOf(KqSauKhiGiam));
+                        kiemtramgg.setEnabled(false);
+                        Toast.makeText(UserPayment.this,"Áp dụng mã giảm thành công !!!",Toast.LENGTH_LONG).show();
                     }
                     else{
-                        Toast.makeText(UserPayment.this,"Mã giảm giá đã hết hiệu lực",Toast.LENGTH_LONG).show();
+                        Toast.makeText(UserPayment.this,"Mã giảm giá đã hết hiệu lực !!!",Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
-                    Toast.makeText(UserPayment.this,"Mã giảm giá không hợp lệ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserPayment.this,"Mã giảm giá không hợp lệ !!!",Toast.LENGTH_LONG).show();
+                }
+            }catch (Exception exception){
+                    Toast.makeText(UserPayment.this,"Mã không tồn tại !!!",Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+        // nút xác nhận
+        thanhtoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                        if(A1 != null)
+                        {
+                            dat(A1);
+                        }
+                        if(A2 != null)
+                        {
+                            dat(A2);
+                        }
+                        if(A3 != null)
+                        {
+                         dat(A3);
+                        }
+                        if(A4 != null) {
+                            dat(A4);
+                        }
+                        if(B1 != null)
+                        {
+                            dat(B1);
+                            }
+                        if(B2 != null)
+                        {
+                            dat(B2);
+                        }
+                        if(B3 != null)
+                        {
+                            dat(B3);
+                        }
+                        if(B4 != null)
+                        {
+                            dat(B4);
+                        }
+                        if(C1 != null)
+                        {
+                            dat(C1);
+                        }
+                        if(C2 != null)
+                        {
+                            dat(C2);
+                        }
+                        if(C3 != null)
+                        {
+                            dat(C3);
+                        }
+                        if(C4 != null)
+                        {
+                            dat(C4);
+                        }
+                        if(D1 != null)
+                        {
+                            dat(D1);
+                        }
+                        if(D2 != null)
+                        {
+                            dat(D2);
+                        }
+                        if(D3 != null)
+                        {
+                            dat(D3);
+                        }
+                        if(D4 != null)
+                        {
+                            dat(D4);
+                        }
+                        if(E1 != null)
+                        {
+                            dat(E1);
+                        }
+                        if(E2 != null) {
+                            dat(E2);
+                        }
+                        if(E3 != null)
+                        {
+                            dat(E3);
+                        }
+                        if(E4 != null)
+                        {
+                            dat(E4);
+                        }
+                        if(F1 != null)
+                        {
+                            dat(F1);
+                        }
+                        if(F2!= null)
+                        {
+                            dat(F2);
+                        }
+                        if(F3!= null)
+                        {
+                            dat(F3);
+                        }
+                        if(F4!= null)
+                        {
+                            dat(F4);
+                        }
+                        if(G1!= null)
+                        {
+                            dat(G1);
+                        }
+                        if(G2!= null)
+                        {
+                            dat(G2);
+                        }
+                        if(G3!= null)
+                        {
+                            dat(G3);
+                        }
+                        if(G4!= null)
+                        {
+                            dat(G4);
+                        }
+                        if(H1!= null)
+                        {
+                            dat(H1);
+                        }
+                        if(H2!= null)
+                        {
+                            dat(H2);
+                        }
+                        if(H3!= null)
+                        {
+                            dat(H3);
+                        }
+                        if(H4!= null)
+                        {
+                            dat(H4);
+                        }
+
+                }
+                catch (Exception ex){
+                    Toast.makeText(UserPayment.this,ex.toString(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         // quay lại trang home
         btnReturn.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +344,41 @@ public class UserPayment extends AppCompatActivity {
         });
 
 
+    }
+    public void dat(String s){
+        Double tien1ghe = Double.parseDouble(tongtien.getText().toString()) / soGhe;
+        Integer idghe = dbHelper.getIDGhe(s);
+        if (idMGG == null || idMGG == 0){
+            idMGG = 1;
+        }
+        Suat suat = new Suat();
+        suat.setId(suatid);
+        Ghe ghe = new Ghe();
+        ghe.setId(idghe);
+        MaGiamGia mgg = new MaGiamGia();
+        mgg.setId(idMGG);
+        User user = new User();
+        user.setId(Integer.parseInt(userID));
+        Ve ve = new Ve();
+        ve.setSuatID(suat);
+        ve.setGheID(ghe);
+        ve.setMaID(mgg);
+        ve.setUserID(user);
+        ve.setGiaTien(tien1ghe);
+        ve.setHinhThuc(String.valueOf(phuongthucthanhtoan.getSelectedItem()));
+        ve.setUserUpdate(Integer.parseInt(userID));
+
+        boolean b = dbHelper.addVe(ve);
+        if(b){
+            Toast.makeText(UserPayment.this,"Mua vé thành công",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(UserPayment.this, ManageCoupon.class);
+            intent.putExtra("user_id",userID);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(UserPayment.this,"Mua vé thất bại",Toast.LENGTH_LONG).show();
+        }
     }
 
 }
