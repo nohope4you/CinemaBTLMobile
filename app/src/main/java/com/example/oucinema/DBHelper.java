@@ -1065,6 +1065,63 @@ public class DBHelper extends SQLiteOpenHelper {
         return listTicket;
     }
 
+    // Hàm cho Vé - Lịch sử User
+    public ArrayList<Ve> getTicketHistoryUser(String idu) {
+        ArrayList<Ve> listTicket = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Ve.*,Suat.ngayChieu,Ghe.tenGhe,User.hoTen,MaGiamGia.tenMaGiam,Phim.tenPhim FROM Ve,Suat,Ghe,User,MaGiamGia,Phim " +
+                "WHERE Ve.suatID = Suat.id AND Ve.gheID=Ghe.id AND Ve.userID = User.id AND Ve.giamGiaID=MaGiamGia.id AND Ve.isDelete=false AND Phim.id = Suat.phimID AND Ve.userID = ?", new String[]{idu});
+
+        while (cursor.moveToNext()) {
+            User u = new User();
+            Ghe ghe = new Ghe();
+            Suat suat = new Suat();
+            MaGiamGia m = new MaGiamGia();
+            Ve ve = new Ve();
+
+            int id = cursor.getInt(0);
+            String hoten = cursor.getString(12);
+            String tenGhe = cursor.getString(11);
+            Double giatien = cursor.getDouble(5);
+            String ngaychieu = cursor.getString(10);
+            String tenphim = cursor.getString(14);
+
+            java.sql.Date ngayChieu = java.sql.Date.valueOf(ngaychieu.toString());
+            String ngaydat = cursor.getString(6);
+            java.sql.Date ngayDat = java.sql.Date.valueOf(ngaydat.toString());
+            String hinhThuc = cursor.getString(7);
+            int idMa = cursor.getInt(3);
+            int gheID = cursor.getInt(2);
+            int suatID = cursor.getInt(1);
+            int userID = cursor.getInt(4);
+            u.setHoTen(hoten);
+            u.setId(userID);
+
+            ghe.setTenGhe(tenGhe);
+            ghe.setId(gheID);
+
+            suat.setNgayChieu(ngayChieu);
+            suat.setId(suatID);
+
+            m.setId(idMa);
+
+            ve.setId(id);
+            ve.setGheID(ghe);
+            ve.setUserID(u);
+            ve.setSuatID(suat);
+            ve.setMaID(m);
+
+            ve.setGiaTien(giatien);
+            ve.setHinhThuc(hinhThuc);
+            ve.setThoiGianDat(ngayDat);
+            listTicket.add(ve);
+        }
+        cursor.close();
+        database.close();
+        return listTicket;
+    }
+
     public boolean addVe(Ve ve) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

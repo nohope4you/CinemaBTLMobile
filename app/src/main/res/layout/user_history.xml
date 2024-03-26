@@ -8,7 +8,7 @@
     android:background="#303030">
 
     <android.support.v7.widget.SearchView
-        android:id="@+id/manage_search_film"
+        android:id="@+id/manage_search_film_history"
         android:layout_width="359dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/listview_user_history"
         android:layout_width="361dp"
         android:layout_height="376dp"
         android:layout_marginBottom="16dp"
@@ -50,6 +51,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manage_search_film" />
+        app:layout_constraintTop_toBottomOf="@+id/manage_search_film_history" />
 
 </android.support.constraint.ConstraintLayout>

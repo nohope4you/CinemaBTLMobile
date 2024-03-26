@@ -315,9 +315,11 @@ public class UserPayment extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_user_home:
-                        Intent intent = new Intent(UserPayment.this, UserHome.class);
-                        intent.putExtra("user_id", userID);
-                        startActivity(intent);
+//                        Intent intent = new Intent(UserPayment.this, UserHome.class);
+//                        intent.putExtra("user_id", userID);
+//                        startActivity(intent);
+                        Double tien1ghe = Double.parseDouble(tongtien.getText().toString()) / soGhe;
+                        tongtien.setText(String.valueOf(tien1ghe));
                         break;
                     case R.id.nav_user_memories:
                         Intent intent_ticket = new Intent(UserPayment.this, UserHistory.class);
@@ -371,7 +373,7 @@ public class UserPayment extends AppCompatActivity {
         boolean b = dbHelper.addVe(ve);
         if(b){
             Toast.makeText(UserPayment.this,"Mua vé thành công",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(UserPayment.this, ManageCoupon.class);
+            Intent intent = new Intent(UserPayment.this, UserHome.class);
             intent.putExtra("user_id",userID);
             startActivity(intent);
         }
