@@ -1216,6 +1216,42 @@ public class DBHelper extends SQLiteOpenHelper {
         return listGhe;
     }
 
+    // lấy mã ghế
+    public Integer getIDGhe(String s){
+        Integer kq = null;
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Ghe.id FROM Ghe WHERE Ghe.tenGhe=?", new String[]{s});
+
+        while (cursor.moveToNext()) {
+
+            Integer id = cursor.getInt(0);
+            kq = id;
+        }
+        cursor.close();
+        database.close();
+        return kq;
+    }
+
+    public MaGiamGia getPhanTramCuaMGG(String s){
+        MaGiamGia kq = new MaGiamGia();
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT MaGiamGia.id,MaGiamGia.phanTramGiam,MaGianGia.thoiGiamHieuLuc FROM MaGiamGia WHERE MaGiamGia.tenMaGiam=?", new String[]{s});
+
+        while (cursor.moveToNext()) {
+
+            Integer id = cursor.getInt(0);
+            Integer id1 = cursor.getInt(1);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String thoiGianHL = sdf.format(cursor.getString(2));
+            kq.setId(id);
+            kq.setPhanTramGiam(id1);
+            kq.setThoiGianHieuLuc(Date.valueOf(thoiGianHL));
+        }
+        cursor.close();
+        database.close();
+        return kq;
+    }
+
 
     public boolean getVetamthoi(){
         SQLiteDatabase database = getReadableDatabase();
@@ -1237,5 +1273,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
 
     }
+
+
 
 }

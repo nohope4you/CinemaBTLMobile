@@ -34,6 +34,7 @@ public class UserProcessOder extends AppCompatActivity {
 
     DBHelper dbHelper;
     private Double tiensuat;
+    private String tongTienn;
     String userID,user_name;
     TextView soGhe,tongTien;
     Button Xacnhan;
@@ -1021,16 +1022,13 @@ public class UserProcessOder extends AppCompatActivity {
         Xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tongTienn=tongTien.getText().toString();
                 Intent intent = new Intent(UserProcessOder.this, UserPayment.class);
-                intent.putExtra("item_id", itemId);
+                intent.putExtra("tongtien",tongTienn);
                 intent.putExtra("user_id", userID);
                 intent.putExtra("user_name", user_name);
-                intent.putExtra("item_name", itemName);
-                intent.putExtra("item_moTa", itemMoTa);
-                intent.putExtra("item_thoiLuong", itemThoiLuong);
-                intent.putExtra("item_ngayPhatHanh", itemNgayPhatHanh);
-                intent.putExtra("item_hinhAnh", itemHinhAnh);
 
+                intent.putExtra("suat_id", suatid);
                 if(A1.isChecked() && A1.isEnabled())
                 {
                     intent.putExtra("A1", "A1");
@@ -1164,11 +1162,14 @@ public class UserProcessOder extends AppCompatActivity {
             }
         });
 
+
         // quay lại trang chi tiết
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserProcessOder.this, UserFilmDetail.class);
+
+
                 intent.putExtra("item_id", itemId);
                 intent.putExtra("user_id", userID);
                 intent.putExtra("user_name", user_name);
@@ -1177,7 +1178,6 @@ public class UserProcessOder extends AppCompatActivity {
                 intent.putExtra("item_thoiLuong", itemThoiLuong);
                 intent.putExtra("item_ngayPhatHanh", itemNgayPhatHanh);
                 intent.putExtra("item_hinhAnh", itemHinhAnh);
-
                 startActivity(intent);
             }
         });
