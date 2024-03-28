@@ -93,10 +93,10 @@ public class UserHistory extends AppCompatActivity {
 
                 // Khởi động trang khác với dữ liệu
                 Intent intent = new Intent(UserHistory.this, UserHistoryDetail.class);
-                intent.putExtra("item_hinhAnh",itemHinhAnh);
                 intent.putExtra("user_id", userID);
                 intent.putExtra("user_name", user_name);
                 intent.putExtra("user_tenphim",itemTenPhim);
+                intent.putExtra("item_hinhAnh",itemHinhAnh);
                 intent.putExtra("item_id", itemId);
                 intent.putExtra("item_tenghe", itemGhe);
                 intent.putExtra("item_tenrap", itemRap);

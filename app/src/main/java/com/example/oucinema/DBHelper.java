@@ -1105,14 +1105,21 @@ public class DBHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             Ghe ghe = new Ghe();
             Ve ve = new Ve();
+            int idVe = cursor.getInt(0);
+            ve.setId(idVe);
             String tenGhe = cursor.getString(11);
             String ngaychieu = cursor.getString(10);
+            Suat suat = new Suat();
+            suat.setId(cursor.getInt(1));
 
             java.sql.Date ngayChieu = java.sql.Date.valueOf(ngaychieu.toString());
             int gheID = cursor.getInt(2);
+
             ghe.setTenGhe(tenGhe);
             ghe.setId(gheID);
+            ve.setSuatID(suat);
             ve.setThoiGianDat(ngayChieu);
+
 
             ve.setGheID(ghe);
             listTicket.add(ve);
@@ -1127,8 +1134,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Ve> listTicket = new ArrayList<>();
 
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT Ve.*,Suat.ngayChieu,Ghe.tenGhe,User.hoTen,MaGiamGia.tenMaGiam,Phim.tenPhim FROM Ve,Suat,Ghe,User,MaGiamGia,Phim " +
-                "WHERE Ve.suatID = Suat.id AND Ve.gheID=Ghe.id AND Ve.userID = User.id AND Ve.giamGiaID=MaGiamGia.id AND Ve.isDelete=false AND Phim.id = Suat.phimID AND Ve.userID = ?", new String[]{idu});
+        Cursor cursor = database.rawQuery("SELECT Ve.*,Suat.ngayChieu,Ghe.tenGhe,User.hoTen,MaGiamGia.tenMaGiam,Phim.tenPhim,Phim.hinhAnh,RapPhim.tenRap,Phong.tenPhong,Suat.gioChieu FROM Ve,Suat,Ghe,User,MaGiamGia,Phim,RapPhim,Phong WHERE Ve.suatID = Suat.id  AND Ve.gheID=Ghe.id AND Ve.userID = User.id  AND Ve.giamGiaID=MaGiamGia.id  AND Ve.isDelete=false  AND Phim.id = Suat.phimID AND Ve.userID = ? AND Suat.phongID=Phong.id AND Phong.rapPhimID = RapPhim.id", new String[]{idu});
 
         while (cursor.moveToNext()) {
             User u = new User();
@@ -1136,6 +1142,10 @@ public class DBHelper extends SQLiteOpenHelper {
             Suat suat = new Suat();
             MaGiamGia m = new MaGiamGia();
             Ve ve = new Ve();
+            Phim phim = new Phim();
+            Phong phong = new Phong();
+            RapPhim rap = new RapPhim();
+
 
             int id = cursor.getInt(0);
             String hoten = cursor.getString(12);
@@ -1143,11 +1153,20 @@ public class DBHelper extends SQLiteOpenHelper {
             Double giatien = cursor.getDouble(5);
             String ngaychieu = cursor.getString(10);
             String tenphim = cursor.getString(14);
-
+            String hinhAnh = cursor.getString(15);
+            String tenRap = cursor.getString(16);
+            String tenPhong = cursor.getString(17);
+            String gioChieu = cursor.getString(18);
             java.sql.Date ngayChieu = java.sql.Date.valueOf(ngaychieu.toString());
+
             String ngaydat = cursor.getString(6);
             java.sql.Date ngayDat = java.sql.Date.valueOf(ngaydat.toString());
+
             String hinhThuc = cursor.getString(7);
+
+            java.sql.Time giochieu = java.sql.Time.valueOf(gioChieu.toString());
+
+
             int idMa = cursor.getInt(3);
             int gheID = cursor.getInt(2);
             int suatID = cursor.getInt(1);
@@ -1155,12 +1174,22 @@ public class DBHelper extends SQLiteOpenHelper {
             u.setHoTen(hoten);
             u.setId(userID);
 
+            phong.setTenPhong(tenPhong);
+            rap.setTenRap(tenRap);
+            phong.setRapPhimID(rap);
+
             ghe.setTenGhe(tenGhe);
             ghe.setId(gheID);
 
             suat.setNgayChieu(ngayChieu);
+            suat.setGioChieu(giochieu);
             suat.setId(suatID);
 
+            phim.setHinhAnh(hinhAnh);
+            phim.setTenPhim(tenphim);
+
+            suat.setPhongID(phong);
+            suat.setPhimID(phim);
             m.setId(idMa);
 
             ve.setId(id);
@@ -1168,6 +1197,7 @@ public class DBHelper extends SQLiteOpenHelper {
             ve.setUserID(u);
             ve.setSuatID(suat);
             ve.setMaID(m);
+
 
             ve.setGiaTien(giatien);
             ve.setHinhThuc(hinhThuc);

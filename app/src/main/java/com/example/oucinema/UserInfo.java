@@ -71,6 +71,16 @@ public class UserInfo extends AppCompatActivity {
                 rdNu.setChecked(true);
             }
         }
+        //Button đăng xuất
+        btnDangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_main = new Intent(UserInfo.this, MainActivity.class);
+                intent_main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent_main);
+                finish();
+            }
+        });
         //Button Xác nhận
         btnXacCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override

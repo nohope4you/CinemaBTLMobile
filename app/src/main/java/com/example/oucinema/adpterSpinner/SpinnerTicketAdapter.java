@@ -34,7 +34,7 @@ DBHelper dbHelper;
         Ve p = this.getItem(position);
         if(p!=null){
 
-            tvFilmSelected.setText(dbHelper.getNgayChieuBySuatId(String.valueOf(p.getSuatID())));
+            tvFilmSelected.setText(String.valueOf(dbHelper.getNgayChieuBySuatId(String.valueOf(p.getSuatID().getId()))));
             tvghe.setText(p.getGheID().getTenGhe());
         }
         return convertView;
@@ -42,12 +42,13 @@ DBHelper dbHelper;
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_theater,parent,false);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ve,parent,false);
         TextView tvFilm =convertView.findViewById(R.id.tv_ve_ngaychieu);
         TextView tvghe =convertView.findViewById(R.id.tv_ve_ghe);
         Ve p = this.getItem(position);
         if(p!=null){
-            tvFilm.setText(dbHelper.getNgayChieuBySuatId(String.valueOf(p.getSuatID())));
+            tvFilm.setText(String.valueOf(dbHelper.getNgayChieuBySuatId(String.valueOf(p.getSuatID().getId()))));
+//            tvFilm.setText(dbHelper.getNgayChieuBySuatId(String.valueOf(p.getId())));
             tvghe.setText(p.getGheID().getTenGhe());
         }
         return convertView;

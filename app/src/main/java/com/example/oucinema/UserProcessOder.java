@@ -35,6 +35,7 @@ public class UserProcessOder extends AppCompatActivity {
     DBHelper dbHelper;
     private Double tiensuat;
     private String tongTienn;
+//    ImageView imgReturn;
     String userID,user_name;
     TextView soGhe,tongTien;
     Button Xacnhan;
@@ -51,6 +52,17 @@ public class UserProcessOder extends AppCompatActivity {
         setContentView(R.layout.user_processorder);
 
         dbHelper = new DBHelper(UserProcessOder.this);
+
+//        imgReturn = findViewById(R.id.imageView22);
+//        Intent intent = new Intent(this, UserHome.class);
+//        imgReturn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                intent.putExtra("user_id",userID);
+//                intent.putExtra("user_name",user_name);
+//                startActivity(intent);
+//            }
+//        });
 
 //        dbHelper.getVetamthoi();
         // nơi gọi id từ các layout
