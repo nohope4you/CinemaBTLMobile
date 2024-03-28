@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.support.v7.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.oucinema.adapter.FilmAdapter;
 import com.example.oucinema.adapter.UserHistory_Adapter;
@@ -70,6 +71,34 @@ public class UserHistory extends AppCompatActivity {
 
         UserHistory_Adapter filmAdapter = new UserHistory_Adapter(this,R.layout.list_historyuser,listve);
         listViewDatVe.setAdapter(filmAdapter);
+        //Button Huỷ
+        Huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ve selectedVe = (Ve) chooseVe.getSelectedItem();
+                int idVe = selectedVe.getId();
+                String idd = String.valueOf(idVe);
+                selectedVe.setUserUpdate(Integer.parseInt(userID));
+                Log.d("test id vé","ID Ve: "+String.valueOf(idVe));
+                boolean b = dbHelper.deleteVe(selectedVe,idd);
+                if(b){
+                    // Khai báo array list
+                    ArrayList<Ve> listvespinner = dbHelper.getTicketForUser(String.valueOf(userID));
+                    SpinnerTicketAdapter SpinnerTicketAdapters= new SpinnerTicketAdapter(UserHistory.this, R.layout.item_selected_ve, listvespinner);
+                    chooseVe.setAdapter(SpinnerTicketAdapters);
+
+                    listViewDatVe = findViewById(R.id.listview_user_history);
+                    ArrayList<Ve> listve = dbHelper.getTicketHistoryUser(String.valueOf(userID));
+
+                    UserHistory_Adapter filmAdapter = new UserHistory_Adapter(UserHistory.this,R.layout.list_historyuser,listve);
+                    listViewDatVe.setAdapter(filmAdapter);
+                    Toast.makeText(UserHistory.this, "Huỷ vé thành công", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(UserHistory.this, "Huỷ vé thất bại", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
         // Lấy dữ liệu chuyển trang

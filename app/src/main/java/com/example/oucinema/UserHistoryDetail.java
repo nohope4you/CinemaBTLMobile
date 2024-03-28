@@ -28,7 +28,7 @@ public class UserHistoryDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_history_detail);
         dbHelper = new DBHelper(UserHistoryDetail.this);
-
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("user_id")) {
             String userId = bundle.getString("user_id");
@@ -42,7 +42,7 @@ public class UserHistoryDetail extends AppCompatActivity {
         // Lấy biến intent
         String user_tenphim = getIntent().getStringExtra("user_tenphim");
         String item_hinhAnh = getIntent().getStringExtra("item_hinhAnh");
-        String item_id = getIntent().getStringExtra("item_id");
+//        String item_id = getIntent().getStringExtra("item_id");
         String item_tenghe = getIntent().getStringExtra("item_tenghe");
         String item_tenrap = getIntent().getStringExtra("item_tenrap");
         String item_tenphong = getIntent().getStringExtra("item_tenphong");
