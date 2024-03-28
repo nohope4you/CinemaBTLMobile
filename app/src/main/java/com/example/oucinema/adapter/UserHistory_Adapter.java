@@ -18,6 +18,7 @@ import com.example.oucinema.DBHelper;
 import com.example.oucinema.ManageFilm;
 import com.example.oucinema.R;
 import com.example.oucinema.model.Phim;
+import com.example.oucinema.model.Suat;
 import com.example.oucinema.model.Ve;
 
 
@@ -35,6 +36,7 @@ public class UserHistory_Adapter extends ArrayAdapter<Ve> {
     private Context mcontext;
     private int mResource;
     ArrayList<Ve> listPhim;
+    String tenPhim;
 
 
     public UserHistory_Adapter(@NonNull Context context, int resource, @NonNull ArrayList<Ve> objects) {
@@ -56,14 +58,17 @@ public class UserHistory_Adapter extends ArrayAdapter<Ve> {
         TextView tvGhe = convertView.findViewById(R.id.textGheFilmUser);
         TextView tvTien = convertView.findViewById(R.id.textTienFilmUser);
 
-        tvTenPhim.setText(getItem(position).getSuatID().getPhimID().getTenPhim());
-        tvNgayDat.setText(String.valueOf(getItem(position).getThoiGianDat()));
-        tvGhe.setText(String.valueOf(getItem(position).getGheID().getTenGhe()));
-        tvTien.setText(String.valueOf(getItem(position).getGiaTien()));
+        Ve ve = getItem(position);
+        tenPhim = dbHelper.getTenPhimBySuatId(String.valueOf(ve.getSuatID().getId()));
+            tvTenPhim.setText(tenPhim);
+            tvNgayDat.setText(String.valueOf(ve.getThoiGianDat()));
+            tvGhe.setText(String.valueOf(ve.getGheID().getTenGhe()));
+            tvTien.setText(String.valueOf(ve.getGiaTien()));
 
 
         return convertView;
     }
+
     @Override
     public Filter getFilter() {
         return new Filter() {

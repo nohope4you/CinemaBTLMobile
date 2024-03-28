@@ -67,10 +67,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 "linkTrailer TEXT NOT NULL," +
                 "isDelete BOOLEAN," +
                 "userUpdate INTEGER);");
-        sqLiteDatabase.execSQL("insert into Phim(tenPhim,moTa,theLoai,thoiLuong,ngayPhatHanh,daoDien,hinhAnh,linkTrailer,isDelete,userUpdate) " +
-                "                         values('Mai','Phim về Mai và Sâu','Tình cảm',120,'2024-3-13','Trấn Thành','hinhanh','linktrailer',false,1) ");
-        sqLiteDatabase.execSQL("insert into Phim(tenPhim,moTa,theLoai,thoiLuong,ngayPhatHanh,daoDien,hinhAnh,linkTrailer,isDelete,userUpdate) " +
-                "                         values('Harry Potter','Phim về Harry','Siêu nhiên',120,'2024-3-13','Trấn Thành','hinhanh','linktrailer',false,1) ");
+//        sqLiteDatabase.execSQL("insert into Phim(tenPhim,moTa,theLoai,thoiLuong,ngayPhatHanh,daoDien,hinhAnh,linkTrailer,isDelete,userUpdate) " +
+//                "                         values('Mai','Phim về Mai và Sâu','Tình cảm',120,'2024-3-13','Trấn Thành','hinhanh','linktrailer',false,1) ");
+//        sqLiteDatabase.execSQL("insert into Phim(tenPhim,moTa,theLoai,thoiLuong,ngayPhatHanh,daoDien,hinhAnh,linkTrailer,isDelete,userUpdate) " +
+//                "                         values('Harry Potter','Phim về Harry','Siêu nhiên',120,'2024-3-13','Trấn Thành','hinhanh','linktrailer',false,1) ");
         //Bảng Rạp Phim
         sqLiteDatabase.execSQL("create table RapPhim(" +
                 "id INTEGER primary key autoincrement," +
@@ -148,9 +148,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "foreign key (phimID) references Phim(id)," +
                 "foreign key (phongID) references Phong(id)" +
                 ");");
-        sqLiteDatabase.execSQL("insert into Suat(tenSuat,ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('Suất 1','2024-3-14','14:30:00',45000,1,1,false,1) ");
-        sqLiteDatabase.execSQL("insert into Suat(tenSuat,ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('Suất 2','2024-3-14','15:30:00',45000,1,2,false,1) ");
-        sqLiteDatabase.execSQL("insert into Suat(tenSuat,ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('Suất 3','2024-3-14','15:30:00',45000,2,2,false,1) ");
+//        sqLiteDatabase.execSQL("insert into Suat(tenSuat,ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('Suất 1','2024-3-14','14:30:00',45000,1,1,false,1) ");
+//        sqLiteDatabase.execSQL("insert into Suat(tenSuat,ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('Suất 2','2024-3-14','15:30:00',45000,1,2,false,1) ");
+//        sqLiteDatabase.execSQL("insert into Suat(tenSuat,ngayChieu,gioChieu,giaMacDinh,phimID,phongID,isDelete,userUpdate) values('Suất 3','2024-3-14','15:30:00',45000,2,2,false,1) ");
         //Bảng Mã giảm giá
         sqLiteDatabase.execSQL("create table MaGiamGia (" +
                 "id INTEGER primary key autoincrement," +
@@ -160,7 +160,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "isDelete BOOLEAN," +
                 "userUpdate INTEGER" +
                 ");");
-        sqLiteDatabase.execSQL("insert into MaGiamGia(tenMaGiam,phanTramGiam,thoiGianHieuLuc,isDelete,userUpdate)values ('Admin',30,'2024-12-24',false,1)");
+        sqLiteDatabase.execSQL("insert into MaGiamGia(tenMaGiam,phanTramGiam,thoiGianHieuLuc,isDelete,userUpdate)values ('Admin',0,'2024-12-24',false,1)");
         //Bảng Vé
         sqLiteDatabase.execSQL("create table Ve(" +
                 "id INTEGER  primary key autoincrement," +
@@ -179,8 +179,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "foreign key (userID) references User(id)" +
                 ");");
 
-        sqLiteDatabase.execSQL("insert into Ve(suatID,gheID,giamGiaID,userID,giaTien,thoiGianDat,hinhThuc,isDelete,userUpdate)" +
-                "values (2,4,1,2,45000,'2024-3-15','Chuyển khoản',false,2)");
+//        sqLiteDatabase.execSQL("insert into Ve(suatID,gheID,giamGiaID,userID,giaTien,thoiGianDat,hinhThuc,isDelete,userUpdate)" +
+//                "values (2,4,1,2,45000,'2024-3-15','Chuyển khoản',false,2)");
 
         //Bảng đánh giá
         sqLiteDatabase.execSQL("create table DanhGia(" +
@@ -457,6 +457,36 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return listFilm;
+    }
+
+    // Hàm cho Phim
+    public String getTenPhimBySuatId( String idSuat) {
+        String t=null;
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT tenPhim FROM Phim,Suat WHERE Phim.isDelete=false AND Phim.id = Suat.phimID AND Suat.id =?", new String[]{idSuat});
+
+        while (cursor.moveToNext()) {
+            t = cursor.getString(0);
+        }
+        cursor.close();
+        database.close();
+        return t;
+    }
+
+    // Hàm cho Phim
+    public String getNgayChieuBySuatId( String idSuat) {
+        String t=null;
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT ngayChieu FROM Suat WHERE Suat.id =?", new String[]{idSuat});
+
+        while (cursor.moveToNext()) {
+            t = cursor.getString(0);
+        }
+        cursor.close();
+        database.close();
+        return t;
     }
 
     // Hàm cho user lấy 4 phim mới nhất
@@ -1058,6 +1088,33 @@ public class DBHelper extends SQLiteOpenHelper {
             ve.setGiaTien(giatien);
             ve.setHinhThuc(hinhThuc);
             ve.setThoiGianDat(ngayDat);
+            listTicket.add(ve);
+        }
+        cursor.close();
+        database.close();
+        return listTicket;
+    }
+
+    public ArrayList<Ve> getTicketForUser(String userID) {
+        ArrayList<Ve> listTicket = new ArrayList<>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT Ve.*,Suat.ngayChieu,Ghe.tenGhe,User.hoTen,MaGiamGia.tenMaGiam FROM Ve,Suat,Ghe,User,MaGiamGia " +
+                "WHERE Ve.suatID = Suat.id AND Ve.gheID=Ghe.id AND Ve.userID = User.id AND Ve.giamGiaID=MaGiamGia.id AND Ve.isDelete=false AND Ve.userID = ? AND Ve.thoiGianDat >= DATE('now', '-1 day')", new String[]{userID});
+
+        while (cursor.moveToNext()) {
+            Ghe ghe = new Ghe();
+            Ve ve = new Ve();
+            String tenGhe = cursor.getString(11);
+            String ngaychieu = cursor.getString(10);
+
+            java.sql.Date ngayChieu = java.sql.Date.valueOf(ngaychieu.toString());
+            int gheID = cursor.getInt(2);
+            ghe.setTenGhe(tenGhe);
+            ghe.setId(gheID);
+            ve.setThoiGianDat(ngayChieu);
+
+            ve.setGheID(ghe);
             listTicket.add(ve);
         }
         cursor.close();

@@ -13,12 +13,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
+import android.support.v7.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.oucinema.adapter.FilmAdapter;
 import com.example.oucinema.adapter.UserHistory_Adapter;
+import com.example.oucinema.adpterSpinner.SpinnerTheaterAdapter;
+import com.example.oucinema.adpterSpinner.SpinnerTicketAdapter;
 import com.example.oucinema.model.Phim;
+import com.example.oucinema.model.RapPhim;
 import com.example.oucinema.model.Ve;
 
 import java.text.SimpleDateFormat;
@@ -31,15 +35,20 @@ public class UserHistory extends AppCompatActivity {
     SearchView tk;
     ListView listViewDatVe;
     String userID,user_name;
+    Spinner chooseVe;
+    Button Huy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_history);
+
         dbHelper = new DBHelper(UserHistory.this);
 
         tk = findViewById(R.id.manage_search_film_history);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
+        chooseVe = findViewById(R.id.spinnerHuyVe);
+        Huy = findViewById(R.id.btHuy);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("user_id")) {
             String userId = bundle.getString("user_id");
@@ -50,6 +59,11 @@ public class UserHistory extends AppCompatActivity {
         } else {
             userID = "0";
         }
+
+        // Khai báo array list
+        ArrayList<Ve> listvespinner = dbHelper.getTicketForUser(String.valueOf(userID));
+         SpinnerTicketAdapter SpinnerTicketAdapters= new SpinnerTicketAdapter(this, R.layout.item_selected_ve, listvespinner);
+        chooseVe.setAdapter(SpinnerTicketAdapters);
 
         listViewDatVe = findViewById(R.id.listview_user_history);
         ArrayList<Ve> listve = dbHelper.getTicketHistoryUser(String.valueOf(userID));

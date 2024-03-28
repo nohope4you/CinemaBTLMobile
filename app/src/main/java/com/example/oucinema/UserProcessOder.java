@@ -1027,7 +1027,7 @@ public class UserProcessOder extends AppCompatActivity {
                 intent.putExtra("tongtien",tongTienn);
                 intent.putExtra("user_id", userID);
                 intent.putExtra("user_name", user_name);
-                intent.putExtra("so_ghe", soGhe.getText().toString());
+                intent.putExtra("so_ghe", soGhe.getText());
                 intent.putExtra("suat_id", suatid);
                 if(A1.isChecked() && A1.isEnabled())
                 {

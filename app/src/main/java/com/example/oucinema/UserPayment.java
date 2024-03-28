@@ -41,7 +41,6 @@ public class UserPayment extends AppCompatActivity {
     Double TienGiam, KqSauKhiGiam;
     Date TGHL;
     ImageView btnReturn;
-    int suatid,soGhe;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -60,6 +59,8 @@ public class UserPayment extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Lấy biến Intent
+        String soGhe = getIntent().getStringExtra("so_ghe");
+        String suatid = getIntent().getStringExtra("suat_id");
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("user_id")) {
             String userId = bundle.getString("user_id");
@@ -70,8 +71,6 @@ public class UserPayment extends AppCompatActivity {
         } else {
             userID = "0";
         }
-        suatid = getIntent().getIntExtra("suat_id",-1);
-        soGhe = getIntent().getIntExtra("so_ghe",-1);
         String totalMoney= getIntent().getStringExtra("tongtien");
         tongtien.setText(totalMoney);
         String A1 = getIntent().getStringExtra("A1");
@@ -315,11 +314,10 @@ public class UserPayment extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_user_home:
-//                        Intent intent = new Intent(UserPayment.this, UserHome.class);
-//                        intent.putExtra("user_id", userID);
-//                        startActivity(intent);
-                        Double tien1ghe = Double.parseDouble(tongtien.getText().toString()) / soGhe;
-                        tongtien.setText(String.valueOf(tien1ghe));
+                        Intent intent = new Intent(UserPayment.this, UserHome.class);
+                        intent.putExtra("user_id", userID);
+                        startActivity(intent);
+
                         break;
                     case R.id.nav_user_memories:
                         Intent intent_ticket = new Intent(UserPayment.this, UserHistory.class);
@@ -348,7 +346,9 @@ public class UserPayment extends AppCompatActivity {
 
     }
     public void dat(String s){
-        Double tien1ghe = Double.parseDouble(tongtien.getText().toString()) / soGhe;
+        String soGhe = getIntent().getStringExtra("so_ghe");
+        int suatid = getIntent().getIntExtra("suat_id",-1);
+       Double tien1ghe = Double.parseDouble(tongtien.getText().toString()) / Double.parseDouble(soGhe);
         Integer idghe = dbHelper.getIDGhe(s);
         if (idMGG == null || idMGG == 0){
             idMGG = 1;
