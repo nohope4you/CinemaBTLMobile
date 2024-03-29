@@ -33,7 +33,6 @@ import java.util.ArrayList;
 public class UserHistory extends AppCompatActivity {
     DBHelper dbHelper;
     private BottomNavigationView bottomNavigationView;
-    SearchView tk;
     ListView listViewDatVe;
     String userID,user_name;
     Spinner chooseVe;
@@ -46,7 +45,6 @@ public class UserHistory extends AppCompatActivity {
 
         dbHelper = new DBHelper(UserHistory.this);
 
-        tk = findViewById(R.id.manage_search_film_history);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         chooseVe = findViewById(R.id.spinnerHuyVe);
         Huy = findViewById(R.id.btHuy);
@@ -135,20 +133,6 @@ public class UserHistory extends AppCompatActivity {
                 intent.putExtra("item_giochieu", itemGioChieu);
 
                 startActivity(intent);
-            }
-        });
-
-        //hàm search
-        tk.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                filmAdapter.getFilter().filter(s);
-                return false;
             }
         });
 

@@ -7,24 +7,14 @@
     android:layout_height="match_parent"
     android:background="#303030">
 
-    <android.support.v7.widget.SearchView
-        android:id="@+id/manage_search_film_history"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/csssearchviewuser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ListView
         android:id="@+id/listview_user_history"
-        android:layout_width="419dp"
-        android:layout_height="401dp"
-        android:layout_marginBottom="108dp"
+        android:layout_width="390dp"
+        android:layout_height="484dp"
+        android:layout_marginBottom="104dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
@@ -43,7 +33,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="LỊCH SỬ ĐẶT VÉ"
@@ -52,7 +42,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manage_search_film_history" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="409dp"
