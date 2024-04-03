@@ -56,14 +56,19 @@ public class MainActivity extends AppCompatActivity {
                             String userid = dbHelper.getUserIDLogin(username,pwd);
                             Intent intent = new Intent(MainActivity.this,ManageFilm.class);
                             intent.putExtra("user_id", userid);
+                            Toast.makeText(MainActivity.this,"Đăng nhập thành công",Toast.LENGTH_LONG).show();
                             startActivity(intent);
                         }
                         else{
                             String userid = dbHelper.getUserIDLogin(username,pwd);
                             Intent intent = new Intent(MainActivity.this,UserHome.class);
                             intent.putExtra("user_id", userid);
+                            Toast.makeText(MainActivity.this,"Đăng nhập thành công",Toast.LENGTH_LONG).show();
                             startActivity(intent);
                         }
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this,"Sai tài khoản hoặc mật khẩu",Toast.LENGTH_LONG).show();
                     }
                 }
             }

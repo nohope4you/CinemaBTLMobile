@@ -195,7 +195,7 @@ public class ManageAddFilm extends AppCompatActivity {
 
                     boolean b = dbHelper.updateFilm(phim,idphim);
                     if (b) {
-                        Toast.makeText(ManageAddFilm.this, "Cập nhật thành công", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ManageAddFilm.this, "Cập nhật phim thành công", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(ManageAddFilm.this, "Cập nhật phim Thất bại", Toast.LENGTH_LONG).show();
                     }

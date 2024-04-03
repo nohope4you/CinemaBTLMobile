@@ -17,14 +17,14 @@ public class NavBarManager extends AppCompatActivity {
     // Biến navigationview
     private NavigationView navigationView;
     TextView textName;
-    ImageView ivStatis;
+    View ivStatis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_bar);
         navigationView = findViewById(R.id.navigation_view);
-        ivStatis = findViewById(R.id.imageView33);
+        ivStatis = findViewById(R.id.view3);
 
         String user_id = getIntent().getStringExtra("user_id");
         String user_name = getIntent().getStringExtra("user_name");
@@ -45,9 +45,10 @@ public class NavBarManager extends AppCompatActivity {
         ivStatis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NavBarManager.this, Statis.class);
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("user_id",user_id);
+                Intent intent_setfilm = new Intent(NavBarManager.this, Statis.class);
+                intent_setfilm.putExtra("user_id",user_id);
+                intent_setfilm.putExtra("user_name",user_name);
+                startActivity(intent_setfilm);
             }
         });
 

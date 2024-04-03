@@ -161,14 +161,14 @@ public class ManageAddSetFilm extends AppCompatActivity {
 
                     boolean b = dbHelper.updateSuat(suat,idd);
                     if(b){
-                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim thành công",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ManageAddSetFilm.this,"Sửa suất phim thành công",Toast.LENGTH_LONG).show();
                         AddSetFilmNC.getText().clear();
                         AddSetFilmTL.getText().clear();
                         AddSetFilmGMD.getText().clear();
                     }
                     else
                     {
-                        Toast.makeText(ManageAddSetFilm.this,"Thêm suất phim Thất bại !!!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ManageAddSetFilm.this,"Sửa suất phim thất bại !!!",Toast.LENGTH_LONG).show();
                     }
                 }
             }
