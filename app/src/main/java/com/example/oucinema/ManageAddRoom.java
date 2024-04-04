@@ -141,7 +141,7 @@ public class ManageAddRoom extends AppCompatActivity {
                 Phong phong = new Phong();
                 phong.setId(idRoom);
                 String idd= String.valueOf(idRoom);
-                phong.setUserUpdate(Integer.getInteger(user_id));
+                phong.setUserUpdate(Integer.parseInt(user_id));
                 boolean b = dbHelper.deletePhong(phong,idd);
                 if(b){
                     Toast.makeText(ManageAddRoom.this,"Xoá phòng thành công",Toast.LENGTH_LONG).show();
