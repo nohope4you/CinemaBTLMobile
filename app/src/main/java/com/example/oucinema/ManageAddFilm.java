@@ -40,7 +40,7 @@ import android.content.Context;
 
 public class ManageAddFilm extends AppCompatActivity {
     DBHelper dbHelper;
-    EditText etTenPhim, etMoTa, etTheLoai, etThoiLuong, etNgayPhatHanh, etDaoDien, etLinkTrailer;
+    EditText etTenPhim, etMoTa, etTheLoai, etThoiLuong, etNgayPhatHanh, etDaoDien;
     Button btnThemFilm,btnSuaFilm,btnXoaFilm,btnHinhAnh;
     ImageView e ;
     private static String urlString;
@@ -80,7 +80,6 @@ public class ManageAddFilm extends AppCompatActivity {
         etThoiLuong = findViewById(R.id.Thongtinphimthoiluong);
         etNgayPhatHanh = findViewById(R.id.Thongtinphimngayphathanh);
         etDaoDien = findViewById(R.id.Thongtinphimdaodien);
-        etLinkTrailer = findViewById(R.id.Thongtinphimlinktrailer);
         btnThemFilm = findViewById(R.id.btn_themphim);
         btnSuaFilm=findViewById(R.id.btn_suaphim);
         btnXoaFilm = findViewById(R.id.btn_xoaphim);
@@ -98,7 +97,6 @@ public class ManageAddFilm extends AppCompatActivity {
             etThoiLuong.getText().clear();
             etNgayPhatHanh.getText().clear();
             etDaoDien.getText().clear();
-            etLinkTrailer.getText().clear();
             btnXoaFilm.setEnabled(false);
             btnXoaFilm.setTextColor(Color.parseColor("#C7C8CC"));
 
@@ -140,7 +138,6 @@ public class ManageAddFilm extends AppCompatActivity {
                     java.sql.Date date = java.sql.Date.valueOf(etNgayPhatHanh.getText().toString());
                     phim.setNgayPhatHanh(date);
                     phim.setDaoDien(etDaoDien.getText().toString());
-                    phim.setLinkTrailer(etLinkTrailer.getText().toString());
                     phim.setUserUpdate(Integer.parseInt(user_id));
                     phim.setHinhAnh(urlString);
                 boolean b = dbHelper.addFilm(phim);
@@ -189,7 +186,7 @@ public class ManageAddFilm extends AppCompatActivity {
                     phim.setNgayPhatHanh(date);
                     phim.setDaoDien(etDaoDien.getText().toString());
                     phim.setHinhAnh(urlString);
-                    phim.setLinkTrailer(etLinkTrailer.getText().toString());
+                    phim.setLinkTrailer("null");
                     String idphim = String.valueOf(itemId);
                     phim.setUserUpdate(Integer.parseInt(user_id));
 
