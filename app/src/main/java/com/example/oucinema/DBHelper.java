@@ -540,7 +540,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("ngayPhatHanh", ngayPhatHanhString);
         cv.put("daoDien", phim.getDaoDien());
         cv.put("hinhAnh", phim.getHinhAnh());
-        cv.put("linkTrailer", phim.getLinkTrailer());
+        cv.put("linkTrailer", "null");
         cv.put("isDelete", false);
         cv.put("userUpdate", phim.getUserUpdate());
 
