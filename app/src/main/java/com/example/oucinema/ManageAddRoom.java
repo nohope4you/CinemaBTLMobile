@@ -173,7 +173,7 @@ public class ManageAddRoom extends AppCompatActivity {
                 else{
                     if(selectedRap!=null){
                         room.setRapPhimID(tempRap);
-                        room.setUserUpdate(Integer.getInteger(user_id));
+                        room.setUserUpdate(Integer.parseInt(user_id));
                         boolean b = dbHelper.addRoom(room);
                         if(b){
                             Toast.makeText(ManageAddRoom.this,"Thêm phòng thành công",Toast.LENGTH_LONG).show();

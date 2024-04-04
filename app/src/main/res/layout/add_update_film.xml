@@ -52,9 +52,9 @@
 
     <EditText
         android:id="@+id/Thongtinphimmota"
-        android:layout_width="364dp"
+        android:layout_width="350dp"
         android:layout_height="111dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="222dp"
         android:background="@drawable/cssbuttonloginandregister"
         android:ems="10"
         android:gravity="start"
