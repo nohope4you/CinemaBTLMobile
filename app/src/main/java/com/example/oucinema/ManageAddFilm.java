@@ -110,6 +110,7 @@ public class ManageAddFilm extends AppCompatActivity {
             etThoiLuong.setText(String.valueOf(itemThoiLuong));
             etNgayPhatHanh.setText(itemNgayPhatHanh);
             etDaoDien.setText(itemDaoDien);
+            urlString = itemHinhAnh;
 
             File file = new File(getFilesDir(), itemHinhAnh);
             Drawable drawable = Drawable.createFromPath(file.getAbsolutePath());
@@ -170,6 +171,7 @@ public class ManageAddFilm extends AppCompatActivity {
             }
         });
 
+
         //Sửa thông tin phim
         btnSuaFilm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,6 +219,7 @@ public class ManageAddFilm extends AppCompatActivity {
                 pickImage();
             }
         });
+
 
     }
     private void pickImage() {
